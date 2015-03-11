@@ -59,7 +59,7 @@ and open the template in the editor.
      </div>
         
         <?php
-        echo "Dio di dio"
+        echo "Sensetional gianni"
         ?>
     </body>
     
