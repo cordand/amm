@@ -8,13 +8,14 @@ and open the template in the editor.
     <head>
         <meta charset="UTF-8">
 
-        <link href="myCss.css" rel="stylesheet">
+        <link href="styles/myCss.css" rel="stylesheet">
         <title>Homepage</title>
     </head>
-        <body>
+        <body onresize="go()">
      <div id="all">
+         
     <header id="header">
-        <img title="header" src="header.png"/>
+        <img title="header" src="images/header.png"/>
         
         <form id="login" action="login.php">
             <label>Email <input type="text" name="s-user" id="s-user"></label><br><br>
@@ -29,9 +30,35 @@ and open the template in the editor.
         
         <div id="corpo">
     <div id="main">
-        
+<!--        <script>
+           
+
+            function go(){
+              
+                var contenuto = document.getElementById("content").offsetWidth;
+                var contenitore = document.getElementById("corpo").offsetWidth;
+                if(contenitore-40-contenuto<240){   //non basta per tutti e due
+                    document.getElementById("main").style.width = "50%";
+                }
+//                else{
+//                     if(document.getElementById("main").style.width === 50%){
+//                        document.getElementById("main").style.width = "70%";
+//                    }
+//                }
+    }
+        </script>-->
+
+<!--<p id="demo"></p>
+
+<script>
+function myFunction() {
+    var x = "Total Width: " + document.getElementById("demo").offsetWidth + "px";
+    document.getElementById("demo").innerHTML = x;
+}
+</script>-->
         <article id="content">
             <p>
+                
             <h1 id="titolo">Titolo articolo</h1>
             <h3 id="sottotitolo">Sottotitolo articolo</h3>
             <p id="testo">
