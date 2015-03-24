@@ -7,10 +7,14 @@ and open the template in the editor.
     Created on : 24-mar-2015, 9.46.29
     Author     : amm
 */
-#header {
+body{
+    
+}
+
+header {
     
     margin:0 auto;
-    width:1000px;
+    
     //background: #eee;
     height: 200px;
     padding: 20px 0;
@@ -21,8 +25,8 @@ and open the template in the editor.
 #header form {
     float: right; 
     margin-right: 30px; 
-    height: 200px; 
-    padding-top: 8px;
+    height: 100px; 
+    padding-top: 10px;
 }
 
 #header form label {
@@ -51,20 +55,24 @@ and open the template in the editor.
 
 
 #all{
-  background-image: url('tile2.jpg');
+  background-image: url('../images/tile2.jpg');
   background-repeat: repeat;
-  width: 1000px;
+  min-width: 370px;
+  width: 60%;
   margin: 0 auto;
 }
+
+
 body{
-    background-image: url('tile.jpg');
+    background-image: url('../images/tile.jpg');
     background-repeat: repeat;
 }
 
 #corpo{
   overflow:hidden;
   padding:20px;
-  width: 80%;
+
+  display: block;
   //margin: 0 auto;
   
   text-align: center;
@@ -72,27 +80,44 @@ body{
  
 #main {
   float:left;
-  margin-left:-240px;
-  left:240px;
-  width:100%;
+  //margin-left:-240px;
+  //left:240px;
+  width:70%;
   position:relative;
-  z-index:5;
+
   text-align: left;
 
 }
  
 #main #content {
-  margin-right:240px;
+  //margin-right:240px;
   //background:yellow;
   padding:20px;
   
 }
+#article p{
+    
+}
  
+
 #sidebar {
-  float:left;
+  float:right;
   width:200px;
+  height:100px;
   position:relative;
-  z-index:10;
+  //width:30%;
   //background:red;
   padding:20px;
+}
+
+@media screen and (max-width: 1170px) {
+    #sidebar {
+  float:left;
+  width:200px;
+  height:100px;
+  position:relative;
+  //width:30%;
+  //background:red;
+  padding:20px;
+}
 }
