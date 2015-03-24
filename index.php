@@ -7,6 +7,7 @@ and open the template in the editor.
 <html>
     <head>
         <meta charset="UTF-8">
+
         <link href="myCss.css" rel="stylesheet">
         <title>Homepage</title>
     </head>
@@ -63,4 +64,5 @@ and open the template in the editor.
         ?>
     </body>
     
+
 </html>
