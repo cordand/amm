@@ -59,9 +59,7 @@ and open the template in the editor.
 </div>
      </div>
         
-        <?php
-            echo "Sensational gianni";
-        ?>
+        
     </body>
     
 
