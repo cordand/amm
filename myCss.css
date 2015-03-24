@@ -1,0 +1,98 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 24-mar-2015, 9.46.29
+    Author     : amm
+*/
+#header {
+    
+    margin:0 auto;
+    width:1000px;
+    //background: #eee;
+    height: 200px;
+    padding: 20px 0;
+    font: 12px arial, sans-serif;
+}
+
+
+#header form {
+    float: right; 
+    margin-right: 30px; 
+    height: 200px; 
+    padding-top: 8px;
+}
+
+#header form label {
+    display: inline-block; 
+    margin: 0 2px;
+}
+
+
+#header form #s-user, #header form #s-pass {
+    display: block;
+    width: 250px;
+    border: 2px solid #eee;
+    padding: 3px 0 3px 0;
+    margin-bottom: -1px;
+}
+
+#header form .submit {
+    height: 23px;
+    vertical-align: bottom;
+    background: #ddb820; 
+    color: #fff;
+    border: 1px solid #FFF;
+    border-radius: 5px;
+}
+
+
+
+#all{
+  background-image: url('tile2.jpg');
+  background-repeat: repeat;
+  width: 1000px;
+  margin: 0 auto;
+}
+body{
+    background-image: url('tile.jpg');
+    background-repeat: repeat;
+}
+
+#corpo{
+  overflow:hidden;
+  padding:20px;
+  width: 80%;
+  //margin: 0 auto;
+  
+  text-align: center;
+}
+ 
+#main {
+  float:left;
+  margin-left:-240px;
+  left:240px;
+  width:100%;
+  position:relative;
+  z-index:5;
+  text-align: left;
+
+}
+ 
+#main #content {
+  margin-right:240px;
+  //background:yellow;
+  padding:20px;
+  
+}
+ 
+#sidebar {
+  float:left;
+  width:200px;
+  position:relative;
+  z-index:10;
+  //background:red;
+  padding:20px;
+}
