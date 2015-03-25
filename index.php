@@ -11,7 +11,7 @@ and open the template in the editor.
         <link href="styles/myCss.css" rel="stylesheet">
         <title>Homepage</title>
     </head>
-        <body onresize="go()">
+        <body>
      <div id="all">
          
     <header id="header">
