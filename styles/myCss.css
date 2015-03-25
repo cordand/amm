@@ -16,7 +16,7 @@ header {
     margin:0 auto;
     
     //background: #eee;
-    height: 200px;
+    height: 100px;
     padding: 20px 0;
     font: 12px arial, sans-serif;
 }
@@ -58,7 +58,7 @@ header {
   background-image: url('../images/tile2.jpg');
   background-repeat: repeat;
   min-width: 370px;
-  width: 60%;
+  width: 800px;
   margin: 0 auto;
 }
 
@@ -82,9 +82,9 @@ body{
   float:left;
   //margin-left:-240px;
   //left:240px;
-  width:70%;
+  width:calc(100%-200px);
   position:relative;
-
+  padding:20px;
   text-align: left;
 
 }
@@ -110,7 +110,36 @@ body{
   padding:20px;
 }
 
-@media screen and (max-width: 1170px) {
+@media screen and (max-width: 800px) {
+
+#all{
+     width: 100%;
+    
+}
+
+
+}
+@media screen and (max-width: 758px) {
+
+#header form {
+    float: left; 
+    margin-right: 30px; 
+    height: 100px; 
+    padding-top: 10px;
+    padding-left: 20px;
+}
+header {
+    
+    
+    //background: #eee;
+    height: 200px;
+
+}
+
+
+}
+@media screen and (max-width: 527px) {
+
     #sidebar {
   float:left;
   width:200px;
@@ -120,4 +149,6 @@ body{
   //background:red;
   padding:20px;
 }
+
+
 }
