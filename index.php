@@ -9,17 +9,37 @@ and open the template in the editor.
         <meta charset="UTF-8">
 
         <link href="styles/myCss.css" rel="stylesheet">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0.0" />  
+        
+
         <title>Homepage</title>
     </head>
         <body>
      <div id="all">
-         
+         <div id="topBar">
+             
+                <nav>
+                    <ul>
+
+                            <li><a href="#"></a>
+                                    <ul>
+                                            <li><a href="login.php">Login</a></li>
+
+                                            </li>
+                                    </ul>
+                            </li>
+                            
+                    </ul>
+   </nav>
+            </form>
+             
+         </div>
     <header id="header">
-        <img title="header" src="images/header.png"/>
+        <a href="index.php"><img title="header" src="images/header.png"/></a>
         
-        <form id="login" action="login.php">
-            <label>Email <input type="text" name="s-user" id="s-user"></label><br><br>
-            <label>Password<input type="text" name="s-pass" id="s-pass"></label>
+        <form id="login" action="doLogin.php">
+            <label>Email <input type="text" name="username" id="username"></label><br><br>
+            <label>Password<input type="text" name="password" id="password"></label>
             <input type="submit" class="submit" value="Login">
       </form>
     </header>
