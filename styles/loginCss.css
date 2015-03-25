@@ -1,0 +1,71 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 25-mar-2015, 15.13.38
+    Author     : amm
+*/
+
+.loginForm{
+    margin-right: auto; 
+    margin-left: auto;
+}
+body{
+text-align: center;
+}
+header{
+    text-align: left;
+}
+
+.loginForm form{
+    height: 200px; 
+    padding-top: 10px;
+    
+    
+}
+
+
+.loginForm form .submit {
+    height: 23px;
+    vertical-align: bottom;
+    background: #ddb820; 
+    color: #fff;
+    border: 1px solid #FFF;
+    border-radius: 5px;
+}
+
+.loginForm form label {
+    display: inline-block;
+    
+    clear: left;
+    width: 250px;
+    text-align: center;
+}
+.loginForm form #username, .loginForm form #password, .loginForm form #remember{
+    display: inline-block;
+    float: left;
+    clear: left;
+    text-align: right;
+    width: 250px;
+    border: 2px solid #eee;
+    padding: 0px 0 3px 0;
+    margin-bottom: -1px;
+}
+
+.loginForm form #ricorda{
+    margin-left: 5px;
+    width: 255px;
+    display: inline-block;
+    
+    clear: left;
+
+    text-align: center;
+}
+
+@media screen and (max-width: 758px) {
+    .loginForm{
+        padding-top: 70px;
+    }
+}
