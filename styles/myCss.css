@@ -147,12 +147,14 @@ header {
     border: 1px solid #FFF;
     border-radius: 5px;
 }
+
 .logo{
     float:left;
 }
 .nav{
     float:right;
-    margin-right:10px;}
+    margin-right:10px;
+}
 .nav ul li{
     list-style:none;
     float:left;
@@ -235,6 +237,7 @@ body{
     #topBar{
         visibility: visible;
         z-index: 9999;
+        width:100%;
     }
     #sidebar{
         visibility: hidden;
