@@ -8,7 +8,7 @@ and open the template in the editor.
     <head>
         <meta charset="UTF-8">
         <link href="styles/myCss.css" rel="stylesheet">
-        <link href="styles/loginCss.css" rel="stylesheet">
+        <link href="styles/viewerCss.css" rel="stylesheet">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0.0" />  
         <title>Login</title>
     </head>
@@ -42,20 +42,25 @@ and open the template in the editor.
         <li><a href="login.php">Login</a></li>
       </ul>
     </header>
-        
-
-        
             
-            <div class="loginForm">
-                <form id="login" action="doLogin.php">
-                    <label>Email <input type="text" name="username" id="username"></label><br><br>
-                    <label>Password<input type="text" name="password" id="password"></label><br><br>
-                    <label id="ricorda">Ricordami <input type="checkbox" name="remember" id="remember"></label><br><br>
-                    <input type="submit" class="submit" value="Login">
-              </form>
-                
+            <div id="contenuto">
+                <h1 id="titolo">Nome Prodotto</h1>
+                <div id="descrizione">
+                    <img src="http://cdn.phys.org/newman/gfx/news/2013/dwarfgalaxyc.jpg">
+                    <p>Descrizione descrizione
+                    </p>
+                </div>
             </div>
-         
+            <p>
+                
+            </p>
+            
+            
+            
         </div>
+        <?php
+        // put your code here
+        ?>
     </body>
+    
 </html>

@@ -11,6 +11,7 @@ and open the template in the editor.
 .loginForm{
     margin-right: auto; 
     margin-left: auto;
+    margin-top: 20px;
 }
 body{
 text-align: center;
@@ -21,7 +22,7 @@ header{
 
 .loginForm form{
     height: 200px; 
-    padding-top: 10px;
+    padding-top: 30px;
     padding-bottom: 50px;
     
 }

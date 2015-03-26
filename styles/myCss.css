@@ -8,6 +8,10 @@ and open the template in the editor.
     Author     : amm
 */
 
+
+/*
+    INIZIO TOPBAR
+*/
 #topBar{
     position:fixed;
     top:0;
@@ -15,7 +19,7 @@ and open the template in the editor.
     display:block;
     width:100%;
     height:60px;
-    background-color:red;
+    background-color:#eee;
     visibility: hidden;
 }
 
@@ -31,15 +35,6 @@ nav ul li:hover > ul {
     display: block;
 }
 nav ul {
-    /*
-    background: #efefef; 
-    background: linear-gradient(top, #efefef 0%, #bbbbbb 100%);  
-    background: -moz-linear-gradient(top, #efefef 0%, #bbbbbb 100%); 
-    background: -webkit-linear-gradient(top, #efefef 0%,#bbbbbb 100%); 
-    box-shadow: 0px 0px 9px rgba(0,0,0,0.15);
-    padding: 0 20px;
- 
-    */
     padding-top: 0px;
     margin-top: 0px;
     
@@ -69,8 +64,6 @@ nav ul li a {
     background-image: url('../images/ic_drawer.png');
     background-size: 40px 30px;
     background-position: center;
-    
-  
     display: block;
     background-repeat: no-repeat;
     padding:  0px 40px;
@@ -106,17 +99,29 @@ nav ul ul li a:hover {
     background: #4b545f;
 }
 
-header {
+/*
+    FINE TOPBAR
+*/
+
+/*
+    INIZIO HEADER
+*/
+#header {
 
 
     margin:0 auto;
 
     //background: #eee;
-    height: 100px;
+    height: 140px;
     padding: 15px 0;
     font: 12px arial, sans-serif;
 }
 
+#header .immagineHeader{
+    width: 100%;
+    text-align: center;
+    
+}
 
 #header form {
     float: right; 
@@ -148,66 +153,46 @@ header {
     border-radius: 5px;
 }
 
-.logo{
-    float:left;
+
+.navbar {
+    list-style-type: none;
+    margin: 0;
+    margin-top: 15px;
+    
+    padding: 0;
+    
+    width: 100%;
+    
+    
 }
-.nav{
-    float:right;
-    margin-right:10px;
-}
-.nav ul li{
-    list-style:none;
-    float:left;
-}
-
-
-
-#all{
-    background-image: url('../images/tile2.jpg');
-    background-repeat: repeat;
-    min-width: 280px;
-    width: 800px;
-    margin: 0 auto;
-}
-
-
-body{
-    background-image: url('../images/tile.jpg');
-    background-repeat: repeat;
+.navbar li {
+    width: 25%;
+    float: left;
+    background-color: #eee;
+    padding-top: 15px;
+    padding-bottom: 10px;
+    font-size: 1.5em;
+    color:black;
 }
 
-#corpo{
-    overflow:hidden;
-    padding:20px;
+navbar li:hover{
+    font-size: 3em;
+}
 
+.navbar li a {
     display: block;
-    //margin: 0 auto;
-
+    width: 100%;
+    
     text-align: center;
 }
 
-#main {
-    float:left;
-    //margin-left:-240px;
-    //left:240px;
-    width:calc(100%-200px);
-    position:relative;
-    padding:20px;
-    text-align: left;
+/*
+   FINE HEADER
+*/
 
-}
-
-#main #content {
-    //margin-right:240px;
-    //background:yellow;
-    padding:20px;
-
-}
-#article p{
-
-}
-
-
+/*
+    INIZIO SIDEBAR
+*/
 #sidebar {
     float:right;
     width:200px;
@@ -216,7 +201,168 @@ body{
     //width:30%;
     //background:red;
     padding:20px;
+    padding-top: 0px;
 }
+
+
+/*
+    FINE SIDEBAR
+*/
+
+/*
+    INIZIO CONTAINERS
+*/
+
+body{
+    background-image: url('../images/tile.jpg');
+    background-repeat: repeat;
+}
+
+
+#all{
+    background-image: url('../images/tile2.jpg');
+    background-repeat: repeat;
+    min-width: 280px;
+    width: 98%;
+    margin: 0 auto;
+    
+}
+
+
+
+#corpo{
+    overflow:hidden;
+    padding:20px;
+    text-align: center;
+}
+
+#main {
+    float:left;
+    //margin-left:-240px;
+    //left:240px;
+    width:calc(100%);
+    position:relative;
+    padding:20px;
+    text-align: left;
+
+}
+
+/*
+    FINE CONTAINERS
+*/
+
+/*
+    INIZIO LAYOUT GRIGLIA
+    
+*/
+
+.flex-container {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  
+  -webkit-flex-flow: row wrap;
+  justify-content: space-around;
+
+}
+
+.flex-item {
+  background: tomato;
+  padding: 5px;
+  width: 200px;
+  height: 320px;
+  margin-top: 10px;
+  //line-height: 150px;
+  color: white;
+  font-weight: bold;
+  font-size: 1.3em;
+  text-align: center;
+}
+
+.flex-item .flex-image{
+    max-width: 300px;
+    max-height: 200px;
+}
+
+.flex-item a{
+    color: black;
+    font-weight: normal;
+    text-decoration: none;
+}
+.flex-item a:hover span{
+    text-decoration: underline;
+}
+
+.box {
+        position:                   relative;
+        font-family:                sans-serif;
+        display:                    block;
+        width:                      200px;
+        height:                     90px;
+        overflow:                   hidden;
+    }
+    .box .text {
+        color:                      #333;
+        padding:                    10px;
+        width:                      180px;
+        overflow:                   hidden;
+        //background:                 #E0E0E0;
+        font-size:                  .95em;
+        line-height:                1;
+        text-align:                 left;
+    }
+
+    .box .text:after {
+        content:                    ' ';
+        position:                   absolute;
+        display:                    block;
+        width:                      100%;
+        height:                     1em;
+        bottom:                     0px;
+        left:                       0px;
+        //background:                 #E0E0E0;
+    }
+
+    .box .text:before {
+        content:                    '...';
+        text-align:                 right;
+        position:                   absolute;
+        display:                    block;
+        width:                      2em;
+        height:                     1em;
+        bottom:                     1em;
+        right:                      20px;
+/*        background: -moz-linear-gradient(left,  rgba(224,224,224,0) 0%, rgba(224,224,224,1) 38%, rgba(224,224,224,1) 99%);
+        background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(224,224,224,0)), color-stop(38%,rgba(224,224,224,1)), color-stop(99%,rgba(224,224,224,1)));
+        background: -webkit-linear-gradient(left,  rgba(224,224,224,0) 0%,rgba(224,224,224,1) 38%,rgba(224,224,224,1) 99%);
+        background: -o-linear-gradient(left,  rgba(224,224,224,0) 0%,rgba(224,224,224,1) 38%,rgba(224,224,224,1) 99%);
+        background: -ms-linear-gradient(left,  rgba(224,224,224,0) 0%,rgba(224,224,224,1) 38%,rgba(224,224,224,1) 99%);
+        background: linear-gradient(to right,  rgba(224,224,224,0) 0%,rgba(224,224,224,1) 38%,rgba(224,224,224,1) 99%);*/
+        //filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00e0e0e0', endColorstr='#e0e0e0',GradientType=1 );
+    }
+
+    .flex-item .prezzo{
+        width: 180px;
+        padding-left: 10px;
+        padding-right: 10px;
+        text-align: right;
+        margin-top :0px;
+        color: #333;
+    }
+
+
+
+
+/*
+    FINE LAYOUT GRIGLIA
+    
+*/
 
 @media screen and (max-width: 800px) {
 
@@ -224,12 +370,17 @@ body{
         width: 100%;   
 
     }
-
-
-
 }
-@media screen and (max-width: 758px) {
 
+
+@media screen and (max-width: 775px) {
+    .flex-container{
+        
+        margin-top: 30px;
+    }
+    #main{
+        padding:0px;
+    }
     header{
         visibility: hidden;
         position: absolute;
@@ -238,6 +389,7 @@ body{
         visibility: visible;
         z-index: 9999;
         width:100%;
+        
     }
     #sidebar{
         visibility: hidden;
@@ -255,6 +407,10 @@ body{
         //background: #eee;
         height: 200px;
 
+    }
+    all{
+        padding-top: 60px;
+        min-width: 320px;
     }
 
 
@@ -275,9 +431,7 @@ and (max-device-width : 480px) {
 @media only screen 
 and (min-width : 321px) {
     /* Styles */
-    all{
-        width: 320;
-    }
+    
 
 }
 

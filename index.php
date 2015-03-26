@@ -23,9 +23,9 @@ and open the template in the editor.
 
                             <li><a href="#"></a>
                                     <ul>
-                                            <li><a href="login.php">Login</a></li>
-
-                                            </li>
+                                            <li><a href="index.php">Home</a></li>
+                                            <li><a href="login.php">Login</a></li>    
+                                            
                                     </ul>
                             </li>
                             
@@ -34,14 +34,17 @@ and open the template in the editor.
             </form>
              
          </div>
+         
     <header id="header">
-        <a href="index.php"><img title="header" src="images/header.png"/></a>
-        
-        <form id="login" action="doLogin.php">
-            <label>Email <input type="text" name="username" id="username"></label><br><br>
-            <label>Password<input type="text" name="password" id="password"></label>
-            <input type="submit" class="submit" value="Login">
-      </form>
+        <div class="immagineHeader">
+            <a href="index.php"><img title="Home" src="images/header.png"/></a>
+        </div>
+        <ul class="navbar">
+        <li><a href="index.php">Home</a></li>
+        <li><a href="news.asp">News</a></li>
+        <li><a href="contact.asp">Contact</a></li>
+        <li><a href="login.php">Login</a></li>
+      </ul>
     </header>
     
     
@@ -50,61 +53,48 @@ and open the template in the editor.
         
         <div id="corpo">
     <div id="main">
-<!--        <script>
-           
-
-            function go(){
-              
-                var contenuto = document.getElementById("content").offsetWidth;
-                var contenitore = document.getElementById("corpo").offsetWidth;
-                if(contenitore-40-contenuto<240){   //non basta per tutti e due
-                    document.getElementById("main").style.width = "50%";
-                }
-//                else{
-//                     if(document.getElementById("main").style.width === 50%){
-//                        document.getElementById("main").style.width = "70%";
-//                    }
-//                }
-    }
-        </script>-->
-
-<!--<p id="demo"></p>
-
-<script>
-function myFunction() {
-    var x = "Total Width: " + document.getElementById("demo").offsetWidth + "px";
-    document.getElementById("demo").innerHTML = x;
-}
-</script>-->
-        <article id="content">
-            <p>
-                
-            <h1 id="titolo">Titolo articolo</h1>
-            <h3 id="sottotitolo">Sottotitolo articolo</h3>
-            <p id="testo">
-                Testo Testo Testo
-            </p>
-                    
-            </p>
-        </article>
         
-    </div>
+        
+        <nav id="sidebar">
+                <h3>Inserimenti recenti</h3>
+                    <ul>
+                     <li>Primo valore</li>
+                     <li>Secondo valore</li>
+                     <li>Terzo valore</li>
+                    </ul>   
+            </nav>
+        
+        
+        <ul class="flex-container">
+            <div class="flex-item">
+                <a href="viewer.php?id=1203">
+                    <img class="flex-image" src="http://cdn.phys.org/newman/gfx/news/2013/dwarfgalaxyc.jpg">
+                </a>
+                <a href="viewer.php?id=1203">
+                <span>
+                    <div class="box">
+                            <div class="text">
+                    Lorem ipsum dolor sit amet, 
+                            </div>
+                    </div>
+                </span>
+                </a>
+                <p class="prezzo">
+                    300€
+                </p>
+                
+            </div>
+            <div class="flex-item">2</div>
+            <div class="flex-item">3</div>
+            <div class="flex-item">4</div>
+            <div class="flex-item">5</div>
+            <div class="flex-item">6</div>
+          </ul>
+         </div>            
+        
+ </div>
+          </div>
 
-            
-    <nav id="sidebar">
-        <h3>Inserimenti recenti</h3>
-            <ul>
-             <li>Primo valore</li>
-             <li>Secondo valore</li>
-             <li>Terzo valore</li>
-            </ul>   
-        <p>
-            
-        </p>
-    </nav>
-
-</div>
-     </div>
         
         
     </body>
