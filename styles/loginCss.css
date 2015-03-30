@@ -21,14 +21,21 @@ header{
 }
 
 .loginForm form{
-    height: 200px; 
+    height: 150px; 
+    padding-top: 30px;
+    padding-bottom: 50px;
+    
+}
+.registerForm form{
+    min-height: 100px; 
     padding-top: 30px;
     padding-bottom: 50px;
     
 }
 
 
-.loginForm form .submit {
+
+.loginForm form .submit, .registerForm form .submit {
     height: 23px;
     vertical-align: bottom;
     background: #ddb820; 
@@ -37,14 +44,18 @@ header{
     border-radius: 5px;
 }
 
-.loginForm form label {
+.loginForm form label,.registerForm form label {
     display: inline-block;
     
     clear: left;
     width: 250px;
     text-align: center;
 }
-.loginForm form #username, .loginForm form #password, .loginForm form #remember{
+.loginForm form #username, .loginForm form #password, .loginForm form #remember,
+.registerForm form #username, .registerForm form #password, .registerForm form #confUsername, .registerForm form #confPassword,
+ .registerForm form #name, .registerForm form #surname
+
+{
     display: inline-block;
     float: left;
     clear: left;

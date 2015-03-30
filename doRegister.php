@@ -1,19 +1,7 @@
-<!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title></title>
-    </head>
-    <body>
-        <?php
+<?php
         include 'scripts/manageDatabase.php';
             
-            if(!empty($_POST['username']) && !empty($_POST['password'])){
+            if(!empty($_POST['email']) && !empty($_POST['password'])){
                 $email= htmlspecialchars($_POST["email"]) ;
                 $password= htmlspecialchars($_POST["password"]) ;
                 $nome=htmlspecialchars($_POST["name"]) ;
@@ -31,7 +19,7 @@ and open the template in the editor.
                 echo('A user already exists with your chosen userid.\n'.
                 'Please try another.');
                 }else{
-                     $sql = "INSERT INTO user SET
+                     $sql = "INSERT INTO users SET
                     nome = '$nome',
                     cognome = '$cognome',
                     email = '$email',        
@@ -54,5 +42,3 @@ and open the template in the editor.
             }
             
         ?>
-    </body>
-</html>
