@@ -12,11 +12,15 @@ and open the template in the editor.
         <title></title>
     </head>
     <body>
-        <?php
-        include 'template/header.php';
-        
-        goHeader();
-        
-        ?>
+        <div id="all">
+            <?php
+            include 'template/header.php';
+            include 'scripts/restoreLogin.php';
+
+            goHeader();
+            ?>
+        </div>
+
     </body>
+
 </html>
