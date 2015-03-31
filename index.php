@@ -16,84 +16,71 @@ and open the template in the editor.
     </head>
         <body>
      <div id="all">
-         <div id="topBar">
-             
-                <nav>
-                    <ul>
-
-                            <li><a href="#"></a>
-                                    <ul>
-                                            <li><a href="index.php">Home</a></li>
-                                            <li><a href="login.php">Login</a></li>    
-                                            
-                                    </ul>
-                            </li>
-                            
-                    </ul>
-   </nav>
-            </form>
-             
-         </div>
          
-    <header id="header">
-        <div class="immagineHeader">
-            <a href="index.php"><img title="Home" src="images/header.png"/></a>
-        </div>
-        <ul class="navbar">
-        <li><a href="index.php">Home</a></li>
-        <li><a href="news.asp">News</a></li>
-        <li><a href="contact.asp">Contact</a></li>
-        <li><a href="login.php">Login</a></li>
-      </ul>
-    </header>
+         <?php
+        include 'template/header.php';
+        include 'scripts/restoreLogin.php';
+        
+        session_start();
+        goHeader();
+         ?>
     
     
     
     
         
-        <div id="corpo">
-    <div id="main">
+       
         
         
         <nav id="sidebar">
-                <h3>Inserimenti recenti</h3>
+            <h3><a href="carrello.php">Carrello</a></h3>
                     <ul>
-                     <li>Primo valore</li>
-                     <li>Secondo valore</li>
-                     <li>Terzo valore</li>
+                     <li id="contatore">Elementi: 0</li>
                     </ul>   
             </nav>
         
         
         <ul class="flex-container">
-            <div class="flex-item">
-                <a href="viewer.php?id=1203">
-                    <img class="flex-image" src="http://cdn.phys.org/newman/gfx/news/2013/dwarfgalaxyc.jpg">
-                </a>
-                <a href="viewer.php?id=1203">
-                <span>
-                    <div class="box">
-                            <div class="text">
-                    Lorem ipsum dolor sit amet, 
+            <?php
+                     dbConnect("mysite");
+                      $sql = "SELECT id,nome,descrizione,immagine,prezzo FROM items order by id desc limit 10";
+                      $result = mysql_query($sql); 
+                      $num=  mysql_num_rows($result);
+                      for($i=0;$i<$num;$i++){
+                          $data=mysql_fetch_row($result);
+                          ?>
+                              <div class="flex-item">
+                                <a href="viewer.php?id=<?php echo $data[0]?>">
+                                    <img class="flex-image" src="<?php echo $data[3]?>">
+                                </a>
+                                <a href="viewer.php?id=<?php echo $data[0]?>">
+                                <span>
+                                    <div class="box">
+                                            <div class="text">
+                                    <?php echo $data[1]?>
+                                            </div>
+                                    </div>
+                                </span>
+                                </a>
+                                <p class="prezzo">
+                                    <?php echo $data[4]?> €
+                                </p>
+
                             </div>
-                    </div>
-                </span>
-                </a>
-                <p class="prezzo">
-                    300€
-                </p>
-                
-            </div>
-            <div class="flex-item">2</div>
-            <div class="flex-item">3</div>
-            <div class="flex-item">4</div>
-            <div class="flex-item">5</div>
-            <div class="flex-item">6</div>
+                              
+                              
+                              <?php
+                      }
+            
+            
+            ?>
+            
+            
+            
           </ul>
          </div>            
         
- </div>
-          </div>
+ 
 
         
         

@@ -108,6 +108,7 @@ nav ul ul li a:hover {
 /*
     INIZIO HEADER
 */
+
 #header {
 
 
@@ -125,35 +126,7 @@ nav ul ul li a:hover {
     
 }
 
-#header form {
-    float: right; 
-    margin-right: 30px; 
-    height: 100px; 
-    padding-top: 10px;
-}
 
-#header form label {
-    display: inline-block; 
-    margin: 0 2px;
-}
-
-
-#header form #username, #header form #password {
-    display: block;
-    width: 250px;
-    border: 2px solid #eee;
-    padding: 3px 0 3px 0;
-    margin-bottom: -1px;
-}
-
-#header form .submit {
-    height: 23px;
-    vertical-align: bottom;
-    background: #ddb820; 
-    color: #fff;
-    border: 1px solid #FFF;
-    border-radius: 5px;
-}
 
 
 .navbar {
@@ -167,8 +140,29 @@ nav ul ul li a:hover {
     
     
 }
+
+
+
 .navbar li {
     width: 25%;
+    float: left;
+    background-color: #eee;
+    padding-top: 15px;
+    padding-bottom: 10px;
+    font-size: 1.5em;
+    color:black;
+}
+.navbar.loggedin.commerciante li {
+    width: 16.66%;
+    float: left;
+    background-color: #eee;
+    padding-top: 15px;
+    padding-bottom: 10px;
+    font-size: 1.5em;
+    color:black;
+}
+.navbar.loggedin li {
+    width: 20%;
     float: left;
     background-color: #eee;
     padding-top: 15px;
@@ -227,27 +221,14 @@ body{
     min-width: 280px;
     width: 98%;
     margin: 0 auto;
+    padding-top:10px;
+    padding-bottom:40px;
     
 }
 
 
 
-#corpo{
-    overflow:hidden;
-    padding:20px;
-    text-align: center;
-}
 
-#main {
-    float:left;
-    //margin-left:-240px;
-    //left:240px;
-    width:calc(100%);
-    position:relative;
-    padding:20px;
-    text-align: left;
-
-}
 
 /*
     FINE CONTAINERS
@@ -421,13 +402,6 @@ body{
         padding-left: 0px;
         padding-right: 0px;
     }
-    #corpo{
-        padding-left: 0px;
-        padding-right: 0px;
-        margin-left: 0px;
-        margin-right: 0px;
-         width: 100%;
-    }
     #all{
         //padding-top: 60px;
         min-width: 280px;
@@ -436,6 +410,7 @@ body{
         padding-right: 0px;
         margin-left: 0px;
         margin-right: 0px;
+        padding-top: 30px;
     }
 
     

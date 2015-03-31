@@ -51,20 +51,58 @@ header{
     width: 250px;
     text-align: center;
 }
-.loginForm form #username, .loginForm form #password, .loginForm form #remember,
-.registerForm form #username, .registerForm form #password, .registerForm form #confUsername, .registerForm form #confPassword,
+
+.loginForm form #errore{
+    color:red;
+}
+.registerForm form #errore{
+    color:red;
+}
+
+.loginForm form #email, .loginForm form #password, .loginForm form #remember,
+.registerForm form #email, .registerForm form #password, .registerForm form #confEmail, .registerForm form #confPassword,
  .registerForm form #name, .registerForm form #surname
 
 {
     display: inline-block;
     float: left;
     clear: left;
-    text-align: right;
+    text-align: left;
     width: 250px;
     border: 2px solid #eee;
     padding: 0px 0 3px 0;
     margin-bottom: -1px;
 }
+
+.registerForm form #sesso input[type="radio"] {
+    width: 20px;
+    vertical-align: middle;
+    float: left;
+}
+
+.registerForm form #sesso{
+    display: inline-block;
+clear: left;
+width: 150px;
+
+text-align: center;
+}
+
+
+.registerForm form #tipo input[type="radio"] {
+    width: 20px;
+    vertical-align: middle;
+    float: left;
+}
+
+.registerForm form #tipo{
+    display: inline-block;
+clear: left;
+width: 150px;
+
+text-align: center;
+}
+
 
 .loginForm form #ricorda{
     margin-left: 5px;

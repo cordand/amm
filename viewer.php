@@ -10,50 +10,93 @@ and open the template in the editor.
         <link href="styles/myCss.css" rel="stylesheet">
         <link href="styles/viewerCss.css" rel="stylesheet">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0.0" />  
-        <title>Login</title>
+        <?php
+        include 'template/header.php';
+        include 'template/sidebar.php';
+        include 'scripts/restoreLogin.php';
+
+        session_start();
+        
+        
+        if(isset($_GET['id'])){
+            
+            $id=htmlspecialchars($_GET['id']);
+            if(strlen($id)==0){
+                echo "Elemento non trovato";
+                die();
+            }
+            $conn=dbConnect('mysite');
+            $sql = "SELECT nome,descrizione,immagine,disponibili,prezzo FROM items WHERE id = '".$id."'";
+            
+            $result = mysql_query($sql); 
+
+            $data=  mysql_num_rows($result);
+                    if($data==1){
+                         $data=mysql_fetch_row($result);
+                         $nome=$data[0];
+                         $descrizione=$data[1];
+                         $immagine=$data[2];
+                         $disponibili=$data[3];
+                         $prezzo=$data[4];
+                         
+                         ?>
+        <title><?php echo $nome;?></title>
     </head>
     <body>
         <div id="all">
-        <div id="topBar">
-             
-                <nav>
-                    <ul>
-
-                            <li><a href="#"></a>
-                                    <ul>
-                                            <li><a href="index.php">Home</a></li>
-                                            <li><a href="login.php">Login</a></li> 
-                                    </ul>
-                            </li>
-                            
-                    </ul>
-   </nav>
-            </form>
-             
-         </div>
-            <header id="header">
-        <div class="immagineHeader">
-            <a href="index.php"><img title="Home" src="images/header.png"/></a>
-        </div>
-        <ul class="navbar">
-        <li><a href="index.php">Home</a></li>
-        <li><a href="news.asp">News</a></li>
-        <li><a href="contact.asp">Contact</a></li>
-        <li><a href="login.php">Login</a></li>
-      </ul>
-    </header>
             
-            <div id="contenuto">
-                <h1 id="titolo">Nome Prodotto</h1>
+        <?php
+        goHeader();
+        goSidebar();
+        ?>
+                             <div id="contenuto">
+                <h1 id="titolo"><?php echo $nome ?></h1>
                 <div id="descrizione">
-                    <img src="http://cdn.phys.org/newman/gfx/news/2013/dwarfgalaxyc.jpg">
-                    <p>Descrizione descrizione
+                    <img src="<?php echo $immagine ?>">
+                    <p><?php echo $descrizione ?>
                     </p>
+                    <p>
+                        <b>Costo: <?php echo $prezzo ?> €</b>
+                    </p>
+                    <?php
+                        if(isset($_SESSION['username'])&&isset($_SESSION['tipo']) && isset($_SESSION['surname'])){
+                            if($_SESSION['tipo']==0){
+                    ?>
+                    <form action="carrello.php?add=true&id=<?php echo htmlspecialchars($_GET['id'])?>" method="post" >
+                        <input type="submit" value="Aggiungi">
+                      </form>
+                    <?php
+                        
+                    
+                            }
+                            
+                            }
+                        ?>
                 </div>
             </div>
-            <p>
-                
-            </p>
+                             
+                             
+                             
+                             
+                             <?php
+                    }  else {
+                       echo "Elemento non trovato";
+                       die(); 
+                    }
+            
+            
+            
+            
+        
+        }else{
+            echo "Elemento non trovato";
+            die();
+        }
+        
+        
+       ?>
+            
+          
             
             
             

@@ -35,15 +35,25 @@ and open the template in the editor.
     
 }
 @media screen and (max-width: 775px) {
-    #all{
-        margin-top: 60px;
-    }
+    
     #descrizione p{
     padding-top:5px;
     margin-left: 0px;
 }
 #contenuto{
-    width: 100%;
-    padding-left:10px;
+    min-width: 300px;
+    margin:0px;
+    padding:0px;
+    margin-left:1px;
+    margin-right: 0px;
+    //padding-left:10px;
 }
+#descrizione img{
+    width: 300px;
+    height: 300px;
+    float:left;
+    padding-right: 0px;
+    padding-bottom:5px;
+}
+
 }
