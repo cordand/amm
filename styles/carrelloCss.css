@@ -9,7 +9,7 @@ and open the template in the editor.
 */
 
 #carrello{
-    
+
     margin:0 auto;
     margin-top: 15px;
     padding-bottom: 30px;
@@ -17,7 +17,7 @@ and open the template in the editor.
     min-width: 300px;
 }
 #carrello caption{
-    
+
     height: 30px;
 }
 
@@ -30,9 +30,9 @@ th, td {
     text-align: center;
 }
 @media screen and (max-width: 775px) {
-   #carrello{
-    margin:80px 0 0 0;
-    width:100%;
+    #carrello{
+        margin:80px 0 0 0;
+        width:100%;
 
-} 
+    } 
 }

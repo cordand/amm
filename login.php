@@ -11,52 +11,51 @@ and open the template in the editor.
         <link href="styles/loginCss.css" rel="stylesheet">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0.0" />  
         <title>Login</title>
-        
+
     </head>
     <body>
         <div id="all">
-       <?php
-        include 'template/header.php';
-        include 'scripts/restoreLogin.php';
-        session_start();
-        goHeaderLogin();
-       ?>
+            <?php
+            include 'template/header.php';
+            include 'scripts/restoreLogin.php';
+            session_start();
+            goHeaderLogin();
+            ?>
             <div class="loginForm">
                 <form id="login" method="post" action="doLogin.php">
                     <?php
-                    if(!empty($_POST['email'])){
-                        if(!$_POST['success']){
-                        echo '<p id="errore"> Email o password errata</p>';
-                        echo '<label>Email <input type="text" name="email" id="email" value="'.htmlspecialchars($_POST["email"]).'" required></label><br><br>';
-                        echo ' <script>
+                    if (!empty($_POST['email'])) {
+                        if (!$_POST['success']) {
+                            echo '<p id="errore"> Email o password errata</p>';
+                            echo '<label>Email <input type="text" name="email" id="email" value="' . htmlspecialchars($_POST["email"]) . '" required></label><br><br>';
+                            echo ' <script>
                                 document.getElementById(\'login\').style.height="200px";
                             </script>';
-                        }else{
+                        } else {
                             echo '<p"> Iscrizione avvenuta! Ora puoi effettuare il login</p>';
-                            echo '<label>Email <input type="text" name="email" id="email" value="'.htmlspecialchars($_POST["email"]).'" required></label><br><br>';
-                        echo ' <script>
+                            echo '<label>Email <input type="text" name="email" id="email" value="' . htmlspecialchars($_POST["email"]) . '" required></label><br><br>';
+                            echo ' <script>
                                 document.getElementById(\'login\').style.height="200px";
                             </script>';
                         }
-                    }
-                    else{
-                        
+                    } else {
+
                         echo '<label>Email <input type="text" name="email" id="email" required></label><br><br>';
                     }
                     ?>
                     <label>Password<input type="password" name="password" id="password" required></label><br><br>
                     <label id="ricorda">Ricordami <input type="checkbox" name="remember" id="remember"> </label><br><br>
                     <input type="submit" class="submit" value="Login">
-              </form>
-                
+                </form>
+
             </div>
-            
+
             <div class="registerForm">
                 <form id="register" action="register.php">
                     <p>Non ancora registrato? Registrati ora!</p>
                     <input type="submit" class="submit" value="Registrati">
-              </form>
-                
+                </form>
+
             </div>         
         </div>
     </body>

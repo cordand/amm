@@ -14,23 +14,23 @@ and open the template in the editor.
     margin-top: 20px;
 }
 body{
-text-align: center;
+    text-align: center;
 }
 header{
     text-align: left;
 }
 
 .loginForm form{
-    height: 150px; 
+    height: 300px; 
     padding-top: 30px;
     padding-bottom: 50px;
-    
+
 }
 .registerForm form{
     min-height: 100px; 
     padding-top: 30px;
     padding-bottom: 50px;
-    
+
 }
 
 
@@ -46,7 +46,7 @@ header{
 
 .loginForm form label,.registerForm form label {
     display: inline-block;
-    
+
     clear: left;
     width: 250px;
     text-align: center;
@@ -61,7 +61,7 @@ header{
 
 .loginForm form #email, .loginForm form #password, .loginForm form #remember,
 .registerForm form #email, .registerForm form #password, .registerForm form #confEmail, .registerForm form #confPassword,
- .registerForm form #name, .registerForm form #surname
+.registerForm form #name, .registerForm form #surname
 
 {
     display: inline-block;
@@ -82,10 +82,10 @@ header{
 
 .registerForm form #sesso{
     display: inline-block;
-clear: left;
-width: 150px;
+    clear: left;
+    width: 150px;
 
-text-align: center;
+    text-align: center;
 }
 
 
@@ -97,10 +97,10 @@ text-align: center;
 
 .registerForm form #tipo{
     display: inline-block;
-clear: left;
-width: 150px;
+    clear: left;
+    width: 150px;
 
-text-align: center;
+    text-align: center;
 }
 
 
@@ -108,7 +108,7 @@ text-align: center;
     margin-left: 5px;
     width: 255px;
     display: inline-block;
-    
+
     clear: left;
 
     text-align: center;

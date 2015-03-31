@@ -1,0 +1,49 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 31-mar-2015, 20.22.46
+    Author     : amm
+*/
+.itemForm{
+    margin-right: auto; 
+    margin-left: auto;
+    margin-top: 20px;
+}
+
+.itemForm form{
+    min-height: 100px; 
+    padding-top: 30px;
+    padding-bottom: 50px;
+
+}
+.itemForm form .submit {
+    height: 23px;
+    vertical-align: bottom;
+    background: #ddb820; 
+    color: #fff;
+    border: 1px solid #FFF;
+    border-radius: 5px;
+}
+.itemForm form label {
+    display: inline-block;
+
+    clear: left;
+    width: 250px;
+    text-align: center;
+}
+
+.itemForm form input,.itemForm form textarea,.itemForm form select
+
+{
+    display: inline-block;
+    float: left;
+    clear: left;
+    text-align: left;
+    width: 250px;
+    border: 2px solid #eee;
+    padding: 0px 0 3px 0;
+    margin-bottom: -1px;
+}
