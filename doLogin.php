@@ -15,13 +15,14 @@ and open the template in the editor.
 
         <?php
         include 'scripts/manageDatabase.php';
-
+        include 'scripts/CarrelloClass.php';
         if (!empty($_POST['email']) && !empty($_POST['password'])) {
             $conn = dbConnect('mysite');
+            
             $email = htmlspecialchars($_POST["email"]);
             $password = htmlspecialchars($_POST["password"]);
-            $sql = "SELECT nome,cognome,numero,tipo FROM users WHERE email = '" . $email . "' AND password=PASSWORD('" . $password . "')";
-            $result = mysql_query($sql);
+            $result = logIn($email, $password);
+            
             if (!$result) {
                 redirect_post("login.php", $email);
             } else {
@@ -36,6 +37,7 @@ and open the template in the editor.
                     $_SESSION['surname'] = $data[1];
                     $_SESSION['tipo'] = $data[3];
                     $_SESSION['email'] = $email;
+                    $_SESSION['carrello'] = new CarrelloClass();
                     if (isset($_POST['remember']) && $_POST['remember']) {
                         $token = md5(DATE_ATOM);
                         $sql = ("UPDATE users SET ultimo_accesso = NOW(), remember = '" . $token . "' WHERE email = '" . $email . "'");

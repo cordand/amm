@@ -11,21 +11,7 @@ and open the template in the editor.
         <link href="styles/carrelloCss.css" rel="stylesheet">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0.0" />  
         <script>
-            function SomeDeleteRowFunction() {
-                var f = document.createElement('form');
-                f.action = 'carrello.php';
-                f.method = 'POST';
-                f.target = '_blank';
-
-                var i = document.createElement('input');
-                i.type = 'hidden';
-                i.name = 'riga';
-                i.value = 1;
-                f.appendChild(i);
-
-                document.body.appendChild(f);
-                f.submit();
-            }
+            
         </script>
         <title>Carrello</title>
     </head>
@@ -33,25 +19,60 @@ and open the template in the editor.
         <div id="all">
             <?php
             include 'template/header.php';
+            include 'template/sidebar.php';
             include 'scripts/restoreLogin.php';
+            
             session_start();
+            dbConnect("mysite");
+            
+            if(isset($_GET['add'])){
+                if($_GET['add']){
+                    if(isset($_POST['id'])){ //aggiungi al carrello questo id
+                        $_SESSION['carrello']->aggiungiElemento($_POST['nome'],$_POST['id'],$_POST['prezzo'],$_POST['quantita']); 
+                    }
+                    
+                }
+            }
+            else if(isset($_GET['rm'])){
+                $_SESSION['carrello']->rimuoviElemento($_GET['rm']);
+                
+            }
             goHeader();
+            goSidebar();
             ?>
 
             <table id="carrello">
                 <caption>Elementi nel carrello</caption>
                 <tr>
                     <th>Nome</th>
-                    <th>Quantità</th> 
-                    <th>Prezzo</th>
+                    <th>Prezzo</th> 
+                    <th>Quantità</th>
                     <th>Azioni</th>
                 </tr>
-                <tr>
-                    <td>Eve</td>
-                    <td>Jackson</td> 
-                    <td>94</td>
-                    <td><button type="button" onclick="SomeDeleteRowFunction()">Rimuovi</button></td>
-                </tr>
+              
+                    <?php
+                        $carrello=$_SESSION['carrello']->getElementi();
+                        foreach ($carrello as $temp){
+                            echo '<tr>';
+                            echo '<td>'.$temp->getNome().'</td>';
+                            echo '<td>'.$temp->getPrezzo().'</td>';     
+                            echo '<td>'.$temp->getQuantita().'</td>';
+                            ?>
+                                <td>
+                                    <form action="carrello.php?rm=<?php echo $temp->getId() ?>" method="post">
+                                        <input type="submit" value="Rimuovi">
+                                    </form>
+                                </td>    
+                                </tr>
+                                <?php
+                                
+                        }
+                        if(count($carrello)==0){
+                            echo "<h2>Carrello vuoto</h2>";
+                        }
+                    ?>
+                    
+                    
             </table>
 
         </div>

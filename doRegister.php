@@ -21,27 +21,16 @@ if (!empty($_POST['email']) && !empty($_POST['password'])) {
     $sesso = htmlspecialchars($_POST["sesso"]);
     $tipo = htmlspecialchars($_POST["tipo"]);
     $conn = dbConnect('mysite');
-    $sql = "SELECT COUNT(*) FROM users WHERE email = '" . $email . "'";
-    $result = mysql_query($sql);
-    if (!$result) {
-
+    
+    $result = getEmailAvailability($email);
+    if ($result == -1) {    //Errore database
         redirect("register.php", $email, $sesso, $tipo, $nome, $cognome, false, false, false, false);
-    }
-
-    if (@mysql_result($result, 0, 0) > 0) {
+    }else if ($result == 0) {   //MAIL GIA PRESENTE
         redirect("register.php", $email, $sesso, $tipo, $nome, $cognome, true, false, false, false);
-    } else {
-        $sql = "INSERT INTO users SET
-                    tipo = '$tipo',
-                    nome = '$nome',
-                    cognome = '$cognome',
-                    email = '$email',        
-                    password = PASSWORD('$password'),
-                    sesso = '$sesso'";
-        if (!mysql_query($sql)) {
+    } else {        //PROCEDI
+        if (!createAccount($tipo, $nome, $cognome, $email, $password, $sesso)) {    //CREAZIONE FALLITA
             redirect("register.php", $email, $sesso, $tipo, $nome, $cognome, false, false, false, false);
-        } else {
-
+        } else {    //RIUSCITA
             redirect1("login.php", $email, true);
         }
     }

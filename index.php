@@ -19,10 +19,12 @@ and open the template in the editor.
 
             <?php
             include 'template/header.php';
+            include 'template/sidebar.php';
             include 'scripts/restoreLogin.php';
-
             session_start();
+            dbConnect("mysite");
             goHeader();
+            goSidebar();
             ?>
 
 
@@ -32,26 +34,20 @@ and open the template in the editor.
 
 
 
-            <nav id="sidebar">
-                <h3><a href="carrello.php">Carrello</a></h3>
-                <ul>
-                    <li id="contatore">Elementi: 0</li>
-                </ul>   
-            </nav>
+            
 
 
             <ul class="flex-container">
                 <?php
-                dbConnect("mysite");
-                $sql = "SELECT id,nome,descrizione,immagine,prezzo FROM items order by id desc limit 10";
-                $result = mysql_query($sql);
+               
+                $result=  getIndexItems();
                 $num = mysql_num_rows($result);
                 for ($i = 0; $i < $num; $i++) {
                     $data = mysql_fetch_row($result);
                     ?>
                     <div class="flex-item">
                         <a href="viewer.php?id=<?php echo $data[0] ?>">
-                            <img class="flex-image" src="<?php echo $data[3] ?>">
+                            <img class="flex-image" src="<?php echo $data[3] ?>" onerror="this.src='images/error.png'">
                         </a>
                         <a href="viewer.php?id=<?php echo $data[0] ?>">
                             <span>
@@ -69,6 +65,11 @@ and open the template in the editor.
                     </div>
 
 
+                    <?php
+                }
+                if($num==0){
+                    ?>
+                <h2>Non &egrave; presente nessun elemento</h2>
                     <?php
                 }
                 ?>

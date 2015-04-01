@@ -80,23 +80,21 @@ and open the template in the editor.
 
 
                             dbConnect("mysite");
-                             $sql = "INSERT INTO items SET
-                                
-                                nome = '$nome',
-                                descrizione = '$descrizione',
-                                prezzo = $prezzo,        
-                                immagine = '$immagine',
-                                inserzionista ='".$_SESSION['username']." ".$_SESSION['surname']."',
-                                emailinserzionista='".$_SESSION['email']."'
-                                disponibili = '$disponibili'";
-                             
-                            if (!mysql_query($sql)) {
-                                //ERRORE
-                            } else {
-
-                                echo "RIUSCITO";
-                            }
                             
+                            if (!addItem($nome, $descrizione, $prezzo, $immagine, $_SESSION['username']." ".$_SESSION['surname'], $_SESSION['email'], $disponibili)) {
+                               echo "Errore database";
+                            } else {
+                                printSuccesso();
+                                
+                                $sql= "SELECT id FROM items WHERE nome='$nome' AND
+                                        descrizione='$descrizione' AND
+                                        prezzo='$prezzo' AND
+                                        emailinserzionista='".$_SESSION['email']."'";
+                                $id=getId($nome, $descrizione, $prezzo, $_SESSION['email']);
+                                if($id!=-1){
+                                    header( "refresh:3; url=viewer.php?id=".$id ); 
+                            }
+                            }
                             
                             
                         }
@@ -104,11 +102,24 @@ and open the template in the editor.
                         
                         
                         
+                    }else{
+                        printBody();
                     }  
                     }else{
                 
-            ?>
-            <div class="itemForm">
+                        printBody();
+            }
+            }
+            
+            function printSuccesso(){
+                ?>
+                    <div><h1>Contenuto aggiunto con successo</h1>
+                   <?php
+            }
+            
+            function printBody(){
+                ?>
+                <div class="itemForm">
             <h1>Aggiunta nuovo elemento</h1>
             <form id="newItem" action="<?php echo $_SERVER['PHP_SELF']?>?add=true" method="post" onsubmit="return checkForm()">
                     <label for="nome">Nome:<input id="nome" name="nome" type="text"></label><br><br>
@@ -128,9 +139,11 @@ and open the template in the editor.
                     
                 </form>
             </div>
-            <?php 
+                            <?php
+                
+                
             }
-            }
+            
             
             ?>
                 

@@ -26,8 +26,10 @@ and open the template in the editor.
 
 }
 #descrizione img{
-    width: 300px;
+    
     height: 300px;
+    width: auto;
+    max-width: 300px;
     float:left;
     padding-right: 5px;
     padding-bottom:5x;

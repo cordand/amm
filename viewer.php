@@ -9,12 +9,11 @@ and open the template in the editor.
         <meta charset="UTF-8">
         <link href="styles/myCss.css" rel="stylesheet">
         <link href="styles/viewerCss.css" rel="stylesheet">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0.0" />  
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0.0" />
         <?php
         include 'template/header.php';
         include 'template/sidebar.php';
         include 'scripts/restoreLogin.php';
-
         session_start();
 
 
@@ -26,13 +25,9 @@ and open the template in the editor.
                 die();
             }
             $conn = dbConnect('mysite');
-            $sql = "SELECT nome,descrizione,immagine,disponibili,prezzo FROM items WHERE id = '" . $id . "'";
 
-            $result = mysql_query($sql);
-
-            $data = mysql_num_rows($result);
-            if ($data == 1) {
-                $data = mysql_fetch_row($result);
+            $data = getItem($id);
+            if ($data) {
                 $nome = $data[0];
                 $descrizione = $data[1];
                 $immagine = $data[2];
@@ -51,7 +46,7 @@ and open the template in the editor.
                     <div id="contenuto">
                         <h1 id="titolo"><?php echo $nome ?></h1>
                         <div id="descrizione">
-                            <img src="<?php echo $immagine ?>">
+                            <img src="<?php echo $immagine ?>" onerror="this.src='images/error.png'">
                             <p><?php echo $descrizione ?>
                             </p>
                             <p>
@@ -61,7 +56,11 @@ and open the template in the editor.
                             if (isset($_SESSION['username']) && isset($_SESSION['tipo']) && isset($_SESSION['surname'])) {
                                 if ($_SESSION['tipo'] == 0) {
                                     ?>
-                                    <form action="carrello.php?add=true&id=<?php echo htmlspecialchars($_GET['id']) ?>" method="post" >
+                                    <form action="carrello.php?add=true" method="post" >
+                                        <input type="hidden" name="id" value="<?php echo htmlspecialchars($_GET['id']) ?>">
+                                        <input type="hidden" name="nome" value="<?php echo htmlspecialchars($nome) ?>">
+                                        <input type="hidden" name="prezzo" value="<?php echo htmlspecialchars($prezzo) ?>">
+                                        <input type="hidden" name="quantita" value="<?php echo htmlspecialchars(1) ?>">
                                         <input type="submit" value="Aggiungi">
                                     </form>
                                     <?php
@@ -76,13 +75,17 @@ and open the template in the editor.
 
                     <?php
                 } else {
-                    echo "Elemento non trovato";
+                    goHeader();
+                    goSidebar();
+                    printNonTrovato();
                     die();
                 }
             } else {
-                echo "Elemento non trovato";
-                die();
-            }
+                    goHeader();
+                    goSidebar();
+                    printNonTrovato();
+                    die();
+                }
             ?>
 
 
@@ -91,7 +94,13 @@ and open the template in the editor.
 
         </div>
         <?php
-        // put your code here
+        function printNonTrovato(){
+                     ?>
+                    <div id="contenuto">
+                        <h1>Elemento non trovato</h1>
+                    </div>
+                        <?php 
+        }
         ?>
     </body>
 

@@ -1,6 +1,7 @@
 <?php
 
 include_once 'manageDatabase.php';
+include_once 'CarrelloClass.php';
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -10,11 +11,11 @@ include_once 'manageDatabase.php';
 function goSidebar() {
     if (isset($_SESSION['username']) && isset($_SESSION['surname'])) {
 
-        printSidebar(true, $_SESSION['tipo'], 0);
+        printSidebar(true, $_SESSION['tipo'], $_SESSION['email']);
     } else {
         if (isset($_COOKIE['n']) && isset($_COOKIE['t'])) {
             if (restoreLogin($_COOKIE['n'], $_COOKIE['t'])) {
-                printSidebar(true, $_SESSION['tipo'], 0);
+                printSidebar(true, $_SESSION['tipo'], $_SESSION['email']);
             } else {
                 printSidebar(false, false, 0);
             }
@@ -79,6 +80,7 @@ function restoreLogin($id, $token) {
             $_SESSION['surname'] = $data[1];
             $_SESSION['email'] = $data[2];
             $_SESSION['tipo'] = $data[3];
+            $_SESSION['carrello'] = new CarrelloClass();
             $token = md5(DATE_ATOM);
             $sql = ("UPDATE users SET ultimo_accesso = NOW(), remember = '" . $token . "' WHERE email = '" . $data[2] . "'");
             setcookie("n", $id, time() + 2592000);
