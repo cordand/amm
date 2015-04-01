@@ -14,8 +14,8 @@ and open the template in the editor.
     <body>
 
         <?php
-        include 'scripts/manageDatabase.php';
-        include 'scripts/CarrelloClass.php';
+        include '../modello/manageDatabase.php';
+        include '../modello/CarrelloClass.php';
         if (!empty($_POST['email']) && !empty($_POST['password'])) {
             $conn = dbConnect('mysite');
             

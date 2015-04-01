@@ -13,7 +13,8 @@ and open the template in the editor.
         <?php
         include 'template/header.php';
         include 'template/sidebar.php';
-        include 'scripts/restoreLogin.php';
+        include 'modello/restoreLogin.php';
+        
         session_start();
 
 

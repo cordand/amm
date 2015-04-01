@@ -38,8 +38,8 @@ and open the template in the editor.
     <body>
         <div id="all">
             <?php
-            include 'template/header.php';
-            include 'scripts/restoreLogin.php';
+            include '../template/header.php';
+            include '../modello/restoreLogin.php';
             session_start();
             goHeader();
             if(!isset($_SESSION['tipo']))

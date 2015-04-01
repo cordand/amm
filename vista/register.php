@@ -47,8 +47,8 @@ and open the template in the editor.
 
         <div id="all">
             <?php
-            include 'template/header.php';
-            include 'scripts/restoreLogin.php';
+            include '../template/header.php';
+            include '../modello/restoreLogin.php';
             session_start();
             goHeaderLogin();
             ?>

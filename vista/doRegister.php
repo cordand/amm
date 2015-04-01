@@ -1,5 +1,5 @@
 <?php
-include 'scripts/manageDatabase.php';
+include '../modello/manageDatabase.php';
 
 if (!empty($_POST['email']) && !empty($_POST['password'])) {
     $email = htmlspecialchars($_POST["email"]);

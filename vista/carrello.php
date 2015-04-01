@@ -18,9 +18,9 @@ and open the template in the editor.
     <body>
         <div id="all">
             <?php
-            include 'template/header.php';
-            include 'template/sidebar.php';
-            include 'scripts/restoreLogin.php';
+            include '../template/header.php';
+            include '../template/sidebar.php';
+            include '../modello/restoreLogin.php';
             
             session_start();
             dbConnect("mysite");
