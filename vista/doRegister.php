@@ -5,16 +5,16 @@ if (!empty($_POST['email']) && !empty($_POST['password'])) {
     $email = htmlspecialchars($_POST["email"]);
     $confemail = htmlspecialchars($_POST["confEmail"]);
     if ($email !== $confemail) {
-        redirect("register.php", $email, $sesso, $tipo, $nome, $cognome, false, true, false, false);
+        redirect("index.php?comando=register", $email, $sesso, $tipo, $nome, $cognome, false, true, false, false);
         die();
     }
     $password = htmlspecialchars($_POST["password"]);
     $confpassword = htmlspecialchars($_POST["confPassword"]);
     if ($password !== $confpassword) {
-        redirect("register.php", $email, $sesso, $tipo, $nome, $cognome, false, false, true, false);
+        redirect("index.php?comando=register", $email, $sesso, $tipo, $nome, $cognome, false, false, true, false);
     }
     if (strlen($password) < 6) {
-        redirect("register.php", $email, $sesso, $tipo, $nome, $cognome, false, false, false, true);
+        redirect("index.php?comando=register", $email, $sesso, $tipo, $nome, $cognome, false, false, false, true);
     }
     $nome = htmlspecialchars($_POST["name"]);
     $cognome = htmlspecialchars($_POST["surname"]);
@@ -24,19 +24,19 @@ if (!empty($_POST['email']) && !empty($_POST['password'])) {
     
     $result = getEmailAvailability($email);
     if ($result == -1) {    //Errore database
-        redirect("register.php", $email, $sesso, $tipo, $nome, $cognome, false, false, false, false);
+        redirect("index.php?comando=register", $email, $sesso, $tipo, $nome, $cognome, false, false, false, false);
     }else if ($result == 0) {   //MAIL GIA PRESENTE
-        redirect("register.php", $email, $sesso, $tipo, $nome, $cognome, true, false, false, false);
+        redirect("index.php?comando=register", $email, $sesso, $tipo, $nome, $cognome, true, false, false, false);
     } else {        //PROCEDI
         if (!createAccount($tipo, $nome, $cognome, $email, $password, $sesso)) {    //CREAZIONE FALLITA
-            redirect("register.php", $email, $sesso, $tipo, $nome, $cognome, false, false, false, false);
+            redirect("index.php?comando=register", $email, $sesso, $tipo, $nome, $cognome, false, false, false, false);
         } else {    //RIUSCITA
-            redirect1("login.php", $email, true);
+            redirect1("index.php?comando=login", $email, true);
         }
     }
     exit(0);
 } else {
-    header("Location: register.php");
+    header("Location: index.php?comando=register");
     die();
 }
 

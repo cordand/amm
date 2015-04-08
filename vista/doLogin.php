@@ -14,8 +14,8 @@ and open the template in the editor.
     <body>
 
         <?php
-        include '../modello/manageDatabase.php';
-        include '../modello/CarrelloClass.php';
+
+        include 'modello/CarrelloClass.php';
         if (!empty($_POST['email']) && !empty($_POST['password'])) {
             $conn = dbConnect('mysite');
             
@@ -24,7 +24,7 @@ and open the template in the editor.
             $result = logIn($email, $password);
             
             if (!$result) {
-                redirect_post("login.php", $email);
+                redirect_post("index.php?comando=login", $email);
             } else {
                 $data = mysql_num_rows($result);
                 if ($data == 1) {
@@ -55,7 +55,7 @@ and open the template in the editor.
 
                     header("Location: index.php");
                 } else {
-                    redirect("login.php", $email);
+                    redirect("index.php?comando=login", $email);
                 }
             }
 
@@ -63,9 +63,9 @@ and open the template in the editor.
         } else {
             if (!empty($_POST['email'])) {
                 $email = htmlspecialchars($_POST["email"]);
-                redirect("login.php", $email);
+                redirect("index.php?comando=login", $email);
             } else {
-                redirect("login.php", $email);
+                redirect("index.php?comando=login", $email);
             }
             die();
         }

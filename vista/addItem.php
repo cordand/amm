@@ -38,8 +38,8 @@ and open the template in the editor.
     <body>
         <div id="all">
             <?php
-            include '../template/header.php';
-            include '../modello/restoreLogin.php';
+            include 'template/header.php';
+            include 'modello/restoreLogin.php';
             session_start();
             goHeader();
             if(!isset($_SESSION['tipo']))
@@ -92,7 +92,7 @@ and open the template in the editor.
                                         emailinserzionista='".$_SESSION['email']."'";
                                 $id=getId($nome, $descrizione, $prezzo, $_SESSION['email']);
                                 if($id!=-1){
-                                    header( "refresh:3; url=viewer.php?id=".$id ); 
+                                    header( "refresh:3; url=index.php?comando=view&id=".$id ); 
                             }
                             }
                             
@@ -121,7 +121,7 @@ and open the template in the editor.
                 ?>
                 <div class="itemForm">
             <h1>Aggiunta nuovo elemento</h1>
-            <form id="newItem" action="<?php echo $_SERVER['PHP_SELF']?>?add=true" method="post" onsubmit="return checkForm()">
+            <form id="newItem" action="index.php?comando=aggiungiItem&add=true" method="post" onsubmit="return checkForm()">
                     <label for="nome">Nome:<input id="nome" name="nome" type="text"></label><br><br>
                     <label for="categoria">Categoria:<select name="categoria" id=""categoria>
                         <option value="0">Primo</option>

@@ -9,7 +9,7 @@ function printSidebar($loggato, $tipo, $email) {
     if (!$loggato) {
         ?>
         <nav id="sidebar">
-            <h3><a href="carrello.php">Carrello</a></h3>
+            <h3><a href="index.php?comando=carrello">Carrello</a></h3>
             <ul>
                 <li id="contatore">Elementi: <?php echo 0; ?></li>
             </ul>   
@@ -19,7 +19,7 @@ function printSidebar($loggato, $tipo, $email) {
         if ($tipo) {
             ?>
             <nav id="sidebar">
-                <h3><a href="vetrina.php">Vetrina</a></h3>
+                <h3><a href="index.php?comando=vetrina">Vetrina</a></h3>
                 <ul>
                     <li id="contatore">Elementi:  <?php echo getNumeroInserzioni($email); ?></li>
                 </ul>   
@@ -30,7 +30,7 @@ function printSidebar($loggato, $tipo, $email) {
                 session_start();
             ?>
             <nav id="sidebar">
-                <h3><a href="carrello.php">Carrello</a></h3>
+                <h3><a href="index.php?comando=carrello">Carrello</a></h3>
                 <ul>
                     <li id="contatore">Elementi:  <?php echo count($_SESSION['carrello']->getElementi()); ?></li>
                 </ul>   

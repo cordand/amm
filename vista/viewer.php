@@ -57,7 +57,7 @@ and open the template in the editor.
                             if (isset($_SESSION['username']) && isset($_SESSION['tipo']) && isset($_SESSION['surname'])) {
                                 if ($_SESSION['tipo'] == 0) {
                                     ?>
-                                    <form action="carrello.php?add=true" method="post" >
+                                    <form action="index.php?comando=carrello&add=true" method="post" >
                                         <input type="hidden" name="id" value="<?php echo htmlspecialchars($_GET['id']) ?>">
                                         <input type="hidden" name="nome" value="<?php echo htmlspecialchars($nome) ?>">
                                         <input type="hidden" name="prezzo" value="<?php echo htmlspecialchars($prezzo) ?>">

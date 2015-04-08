@@ -8,10 +8,12 @@ $dbpass = "davide";
 
 function dbConnect($db = "") {
     global $dbhost, $dbuser, $dbpass;
-
+    
     $dbcn = @mysql_connect($dbhost, $dbuser, $dbpass)
             or die("The site database appears to be down.");
 
+   
+    
     if ($db != "" and ! @mysql_select_db($db))
         die("The site database is unavailable.");
 

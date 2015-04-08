@@ -47,15 +47,15 @@ and open the template in the editor.
 
         <div id="all">
             <?php
-            include '../template/header.php';
-            include '../modello/restoreLogin.php';
+            include 'template/header.php';
+            include 'modello/restoreLogin.php';
             session_start();
             goHeaderLogin();
             ?>
 
             <div class="registerForm">
 
-                <form id="register" method="post" action="doRegister.php" onsubmit="return validateForm()">
+                <form id="register" method="post" action="index.php?comando=doRegister" onsubmit="return validateForm()">
                     <?php
                     if (!empty($_POST['email'])) {
                         if ($_POST['presente']) {

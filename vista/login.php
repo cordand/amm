@@ -16,13 +16,13 @@ and open the template in the editor.
     <body>
         <div id="all">
             <?php
-            include '../template/header.php';
-            include '../modello/restoreLogin.php';
+            include 'template/header.php';
+            include 'modello/restoreLogin.php';
             session_start();
             goHeaderLogin();
             ?>
             <div class="loginForm">
-                <form id="login" method="post" action="doLogin.php">
+                <form id="login" method="post" action="index.php?comando=doLogin">
                     <?php
                     if (!empty($_POST['email'])) {
                         if (!$_POST['success']) {
@@ -51,7 +51,7 @@ and open the template in the editor.
             </div>
 
             <div class="registerForm">
-                <form id="register" action="register.php">
+                <form id="register" action="index.php?comando=register" method="post">
                     <p>Non ancora registrato? Registrati ora!</p>
                     <input type="submit" class="submit" value="Registrati">
                 </form>

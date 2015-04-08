@@ -18,9 +18,9 @@ and open the template in the editor.
     <body>
         <div id="all">
             <?php
-            include '../template/header.php';
-            include '../template/sidebar.php';
-            include '../modello/restoreLogin.php';
+            include 'template/header.php';
+            include 'template/sidebar.php';
+            include 'modello/restoreLogin.php';
             
             session_start();
             dbConnect("mysite");
@@ -59,7 +59,7 @@ and open the template in the editor.
                             echo '<td>'.$temp->getQuantita().'</td>';
                             ?>
                                 <td>
-                                    <form action="carrello.php?rm=<?php echo $temp->getId() ?>" method="post">
+                                    <form action="index.php?comando=carrello&rm=<?php echo $temp->getId() ?>" method="post">
                                         <input type="submit" value="Rimuovi">
                                     </form>
                                 </td>    

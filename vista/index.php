@@ -22,9 +22,9 @@ and open the template in the editor.
             include 'template/sidebar.php';
             include 'modello/restoreLogin.php';
             session_start();
-            //dbConnect("mysite");
-            //goHeader();
-            //goSidebar();
+            dbConnect("mysite");
+            goHeader();
+            goSidebar();
             ?>
 
 
@@ -41,14 +41,11 @@ and open the template in the editor.
                 <?php
                
                 $result=  getIndexItems();
-                //$num = mysql_num_rows($result);
+                $num = mysql_num_rows($result);
                 $num=1;
                 for ($i = 0; $i < $num; $i++) {
-                    //$data = mysql_fetch_row($result);
-                    $data[0]=1;
-                    $data[3]="dd";
-                    $data[1]="asdsd";
-                    $data[4]="123";
+                    $data = mysql_fetch_row($result);
+                   
                     ?>
                     <div class="flex-item">
                         <a href="index.php?comando=view&id=<?php echo $data[0] ?>">

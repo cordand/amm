@@ -21,17 +21,17 @@ function printHeader($nome, $cognome, $tipo) {
 
                             <li><a href="#"></a>
                                     <ul>
-                                            <li><a href="index.php">Home</a></li>';
+                                            <li><a href="index.php?comando=paginainiziale">Home</a></li>';
     if (strlen($nome) > 0 && strlen($cognome) > 0) {
-        echo '<li><a href="profile.php">' . $nome . ' ' . $cognome . '</a></li>';
+        echo '<li><a href="index.php?comando=profilo">' . $nome . ' ' . $cognome . '</a></li>';
         if ($tipo) {
-            echo '<li><a href="addItem.php">Aggiungi</a></li>';
+            echo '<li><a href="index.php?comando=aggiungiItem">Aggiungi</a></li>';
         } else {
-            echo '<li><a href="carrello.php">Carrello</a></li>';
+            echo '<li><a href="index.php?comando=carrello">Carrello</a></li>';
         }
-        echo '<li><a href="logout.php">Logout</a></li>';
+        echo '<li><a href="index.php?comando=logout">Logout</a></li>';
     } else {
-        echo '<li><a href="login.php">Login</a></li>';
+        echo '<li><a href="index.php?comando=login">Login</a></li>';
     }
     echo '                                    
                                     </ul>
@@ -44,7 +44,7 @@ function printHeader($nome, $cognome, $tipo) {
          </div>
             <header id="header">
         <div class="immagineHeader">
-            <a href="index.php"><img title="Home" src="images/header.png"/></a>
+            <a href="index.php?comando=paginainiziale"><img title="Home" src="images/header.png"/></a>
         </div>';
     if (strlen($nome) > 0 && strlen($cognome) > 0) {
         if ($tipo) {
@@ -56,19 +56,19 @@ function printHeader($nome, $cognome, $tipo) {
         echo '<ul class="navbar">';
     }
     echo '
-        <li><a href="index.php">Home</a></li>
+        <li><a href="index.php?comando=paginainiziale">Home</a></li>
         <li><a href="news.asp">News</a></li>
         <li><a href="contact.asp">Contact</a></li>';
     if (strlen($nome) > 0 && strlen($cognome) > 0) {
-        echo '<li><a href="profile.php">' . $nome . ' ' . $cognome . '</a></li>';
+        echo '<li><a href="index.php?comando=profilo">' . $nome . ' ' . $cognome . '</a></li>';
         if ($tipo) {
-            echo '<li><a href="addItem.php">Aggiungi</a></li>';
+            echo '<li><a href="index.php?comando=aggiungiItem">Aggiungi</a></li>';
         } else {
-            echo '<li><a href="carrello.php">Carrello</a></li>';
+            echo '<li><a href="index.php?comando=carrello">Carrello</a></li>';
         }
-        echo '<li><a href="logout.php">Logout</a></li>';
+        echo '<li><a href="index.php?comando=logout">Logout</a></li>';
     } else {
-        echo '<li><a href="login.php">Login</a></li>';
+        echo '<li><a href="index.php?comando=login">Login</a></li>';
     }
     echo'
       </ul>

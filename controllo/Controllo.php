@@ -11,6 +11,7 @@
  *
  * @author amm
  */
+include 'modello/manageDatabase.php';
 class Controllo {
     //put your code here
     
@@ -28,6 +29,27 @@ class Controllo {
          include("vista/index.php");
       }else if($comando == "view"){
           include("vista/viewer.php");
+      }
+      else if($comando == "logout"){
+          include("vista/logout.php");
+      }
+      else if($comando == "login"){
+          include("vista/login.php");
+      }
+      else if($comando == "doLogin"){
+          include("vista/doLogin.php");
+      }
+      else if($comando == "carrello"){
+          include("vista/carrello.php");
+      }
+      else if($comando == "register"){
+          include("vista/register.php");
+      }
+      else if($comando == "doRegister"){
+          include("vista/doRegister.php");
+      }
+      else if($comando == "aggiungiItem"){
+          include("vista/addItem.php");
       }
     }
     

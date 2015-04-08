@@ -13,7 +13,7 @@ and open the template in the editor.
         
         <?php
         include_once("controllo/Controllo.php");
-
+        
         $controllo = new Controllo();
         
         $controllo->invoke();
