@@ -57,8 +57,7 @@ function printHeader($nome, $cognome, $tipo) {
     }
     echo '
         <li><a href="index.php?comando=paginainiziale">Home</a></li>
-        <li><a href="news.asp">News</a></li>
-        <li><a href="contact.asp">Contact</a></li>';
+        ';
     if (strlen($nome) > 0 && strlen($cognome) > 0) {
         echo '<li><a href="index.php?comando=profilo">' . $nome . ' ' . $cognome . '</a></li>';
         if ($tipo) {

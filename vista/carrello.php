@@ -28,7 +28,12 @@ and open the template in the editor.
             if(isset($_GET['add'])){
                 if($_GET['add']){
                     if(isset($_POST['id'])){ //aggiungi al carrello questo id
-                        $_SESSION['carrello']->aggiungiElemento($_POST['nome'],$_POST['id'],$_POST['prezzo'],$_POST['quantita']); 
+                        if(is_numeric($_POST['quantita'])){
+                           $_SESSION['carrello']->aggiungiElemento($_POST['nome'],$_POST['id'],$_POST['prezzo'],$_POST['quantita']);  
+                        }else{
+                            header("Location: index.php?comando=view&id=".$_POST['id']);
+                        }
+                        
                     }
                     
                 }

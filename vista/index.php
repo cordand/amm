@@ -18,8 +18,6 @@ and open the template in the editor.
         <div id="all">
 
             <?php
-            include 'template/header.php';
-            include 'template/sidebar.php';
             include 'modello/restoreLogin.php';
             session_start();
             dbConnect("mysite");
@@ -79,6 +77,10 @@ and open the template in the editor.
 
 
             </ul>
+            <?php
+                
+            ?>
+            
         </div>            
 
 

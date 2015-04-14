@@ -17,7 +17,7 @@ class CarrelloClass{
         $trovato=false;
         foreach($this->elementi as &$temp){
             if($temp->getId()==$id){
-                $temp->aggiungiUno();
+                $temp->aggiungi($quantita);
                 $trovato=true;
                 break;
             }

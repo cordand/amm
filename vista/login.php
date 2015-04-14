@@ -12,6 +12,8 @@ and open the template in the editor.
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0.0" />  
         <title>Login</title>
 
+        
+
     </head>
     <body>
         <div id="all">
@@ -25,6 +27,7 @@ and open the template in the editor.
                 <form id="login" method="post" action="index.php?comando=doLogin">
                     <?php
                     if (!empty($_POST['email'])) {
+                        
                         if (!$_POST['success']) {
                             echo '<p id="errore"> Email o password errata</p>';
                             echo '<label>Email <input type="text" name="email" id="email" value="' . htmlspecialchars($_POST["email"]) . '" required></label><br><br>';

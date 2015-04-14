@@ -51,6 +51,9 @@ class Controllo {
       else if($comando == "aggiungiItem"){
           include("vista/addItem.php");
       }
+      else if($comando == "profilo"){
+          include("vista/profile.php");
+      }
     }
     
     

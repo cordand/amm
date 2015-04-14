@@ -15,8 +15,8 @@ class ItemClass{
        $this->quantita=$quantita;
        
    }
-   function aggiungiUno(){
-       $this->quantita++;
+   function aggiungi($quantita){
+       $this->quantita+=$quantita;
    }
    function togliUno(){
        $this->quantita--;

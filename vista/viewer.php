@@ -51,7 +51,7 @@ and open the template in the editor.
                             <p><?php echo $descrizione ?>
                             </p>
                             <p>
-                                <b>Costo: <?php echo $prezzo ?> €</b>
+                                <b>Prezzo: <?php echo $prezzo ?> €</b>
                             </p>
                             <?php
                             if (isset($_SESSION['username']) && isset($_SESSION['tipo']) && isset($_SESSION['surname'])) {
@@ -61,7 +61,7 @@ and open the template in the editor.
                                         <input type="hidden" name="id" value="<?php echo htmlspecialchars($_GET['id']) ?>">
                                         <input type="hidden" name="nome" value="<?php echo htmlspecialchars($nome) ?>">
                                         <input type="hidden" name="prezzo" value="<?php echo htmlspecialchars($prezzo) ?>">
-                                        <input type="hidden" name="quantita" value="<?php echo htmlspecialchars(1) ?>">
+                                        <input name="quantita" id="quantita" value="<?php echo htmlspecialchars(1) ?>">
                                         <input type="submit" value="Aggiungi">
                                     </form>
                                     <?php

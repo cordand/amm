@@ -63,6 +63,22 @@ function logIn($email,$password)
             return mysql_query($sql);
 }
 
+function userDetails($email)
+{
+    $sql = "SELECT nome,cognome,email,tipo FROM users WHERE email = '" . $email . "'";
+    $result=mysql_query($sql);
+    if(!$result){
+        return -1;
+    }
+    $data = mysql_num_rows($result);
+    $ret = array();
+    if ($data == 1) { 
+        $data = mysql_fetch_row($result);
+        return $data;
+    }
+    return null;
+}
+
 function getEmailAvailability($email){
     $sql = "SELECT COUNT(*) FROM users WHERE email = '" . $email . "'";
     
