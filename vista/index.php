@@ -10,7 +10,24 @@ and open the template in the editor.
 
         <link href="styles/myCss.css" rel="stylesheet">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0.0" />  
-
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+        <script>$varia =0;
+        </script>
+        <script>
+        
+        $(document).ready(function(){
+            $("#contatore").click(function(){
+                if($varia===0){
+                    $(".element").show();
+                    $varia=1;
+                }else{
+                    $(".element").hide();
+                    $varia=0;
+                }
+            });
+            
+        });
+        </script>
 
         <title>Homepage</title>
     </head>
@@ -19,10 +36,11 @@ and open the template in the editor.
 
             <?php
             include 'modello/restoreLogin.php';
+            include_once 'modello/ElementiHome.php';
             session_start();
-            dbConnect("mysite");
+            $db = new ManageDatabase("mysite");
             goHeader();
-            goSidebar();
+            goSidebar($db);
             ?>
 
 
@@ -38,40 +56,8 @@ and open the template in the editor.
             <ul class="flex-container">
                 <?php
                
-                $result=  getIndexItems();
-                $num = mysql_num_rows($result);
-                $num=1;
-                for ($i = 0; $i < $num; $i++) {
-                    $data = mysql_fetch_row($result);
-                   
-                    ?>
-                    <div class="flex-item">
-                        <a href="index.php?comando=view&id=<?php echo $data[0] ?>">
-                            <img class="flex-image" src="<?php echo $data[3] ?>" onerror="this.src='images/error.png'">
-                        </a>
-                        <a href="index.php?comando=view&id=<?php echo $data[0] ?>">
-                            <span>
-                                <div class="box">
-                                    <div class="text">
-                                        <?php echo $data[1] ?>
-                                    </div>
-                                </div>
-                            </span>
-                        </a>
-                        <p class="prezzo">
-                            <?php echo $data[4] ?> €
-                        </p>
-
-                    </div>
-
-
-                    <?php
-                }
-                if($num==0){
-                    ?>
-                <h2>Non &egrave; presente nessun elemento</h2>
-                    <?php
-                }
+                $el = new ElementiHome($db);
+                echo $el->getElementi();
                 ?>
 
 

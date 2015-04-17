@@ -13,11 +13,13 @@ class CarrelloClass{
        
     }
     function aggiungiElemento($nome,$id,$prezzo,$quantita){
-        $temp = new ItemClass($id,$nome,$prezzo,$quantita);
+        if(isset($temp))
+            unset ($temp);
+        $temp = new ItemClass($id,$nome,$prezzo,$quantita);  
         $trovato=false;
-        foreach($this->elementi as &$temp){
-            if($temp->getId()==$id){
-                $temp->aggiungi($quantita);
+        foreach($this->elementi as &$temp1){
+            if($temp1->getId()==$id){
+                $temp1->aggiungi($quantita);
                 $trovato=true;
                 break;
             }

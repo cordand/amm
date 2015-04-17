@@ -39,7 +39,6 @@ nav ul li:hover > ul {
 nav ul {
     padding-top: 0px;
     margin-top: 0px;
-
     list-style: none;
     display: inline-table;
     border-radius: 10px;  
@@ -192,7 +191,8 @@ navbar li:hover{
 #sidebar {
     float:right;
     width:200px;
-    height:100px;
+    height:auto;
+    
     position:relative;
     //width:30%;
     //background:red;
@@ -220,6 +220,7 @@ body{
     background-repeat: repeat;
     min-width: 280px;
     width: 98%;
+    overflow: hidden;
     margin: 0 auto;
     padding-top:10px;
     padding-bottom:40px;
@@ -347,6 +348,8 @@ body{
     
 */
 
+
+
 @media screen and (max-width: 800px) {
 
     #all{
@@ -380,6 +383,7 @@ body{
         visibility: hidden;
         position: absolute;
     }
+
     #header form {
         float: left; 
         margin-right: 30px; 
@@ -412,6 +416,7 @@ body{
         margin-right: 0px;
         padding-top: 30px;
     }
+   
 
 
 

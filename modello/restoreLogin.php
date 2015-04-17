@@ -1,9 +1,12 @@
 <?php
 
-include_once 'manageDatabase.php';
+include_once 'ManageDatabase.php';
 include_once 'CarrelloClass.php';
 include_once 'template/header.php';
 include_once 'template/sidebar.php';
+include_once 'ErrorCode.php';
+include_once 'UserReg.php';
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -13,19 +16,19 @@ include_once 'template/sidebar.php';
 
 
 
-function goSidebar() {
+function goSidebar($db) {
     if (isset($_SESSION['username']) && isset($_SESSION['surname'])) {
 
-        printSidebar(true, $_SESSION['tipo'], $_SESSION['email']);
+        printSidebar($db,true, $_SESSION['tipo'], $_SESSION['email']);
     } else {
         if (isset($_COOKIE['n']) && isset($_COOKIE['t'])) {
             if (restoreLogin($_COOKIE['n'], $_COOKIE['t'])) {
-                printSidebar(true, $_SESSION['tipo'], $_SESSION['email']);
+                printSidebar($db,true, $_SESSION['tipo'], $_SESSION['email']);
             } else {
-                printSidebar(false, false, 0);
+                printSidebar($db,false, false, 0);
             }
         } else {
-            printSidebar(false, false, 0);
+            printSidebar($db,false, false, 0);
         }
     }
 }
@@ -66,12 +69,11 @@ function goHeaderLogin() {
 }
 
 function restoreLogin($id, $token) {
-    $conn = dbConnect('mysite');
+    $db= new ManageDatabase("mysite");
     $id = htmlspecialchars($id);
     $token = htmlspecialchars($token);
 
-    $sql = "SELECT nome,cognome,email,tipo FROM users WHERE numero = '" . $id . "' AND remember='" . $token . "'";
-    $result = mysql_query($sql);
+    $result=$db->restoreLoginDb($id, $token);
     if (!$result) {
         return 0;
     } else {
@@ -86,11 +88,7 @@ function restoreLogin($id, $token) {
             $_SESSION['email'] = $data[2];
             $_SESSION['tipo'] = $data[3];
             $_SESSION['carrello'] = new CarrelloClass();
-            $token = md5(DATE_ATOM);
-            $sql = ("UPDATE users SET ultimo_accesso = NOW(), remember = '" . $token . "' WHERE email = '" . $data[2] . "'");
-            setcookie("n", $id, time() + 2592000);
-            setcookie("t", $token, time() + 2592000);
-            mysql_query($sql);
+            $db->updateToken($data[2]);
 
             return 1;
         } else {

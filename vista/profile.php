@@ -12,7 +12,24 @@ and open the template in the editor.
         <title>Profilo </title>
         
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0.0" /> 
-       
+       <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+        <script>$varia =0;
+        </script>
+        <script>
+        
+        $(document).ready(function(){
+            $("#contatore").click(function(){
+                if($varia===0){
+                    $(".element").show();
+                    $varia=1;
+                }else{
+                    $(".element").hide();
+                    $varia=0;
+                }
+            });
+            
+        });
+        </script>
         
     </head>
     <body>
@@ -23,14 +40,14 @@ and open the template in the editor.
             
             include 'modello/restoreLogin.php';
             session_start();
-            dbConnect("mysite");
+            $db=new ManageDatabase("mysite");
             goHeader();
-            goSidebar();
+            goSidebar($db);
             
             ?>
             <div id="tabella">
                 <?php
-                $data=userDetails($_SESSION['email']);
+                $data=$db->userDetails($_SESSION['email']);
     if($data!=null){
             ?>
             <table>

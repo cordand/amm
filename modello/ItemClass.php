@@ -7,13 +7,18 @@
  */
 
 class ItemClass{
-    var $id,$nome,$prezzo,$quantita;
+    var $id,$nome,$prezzo,$quantita,$descrizione;
     function __construct($id,$nome,$prezzo,$quantita) {
        $this->id=$id;
        $this->nome=$nome;
        $this->prezzo=$prezzo;
        $this->quantita=$quantita;
        
+   }
+   function conDescrizione($id,$nome,$prezzo,$quantita,$descrizione){
+       $instance = new  self($id,$nome,$prezzo,$quantita);
+    	$instance->descrizione= $descrizione;
+    	return $instance;
    }
    function aggiungi($quantita){
        $this->quantita+=$quantita;

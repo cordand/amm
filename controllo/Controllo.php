@@ -11,7 +11,7 @@
  *
  * @author amm
  */
-include 'modello/manageDatabase.php';
+include 'modello/ManageDatabase.php';
 class Controllo {
     //put your code here
     

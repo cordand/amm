@@ -61,7 +61,7 @@ header{
 
 .loginForm form #email, .loginForm form #password, .loginForm form #remember,
 .registerForm form #email, .registerForm form #password, .registerForm form #confEmail, .registerForm form #confPassword,
-.registerForm form #name, .registerForm form #surname
+.registerForm form #name, .registerForm form #surname,.registerForm form #via,.registerForm form #citta
 
 {
     display: inline-block;

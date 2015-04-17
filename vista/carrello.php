@@ -10,8 +10,23 @@ and open the template in the editor.
         <link href="styles/myCss.css" rel="stylesheet">
         <link href="styles/carrelloCss.css" rel="stylesheet">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0.0" />  
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+        <script>$varia =0;
+        </script>
         <script>
+        
+        $(document).ready(function(){
+            $("#contatore").click(function(){
+                if($varia===0){
+                    $(".element").show();
+                    $varia=1;
+                }else{
+                    $(".element").hide();
+                    $varia=0;
+                }
+            });
             
+        });
         </script>
         <title>Carrello</title>
     </head>
@@ -23,7 +38,7 @@ and open the template in the editor.
             include 'modello/restoreLogin.php';
             
             session_start();
-            dbConnect("mysite");
+            $db=new ManageDatabase("mysite");
             
             if(isset($_GET['add'])){
                 if($_GET['add']){
@@ -43,7 +58,7 @@ and open the template in the editor.
                 
             }
             goHeader();
-            goSidebar();
+            goSidebar($db);
             ?>
 
             <table id="carrello">

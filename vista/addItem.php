@@ -10,6 +10,8 @@ and open the template in the editor.
         <link href="styles/myCss.css" rel="stylesheet">
         <link href="styles/addItemCss.css" rel="stylesheet">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0.0" />  
+        
+        
         <script>
             function checkForm() {
                 var nome = document.forms["newItem"]["nome"].value;
@@ -79,9 +81,9 @@ and open the template in the editor.
 
 
 
-                            dbConnect("mysite");
+                            $db=new ManageDatabase("mysite");
                             
-                            if (!addItem($nome, $descrizione, $prezzo, $immagine, $_SESSION['username']." ".$_SESSION['surname'], $_SESSION['email'], $disponibili)) {
+                            if (!$db->addItem($nome, $descrizione, $prezzo, $immagine, $_SESSION['username']." ".$_SESSION['surname'], $_SESSION['email'], $disponibili)) {
                                echo "Errore database";
                             } else {
                                 printSuccesso();
@@ -90,7 +92,7 @@ and open the template in the editor.
                                         descrizione='$descrizione' AND
                                         prezzo='$prezzo' AND
                                         emailinserzionista='".$_SESSION['email']."'";
-                                $id=getId($nome, $descrizione, $prezzo, $_SESSION['email']);
+                                $id=$db->getId($nome, $descrizione, $prezzo, $_SESSION['email']);
                                 if($id!=-1){
                                     header( "refresh:3; url=index.php?comando=view&id=".$id ); 
                             }

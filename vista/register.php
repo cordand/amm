@@ -49,6 +49,7 @@ and open the template in the editor.
             <?php
             include 'template/header.php';
             include 'modello/restoreLogin.php';
+            
             session_start();
             goHeaderLogin();
             ?>
@@ -57,66 +58,71 @@ and open the template in the editor.
 
                 <form id="register" method="post" action="index.php?comando=doRegister" onsubmit="return validateForm()">
                     <?php
-                    if (!empty($_POST['email'])) {
-                        if ($_POST['presente']) {
-                            echo '<p id="errore">Email già registrata</p>';
-                        } else {
-                            if ($_POST['emailDiverse']) {
+                      $value=new UserReg("","","","","",0,0);
+                      
+                    if (!empty($_SESSION['userReg'])) {
+                        $value=$_SESSION['userReg'];
+                        $errorCode=$_POST['errorcode'];
+                        switch($errorCode){
+                            case ErrorCode::EMAILPRESENTE:{
+                                echo '<p id="errore">Email già registrata</p>';
+                                break;
+                            }
+                            case ErrorCode::EMAILDIVERSE:{
                                 echo '<p id="errore">Le email non coincidono</p>';
-                            } else if ($_POST['passwordDiverse']) {
+                                break;
+                            }
+                            case ErrorCode::PASSWORDDIVERSE:{
                                 echo '<p id="errore">Le password non coincidono</p>';
-                            } else if ($_POST['passwordCorta']) {
+                                break;
+                            }
+                            case ErrorCode::PASSWORDCORTA:{
                                 echo '<p id="errore">Le password deve essere almeno di 6 caratteri</p>';
-                            } else {
+                                break;
+                            }
+                            case ErrorCode::ERROREDATABASE:{
                                 echo '<p id="errore">Errore database</p>';
+                                break;
+                            }
+                            case ErrorCode::ERROREGENERICO:{
+                                echo '<p id="errore">Errore</p>';
+                                break;
                             }
                         }
+                        unset($_SESSION['userReg']);
                     }
-                    if (!empty($_POST['email'])) {
-                        echo '<label>Nome <input type="text" name="name" id="name" value="' . $_POST['nome'] . '" required></label><br><br>
-                    <label>Cognome <input type="text" name="surname" id="surname" value="' . $_POST['cognome'] . '" required></label><br><br>
-                    <label>Email <input type="text" name="email" id="email" value="' . $_POST['email'] . '" required></label><br><br>
-                    <label>Conferma Email <input type="text" name="confEmail" id="confEmail" value="" required></label><br><br>
                     
-                    <label>Password<input type="password" name="password" id="password" required></label><br><br>
-                    <label>Conferma Password <input type="password" name="confPassword" id="confPassword" value="" required></label><br><br>
-                    ';
-                        if ($_POST['sesso'] == "uomo") {
-                            echo '<label id="sesso">Maschio  <input type="radio" name="sesso" id="sesso" value="uomo" checked="true"></label><br>
-                    <label id="sesso">Femmina <input type="radio" name="sesso" id="sesso" value="donna" ></label><br><br>';
-                        } else {
-                            echo '<label id="sesso">Maschio  <input type="radio" name="sesso" id="sesso" value="uomo"></label><br>
-                    <label id="sesso">Femmina <input type="radio" name="sesso" id="sesso" value="donna"  checked="true"></label><br><br>';
+                        
+
+
+
+
+
+                        echo '<label>Nome <input type="text" name="name" id="name" value="'.($value->getNome()).'" required></label><br><br>';
+                        echo '<label>Cognome <input type="text" name="surname" id="surname" value="'.($value->getCognome()).'" required></label><br><br>';
+                        echo '<label>Email <input type="text" name="email" id="email" value="'.($value->getEmail()).'" required></label><br><br>';
+                        echo '<label>Conferma Email <input type="text" name="confEmail" id="confEmail" required></label><br><br>';
+                        echo '<label>Via <input type="text" name="via" id="via" value="'.($value->getVia()).'" required></label><br><br>';
+                        echo '<label>Citt&agrave; <input type="text" name="citta" id="citta" value="'.($value->getCitta()).'" required></label><br><br>';
+                        echo '<label>Password<input type="password" name="password" id="password" required></label><br><br>';
+                        echo '<label>Conferma Password <input type="password" name="confPassword" id="confPassword" required></label><br><br>';
+                        if($value->getSesso()==0){
+                            echo '<label id="sesso">Maschio  <input type="radio" name="sesso" id="sesso" value="uomo" checked="true"></label><br>';
+                            echo '<label id="sesso">Femmina <input type="radio" name="sesso" id="sesso" value="donna" ></label><br><br>';
                         }
-                        if ($_POST['tipo'] == 0) {
-                            echo '<label id="tipo">Standard  <input type="radio" name="tipo" id="tipo" value="0" checked="true"></label><br>
-                        <label id="tipo">Commerciante <input type="radio" name="tipo" id="tipo" value="1" ></label><br><br>';
-                        } else {
-                            echo '<label id="tipo">Standard  <input type="radio" name="tipo" id="tipo" value="0"></label><br>
-                        <label id="tipo">Commerciante <input type="radio" name="tipo" id="tipo" value="1" checked="true"></label><br><br>';
+                        else{
+                            echo '<label id="sesso">Maschio  <input type="radio" name="sesso" id="sesso" value="uomo" ></label><br>';
+                            echo '<label id="sesso">Femmina <input type="radio" name="sesso" id="sesso" value="donna" checked="true"></label><br><br>';
                         }
-                    } else {
-                        ?>
-
-
-
-
-
-                        <label>Nome <input type="text" name="name" id="name" required></label><br><br>
-                        <label>Cognome <input type="text" name="surname" id="surname" required></label><br><br>
-                        <label>Email <input type="text" name="email" id="email" required></label><br><br>
-                        <label>Conferma Email <input type="text" name="confEmail" id="confEmail" required></label><br><br>
-
-                        <label>Password<input type="password" name="password" id="password" required></label><br><br>
-                        <label>Conferma Password <input type="password" name="confPassword" id="confPassword" required></label><br><br>
-
-                        <label id="sesso">Maschio  <input type="radio" name="sesso" id="sesso" value="uomo" checked="true"></label><br>
-                        <label id="sesso">Femmina <input type="radio" name="sesso" id="sesso" value="donna" ></label><br><br>
-
-                        <label id="tipo">Standard  <input type="radio" name="tipo" id="tipo" value="0" checked="true"></label><br>
-                        <label id="tipo">Commerciante <input type="radio" name="tipo" id="tipo" value="1" ></label><br><br>
-                        <?php
-                    }
+                        if($value->getTipo()==0){
+                            echo '<label id="tipo">Standard  <input type="radio" name="tipo" id="tipo" value="0" checked="true"></label><br>';
+                            echo '<label id="tipo">Commerciante <input type="radio" name="tipo" id="tipo" value="1" ></label><br><br>';
+                        }else{
+                            echo '<label id="tipo">Standard  <input type="radio" name="tipo" id="tipo" value="0" ></label><br>';
+                            echo '<label id="tipo">Commerciante <input type="radio" name="tipo" id="tipo" value="1" checked="true"></label><br><br>';
+                          
+                        }
+                    
                     ?>
 
                     <input type="submit" class="submit" value="Registrati">

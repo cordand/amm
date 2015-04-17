@@ -17,11 +17,11 @@ and open the template in the editor.
 
         include 'modello/CarrelloClass.php';
         if (!empty($_POST['email']) && !empty($_POST['password'])) {
-            $conn = dbConnect('mysite');
+             $db = new ManageDatabase("mysite");
             
             $email = htmlspecialchars($_POST["email"]);
             $password = htmlspecialchars($_POST["password"]);
-            $result = logIn($email, $password);
+            $result = $db->logIn($email, $password);
             
             if (!$result) {
                 redirect_post("index.php?comando=login", $email);

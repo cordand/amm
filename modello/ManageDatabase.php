@@ -6,7 +6,14 @@ $dbhost = "localhost";
 $dbuser = "root";
 $dbpass = "davide";
 
-function dbConnect($db = "") {
+class ManageDatabase{
+
+    function __construct($db) {
+        $this->dbConnect($db);
+        
+    }
+
+    function dbConnect($db = "") {
     global $dbhost, $dbuser, $dbpass;
     
     $dbcn = @mysql_connect($dbhost, $dbuser, $dbpass)
@@ -96,14 +103,16 @@ function getEmailAvailability($email){
     
 }
 
-function createAccount($tipo,$nome,$cognome,$email,$password,$sesso){
+function createAccount($value,$password){
     $sql = "INSERT INTO users SET
-                    tipo = '$tipo',
-                    nome = '$nome',
-                    cognome = '$cognome',
-                    email = '$email',        
+                    tipo = '".$value->getTipo()."',
+                    nome = '".$value->getNome()."',
+                    cognome = '".$value->getCognome()."',
+                    email = '".$value->getEmail()."',        
                     password = PASSWORD('$password'),
-                    sesso = '$sesso'";
+                    via = '".$value->getVia()."',    
+                    citta = '".$value->getCitta()."',    
+                    sesso = '".$value->getSesso()."'";
     return mysql_query($sql);
 }
 
@@ -128,6 +137,20 @@ function getItem($id){
     } else {
         return false;
     }
+}
+function restoreLoginDb($id,$token){
+    $sql = "SELECT nome,cognome,email,tipo FROM users WHERE numero = '" . $id . "' AND remember='" . $token . "'";
+    $result = mysql_query($sql);
+    return $result;
+}
+function updateToken($email){
+    $token = md5(DATE_ATOM);
+            $sql = ("UPDATE users SET ultimo_accesso = NOW(), remember = '" . $token . "' WHERE email = '" . $data[2] . "'");
+            setcookie("n", $id, time() + 2592000);
+            setcookie("t", $token, time() + 2592000);
+            mysql_query($sql);
+}
+
 }
 
 ?>

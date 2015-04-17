@@ -5,7 +5,7 @@
  * and open the template in the editor.
  */
 
-function printSidebar($loggato, $tipo, $email) {
+function printSidebar($db,$loggato, $tipo, $email) {
     if (!$loggato) {
         ?>
         <nav id="sidebar">
@@ -21,7 +21,7 @@ function printSidebar($loggato, $tipo, $email) {
             <nav id="sidebar">
                 <h3><a href="index.php?comando=vetrina">Vetrina</a></h3>
                 <ul>
-                    <li id="contatore">Elementi:  <?php echo getNumeroInserzioni($email); ?></li>
+                    <li id="contatore">Elementi:  <?php echo $db->getNumeroInserzioni($email); ?></li>
                 </ul>   
             </nav>
             <?php
@@ -31,8 +31,22 @@ function printSidebar($loggato, $tipo, $email) {
             ?>
             <nav id="sidebar">
                 <h3><a href="index.php?comando=carrello">Carrello</a></h3>
-                <ul>
-                    <li id="contatore">Elementi:  <?php echo count($_SESSION['carrello']->getElementi()); ?></li>
+                <ul class="lista">
+                    <?php 
+                        $elementi=$_SESSION['carrello']->getElementi();
+                        $num=count($elementi);
+                    ?>
+                    <li id="contatore">Elementi:  <?php echo $num; ?></li><br>
+                    
+                    <?php 
+                    
+                    foreach ($elementi as $elemento) {
+                                    echo '<li class="element" id="element" hidden>' . $elemento->getNome() . '</li><br>';
+                                    echo '<li class="element" id="element" hidden>Quant: ' . $elemento->getQuantita() . '</li><br><br>';
+                                }
+                    
+                    ?>
+                    
                 </ul>   
             </nav>
             <?php
