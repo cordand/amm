@@ -7,46 +7,49 @@
  */
 
 class ElementiHome{
-    var $database,$arrayItems,$ret;
+    var $database;
     function __construct($db) {
         $this->database=$db;
-        $this->ret="";
+
         
-        $result=  $this->database->getIndexItems();
+        
+    }
+    
+    function getElementi($indice,$query){
+        
+       $ret="";
+        $result=  $this->database->getIndexItems($indice,$query);
+        if(!$result)
+            return 0;
         $num = mysql_num_rows($result);
                
                 for ($i = 0; $i < $num; $i++) {
                     
                     $data = mysql_fetch_row($result);
-                    $this->ret.='<div class="flex-item">';
+                    $ret.='<div class="flex-item">';
                    
-                    $this->ret.='<a href="index.php?comando=view&id='.$data[0].'">';
-                    $this->ret.='<img class="flex-image" src="'.$data[3].'" onerror="this.src=\'images/error.png\'">';
-                    $this->ret.='</a>';
-                    $this->ret.='<a href="index.php?comando=view&id='.$data[0].'">';
-                    $this->ret.='<span>';
-                    $this->ret.='<div class="box">';
-                    $this->ret.='<div class="text">';
-                    $this->ret.=$data[1];
-                    $this->ret.=' </div>';
-                    $this->ret.='</div>';
-                    $this->ret.='</span>';
-                    $this->ret.='</a>';
-                    $this->ret.='<p class="prezzo">';
-                    $this->ret.=$data[4].'&euro;';
-                    $this->ret.='</p>';
+                    $ret.='<a href="index.php?comando=view&id='.$data[0].'">';
+                    $ret.='<img class="flex-image" src="'.$data[3].'" onerror="this.src=\'images/error.png\'">';
+                    $ret.='</a>';
+                    $ret.='<a href="index.php?comando=view&id='.$data[0].'">';
+                    $ret.='<span>';
+                    $ret.='<div class="box">';
+                    $ret.='<div class="text">';
+                    $ret.=$data[1];
+                    $ret.=' </div>';
+                    $ret.='</div>';
+                    $ret.='</span>';
+                    $ret.='</a>';
+                    $ret.='<p class="prezzo">';
+                    $ret.=$data[4].'&euro;';
+                    $ret.='</p>';
 
-                    $this->ret.='</div>';
+                    $ret.='</div>';
                     
 
                     
                 }
-        
-    }
-    
-    function getElementi(){
-       
-        return $this->ret;
+        return $ret;
     }
 
 }

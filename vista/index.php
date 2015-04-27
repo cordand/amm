@@ -11,22 +11,61 @@ and open the template in the editor.
         <link href="styles/myCss.css" rel="stylesheet">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0.0" />  
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-        <script>$varia =0;
+        <script type='text/javascript'> var $_POST = <?php echo !empty($_POST)?json_encode($_POST):'null';?>; </script>
+     <script type='text/javascript'>
+       
+     </script>
+        <script>
+            $varia = 10;
+            $fine = false;
+            
+            
         </script>
         <script>
-        
-        $(document).ready(function(){
-            $("#contatore").click(function(){
-                if($varia===0){
-                    $(".element").show();
-                    $varia=1;
-                }else{
-                    $(".element").hide();
-                    $varia=0;
+            $(document).ready(function () {
+                loadData(0);
+                //Hide Loader for Infinite Scroll
+                $('div.ajaxloader').hide();
+
+            });
+
+            function loadData(last_id) {
+                if ($fine)
+                    return;
+                var $entries = $('.flex-container'),
+                        $loader = $('.ajaxloader', $entries).show();
+                if($_POST!=null&&($_POST['query']!=null))
+                    $query=($_POST['query']);
+                else 
+                    $query="";
+                $.get('/vista/getitems.php', {ultimo: $varia, query:$query}, function (data) {
+                    if (data != 0){
+                        if ($varia == 10)
+                            $varia += 10;
+                        else
+                            $varia += 20;
+                        $entries.append(data).append($loader.hide());
+                    }
+                    else{
+                        $fine = true;
+                    }
+                    
+                    
+                });
+            }
+            ;
+
+
+//Isotope filter - no changes to this code so I didn't include it
+
+            $(window).scroll(function () {
+                if ($(window).scrollTop() >= $(document).height() - $(window).height() - 10) {
+                    $('div.ajaxloader').show('slow');
+                    loadData($varia);
                 }
             });
-            
-        });
+
+
         </script>
 
         <title>Homepage</title>
@@ -50,25 +89,29 @@ and open the template in the editor.
 
 
 
-            
+
 
 
             <ul class="flex-container">
                 <?php
-               
                 $el = new ElementiHome($db);
-                echo $el->getElementi();
+                if (isset($_POST['query'])) {
+                    echo $el->getElementi(-1, $_POST['query']);
+                } else {
+                    echo $el->getElementi(-1, "");
+                }
                 ?>
 
 
 
             </ul>
             <?php
-                
             ?>
-            
-        </div>            
 
+        </div>            
+        <div class="ajaxloader">
+
+        </div>
 
 
 

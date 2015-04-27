@@ -28,9 +28,31 @@ class ManageDatabase{
 }
 
 
-function getIndexItems(){
-    $sql = "SELECT id,nome,descrizione,immagine,prezzo FROM items order by id desc limit 20";
+function getIndexItems($indice,$query){
+    if(!is_numeric($indice))
+        return 0;
+    $query=  htmlspecialchars($query);
+    if ($indice == -1) {
+            if(strlen($query)>0){
+                $sql = "SELECT id,nome,descrizione,immagine,prezzo FROM items WHERE nome LIKE '%$query%' OR descrizione LIKE '%$query%' order by id desc limit 10";
+            }else
+                $sql = "SELECT id,nome,descrizione,immagine,prezzo FROM items order by id desc limit 10";
+        } else if ($indice ==10) {
+            if(strlen($query)>0){
+                $sql = "SELECT id,nome,descrizione,immagine,prezzo FROM items WHERE nome LIKE '%$query%' OR descrizione LIKE '%$query%' order by id desc " . $indice . ",10";
+            }else
+            $sql = "SELECT id,nome,descrizione,immagine,prezzo FROM items order by id desc limit " . $indice . ",10";
+            
+        }
+        else{
+            if(strlen($query)>0){
+                $sql = "SELECT id,nome,descrizione,immagine,prezzo FROM items WHERE nome LIKE '%$query%' OR descrizione LIKE '%$query%' order by id desc limit " . $indice . ",20";
+            }else
+            $sql = "SELECT id,nome,descrizione,immagine,prezzo FROM items order by id desc limit " . $indice . ",20";
+        }
+     //echo $sql;
     $result = mysql_query($sql);
+
     return $result;
 }
 

@@ -54,6 +54,9 @@ class Controllo {
       else if($comando == "profilo"){
           include("vista/profile.php");
       }
+      else if($comando == "cerca"){
+          include("vista/index.php");
+      }
     }
     
     

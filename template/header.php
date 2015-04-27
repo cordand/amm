@@ -43,8 +43,15 @@ function printHeader($nome, $cognome, $tipo) {
              
          </div>
             <header id="header">
-        <div class="immagineHeader">
+        ';
+    echo '<div class="immagineHeader">
             <a href="index.php?comando=paginainiziale"><img title="Home" src="images/header.png"/></a>
+            
+            <form accept-charset="UTF-8" action="index.php?comando=cerca" class="search" method="post" role="search">
+            
+
+            <input id="query" name="query" placeholder="Cerca" type="search">
+            <input name="button" type="submit" value="Cerca"></form>
         </div>';
     if (strlen($nome) > 0 && strlen($cognome) > 0) {
         if ($tipo) {
