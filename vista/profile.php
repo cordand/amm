@@ -30,6 +30,14 @@ and open the template in the editor.
             
         });
         </script>
+        <script>
+            jQuery(document).ready(function($) {
+                $(".clickable-row").click(function() {
+                    window.document.location = $(this).data("href");
+                });
+            });
+        
+        </script>
         
     </head>
     <body>
@@ -39,18 +47,23 @@ and open the template in the editor.
             <?php
             
             include 'modello/restoreLogin.php';
+            include 'modello/MessaggioClass.php';
             session_start();
             $db=new ManageDatabase("mysite");
-            goHeader();
+            goHeader($db);
             goSidebar($db);
             
             ?>
+            <h1>Informazioni utente</h1>
             <div id="tabella">
+                 
                 <?php
                 $data=$db->userDetails($_SESSION['email']);
-    if($data!=null){
+                
+    if($data){
             ?>
             <table>
+               
                 <tr>
                 <th>Nome</th>
                 <th>Cognome</th>
@@ -66,7 +79,104 @@ and open the template in the editor.
         echo  $data[3]==1 ? "Venditore" : "Compratore"  ;
         echo "</td>";
         echo "</tr>";
+        ?>
+            </table>
+            </div>
+            <h1>Messaggi</h1>
+         <div id="tabellaMessaggi">
+               <table>
+                <tr>
+                <th>Stato</th>
+                <th class="prodotto">Prodotto</th>
+                <th>Destinatario</th>
+                <th>Mittente</th>
+                <th>Testo</th>
+                <th class="data">Data</th>
+                </tr>
+                <?php
+                    if(!isset($_GET['pagina']))
+                        $pagina=0;
+                    else{
+                        $pagina=$_GET['pagina'];
+                    }
+                    $numMessaggi=$db->countMessagesById($_SESSION['id']);
+                    
+                    $messaggi=$db->getMessagesById($_SESSION['id'], $pagina);
+                    $db->close();
+                    if(count($messaggi)==0){
+                        echo '<td colspan="6" class="center"><b>Non sono ancora presenti messaggi.</b></td>';
+                    }
+                    foreach ($messaggi as $temp){
+                          echo "<tr class='clickable-row' data-href='index.php?comando=leggi&id=".$temp->getIdMessaggio()."'>";
+                          echo "<td>";
+                          echo $temp->getLetto()==1 ? '<img src="images/read_message.png" width="32" height="32">' : '<img src="images/message.png" width="32" height="32">'   . "</td>";
+                          echo "<td class=\"prodotto\">";
+                          echo strlen($temp->getNomeP())>12?substr($temp->getNomeP(),0,12)."...":$temp->getNomeP() . "</td>";
+                          echo "<td>";
+                          echo strlen($temp->getNomeD())>12?substr($temp->getNomeD(),0,12)."...":$temp->getNomeD() . "</td>";
+                          echo "<td>";
+                          echo strlen($temp->getNomeM())>12?substr($temp->getNomeM(),0,12)."...":$temp->getNomeM() . "</td>";
+                          echo "<td>";
+                          echo  strlen($temp->getTesto())>12?substr($temp->getTesto(),0,12)."...":$temp->getTesto()  . "</td>";
+                          echo "<td class=\"data\">" . $temp->getData() . "</td>";
+                          echo "</tr>";
+                          
+                    }
+                ?>
+             
+             
+         
+             
+               </table>
+             
+             
+             
+             <?php
+                if($numMessaggi>20){
+                    $totPagine=  ceil($numMessaggi/20);
+//                    if($pagina!=0){
+//                        echo "[Indietro]";
+//                    }
+//                    if($pagina==1&&$pagina!=$totPagine-1){
+//                        if ($totPagine > 2) {
+//                             echo "<strong>[1]</strong>[2]..[".($totPagine-1)."][Next]";
+//                         }
+//                     }
+//                    else if($pagina==2){
+//                        echo "[1]<strong>[2]</strong>";
+//                    }
+//                    else if($pagina==3){
+//                        echo "[1][2]<strong>[3]</strong>";
+//                    }
+//                    else if($pagina >3&&$pagina!=$totPagine-1){
+//                        echo "[1]..[$pagina]..[$totPagine-1][Next]";
+//                    }
+//                    else if($pagina >3&&$pagina==$totPagine-1){
+//                        echo "[1]..[$pagina]";
+//                    }
+                    
+                    if($pagina!=0){
+                        echo "<a href=index.php?comando=profilo&pagina=".($pagina-1).">Indietro</a>";
+                    }
+                    echo " Pagina: ".($pagina+1)."/$totPagine ";
+                    if($pagina!=($totPagine-1)){
+                        echo "<a href=index.php?comando=profilo&pagina=".($pagina+1).">Avanti</a>";
+                    }
+                    
+                    
+                    
+                    
+                }
+             
+             ?>
+         </div>
         
+        
+        
+        
+        
+        
+        <?php
     }else{
     
     ?>

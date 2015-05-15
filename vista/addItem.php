@@ -27,7 +27,7 @@ and open the template in the editor.
                     return false;
                 }
                 var prezzo = document.forms["newItem"]["prezzo"].value;
-                if(descrizione.length==0)
+                if(prezzo.length==0)
                 {
                     alert("Non è stato inserito nessun prezzo");
                     return false;
@@ -43,7 +43,9 @@ and open the template in the editor.
             include 'template/header.php';
             include 'modello/restoreLogin.php';
             session_start();
-            goHeader();
+            $db=new ManageDatabase("mysite");
+            goHeader($db);
+            $db->close();
             if(!isset($_SESSION['tipo']))
             {
                 header("Location: index.php");
@@ -81,20 +83,21 @@ and open the template in the editor.
 
 
 
-                            $db=new ManageDatabase("mysite");
-                            
-                            if (!$db->addItem($nome, $descrizione, $prezzo, $immagine, $_SESSION['username']." ".$_SESSION['surname'], $_SESSION['email'], $disponibili)) {
-                               echo "Errore database";
+                          
+                            $db = new ManageDatabase("mysite");
+                            if (!$db->addItem($nome, $descrizione, $prezzo, $immagine, $_SESSION['username']." ".$_SESSION['surname'], $_SESSION['id'],$_SESSION['email'], $disponibili)) {
+                               $db->close();
+                               ?><strong>Errore, riprovare pi&ugrave; tardi</strong>
+                                   <?php
                             } else {
                                 printSuccesso();
                                 
-                                $sql= "SELECT id FROM items WHERE nome='$nome' AND
-                                        descrizione='$descrizione' AND
-                                        prezzo='$prezzo' AND
-                                        emailinserzionista='".$_SESSION['email']."'";
                                 $id=$db->getId($nome, $descrizione, $prezzo, $_SESSION['email']);
                                 if($id!=-1){
+                                    $db->close();
                                     header( "refresh:3; url=index.php?comando=view&id=".$id ); 
+                            }else{
+                                 $db->close();
                             }
                             }
                             

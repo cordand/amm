@@ -9,9 +9,9 @@ function printSidebar($db,$loggato, $tipo, $email) {
     if (!$loggato) {
         ?>
         <nav id="sidebar">
-            <h3><a href="index.php?comando=carrello">Carrello</a></h3>
+            <h3><a href="index.php?comando=profilo">Posta</a></h3>
             <ul>
-                <li id="contatore">Elementi: <?php echo 0; ?></li>
+                <li id="contatore">Messaggi: <?php echo 0; ?></li>
             </ul>   
         </nav>
         <?php
@@ -19,9 +19,12 @@ function printSidebar($db,$loggato, $tipo, $email) {
         if ($tipo) {
             ?>
             <nav id="sidebar">
-                <h3><a href="index.php?comando=vetrina">Vetrina</a></h3>
+                <h3><form action="index.php?comando=cerca" method="post">
+                    <input type="hidden" name="query" value="::<?php echo $_SESSION['id']?>" />
+                    <button>Vetrina</button>
+                </form></h3>
                 <ul>
-                    <li id="contatore">Elementi:  <?php echo $db->getNumeroInserzioni($email); ?></li>
+                    <li id="contatore">Elementi:  <?php echo $db->getNumeroInserzioni($_SESSION['id']); ?></li>
                 </ul>   
             </nav>
             <?php
@@ -30,11 +33,11 @@ function printSidebar($db,$loggato, $tipo, $email) {
                 session_start();
             ?>
             <nav id="sidebar">
-                <h3><a href="index.php?comando=carrello">Carrello</a></h3>
+                <h3><a href="index.php?comando=profilo">Messaggi</a></h3>
                 <ul class="lista">
                     <?php 
-                        $elementi=$_SESSION['carrello']->getElementi();
-                        $num=count($elementi);
+                        
+                        $num=$db->countMessagesById($_SESSION['id']);
                     ?>
                     <li id="contatore">Elementi:  <?php echo $num; ?></li><br>
                     

@@ -40,8 +40,9 @@ and open the template in the editor.
                 $_SESSION['carrello']->rimuoviElemento($_GET['rm']);
                 
             }
-            goHeader();
+            goHeader($db);
             goSidebar($db);
+            $db->close();
             ?>
 
             <table id="carrello">

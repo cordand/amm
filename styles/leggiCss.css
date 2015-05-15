@@ -4,20 +4,24 @@ To change this template file, choose Tools | Templates
 and open the template in the editor.
 */
 /* 
-    Created on : 14-apr-2015, 10.56.10
+    Created on : 15-mag-2015, 11.13.37
     Author     : amm
 */
 
 
-
-/*#tabellaMessaggi{
-    padding-top: 30px;
-    width:300px;
-    text-align: center;
-    margin-right: auto;
-    margin-left: auto;
-    
-}*/
+div.messaggio{
+  border-spacing: 0px;
+  background: grey;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  padding: 0px;
+padding-top:2px;
+  
+  padding-bottom:10px;
+  margin-top: 10px;
+  width: calc(100% - 250px);
+}
 
 table {
    
@@ -27,30 +31,12 @@ table {
   -webkit-border-radius: 10px;
   border-radius: 10px;
   padding: 0px;
-  width: calc(100% - 250px);
+  width: calc(98%);
 
   
   margin-right: 10px;
   margin-left:10px;
   margin-top:20px;
-}
-#tabellaMessaggi tr.clickable-row{
-    
-    cursor: pointer;
-
-}
-#tabellaMessaggi tr.clickable-row:hover{
-    
-    background: #cbcbcb;
-
-}
-h1{
- width:300px;
- 
- margin-right:auto;
-  margin-left:auto;
-  padding-right: 200px;
-  text-align: center;
 }
 
 @media screen and (max-width: 775px) {
@@ -62,16 +48,8 @@ h1{
         margin-right:auto;
         margin-left:auto;
     }
-    .prodotto,.data{
-        display: none;
+    div.messaggio{
+        margin-top: 30px;
+        width:100%;
     }
-    h1{
- width:300px;
- 
- margin-right:auto;
-  margin-left:auto;
-  padding-right: 0px;
-  text-align: center;
-}
-    
 }

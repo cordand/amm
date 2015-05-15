@@ -10,8 +10,18 @@ and open the template in the editor.
         <link href="styles/myCss.css" rel="stylesheet">
         <link href="styles/viewerCss.css" rel="stylesheet">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0.0" />
-        
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+        <script>
+            function showConfirm() {
+               var r=  confirm("Si vuole davvero eliminare qesto elemento?");
+               if(r==true){
+                   return true;
+               }else{
+                   return false;
+               }
+            }
+
+        </script>
+       
  
         <?php
         include 'template/header.php';
@@ -37,6 +47,7 @@ and open the template in the editor.
                 $immagine = $data[2];
                 $disponibili = $data[3];
                 $prezzo = $data[4];
+                $inserzionista=$data[5];
                 ?>
                 <title><?php echo $nome; ?></title>
             </head>
@@ -44,8 +55,9 @@ and open the template in the editor.
                 <div id="all">
 
                     <?php
-                    goHeader();
+                    goHeader($db);
                     goSidebar($db);
+                    $db->close();
                     ?>
                     <div id="contenuto">
                         <h1 id="titolo"><?php echo $nome ?></h1>
@@ -58,17 +70,41 @@ and open the template in the editor.
                             </p>
                             <?php
                             if (isset($_SESSION['username']) && isset($_SESSION['tipo']) && isset($_SESSION['surname'])) {
-                                if ($_SESSION['tipo'] == 0) {
-                                    ?>
-                                    <form action="index.php?comando=carrello&add=true" method="post" >
+                                
+                                    //<form action="index.php?comando=carrello&add=true" method="post" >
+                                    if ($_SESSION['tipo'] == 0) {?>
+                                    <form action="index.php?comando=contatta" method="post" >
+                                      <?php
+                                        }else if ($_SESSION['tipo'] == 1) {  
+                                            
+                                             if($inserzionista===$_SESSION['id']){
+                                                ?>
+                                                  <form action="index.php?comando=rimuovi" method="post" onsubmit="return showConfirm()" >
+                                                <?php
+                                            }
+                                            ?>
+                                                <?php
+                                            }
+                                        ?> 
                                         <input type="hidden" name="id" value="<?php echo htmlspecialchars($_GET['id']) ?>">
                                         <input type="hidden" name="nome" value="<?php echo htmlspecialchars($nome) ?>">
                                         <input type="hidden" name="prezzo" value="<?php echo htmlspecialchars($prezzo) ?>">
-                                        <input name="quantita" id="quantita" value="<?php echo htmlspecialchars(1) ?>">
-                                        <input type="submit" value="Aggiungi">
+<!--                                        <input name="quantita" id="quantita" value="<?php echo htmlspecialchars(1) ?>">-->
+                                        <?php
+                                        if ($_SESSION['tipo'] == 0) {?>
+                                            <input class="button" type="submit" value="Contatta Inserzionista">
+                                        <?php
+                                        }else if ($_SESSION['tipo'] == 1) {
+                                            if($inserzionista===$_SESSION['id']){
+                                                ?>
+                                                 <input class="button" type="submit" value="Rimuovi inserzione">
+                                                <?php
+                                            }
+                                        }
+                                        ?>
                                     </form>
                                     <?php
-                                }
+                                
                             }
                             ?>
                         </div>
@@ -80,13 +116,15 @@ and open the template in the editor.
                     <?php
                 } else {
                     goHeader();
-                    goSidebar();
+                    goSidebar($db);
+                    $db->close();
                     printNonTrovato();
                     die();
                 }
             } else {
                     goHeader();
-                    goSidebar();
+                    goSidebar($db);
+                    $db->close();
                     printNonTrovato();
                     die();
                 }

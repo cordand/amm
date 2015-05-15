@@ -42,7 +42,11 @@ and open the template in the editor.
 #contenuto form #quantita {
 width: 30px;
 }
-
+.button{
+    background: #57d9f4;
+    border-radius: 15px;
+    font-size: 1.7em;
+}
 @media screen and (max-width: 775px) {
 
     #descrizione p{

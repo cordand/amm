@@ -10,7 +10,6 @@ if (!empty($_POST['email']) && !empty($_POST['password'])) {
     $cognome = htmlspecialchars($_POST["surname"]);
     $sesso = htmlspecialchars($_POST["sesso"]);
     $tipo = htmlspecialchars($_POST["tipo"]);
-    $conn = dbConnect('mysite');
     $via = htmlspecialchars($_POST["via"]);
     $citta = htmlspecialchars($_POST["citta"]);
     $value=new UserReg($email, $nome, $cognome,$citta,$via, $sesso, $tipo);
@@ -28,20 +27,24 @@ if (!empty($_POST['email']) && !empty($_POST['password'])) {
         
         redirect("index.php?comando=register", $value, ErrorCode::PASSWORDCORTA);
     }
+    $db = new ManageDatabase("mysite");
+    $result = $db->getEmailAvailability($email);
     
-    $result = getEmailAvailability($email);
     
     
-    
-    if ($result == -1) {    //Errore database
+    if ($result == -1) { 
+        $db->close();//Errore database
         redirect("index.php?comando=register", $value, ErrorCode::ERROREDATABASE);
     }else if ($result == 0) {   //MAIL GIA PRESENTE
         redirect("index.php?comando=register", $value, ErrorCode::EMAILPRESENTE);
+        $db->close();
     } else {        //PROCEDI
-        $db = new ManageDatabase("mysite");
+      
         if (!$db->createAccount($value, $password)) {    //CREAZIONE FALLITA
+            $db->close();
             redirect("index.php?comando=register",$value, ErrorCode::ERROREGENERICO);
         } else {    //RIUSCITA
+            $db->close();
             redirect1("index.php?comando=login", $email, true);
         }
     }

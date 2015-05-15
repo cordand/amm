@@ -23,13 +23,13 @@ and open the template in the editor.
         </script>
         <script>
             $(document).ready(function () {
-                loadData(0);
+                loadData();
                 //Hide Loader for Infinite Scroll
                 $('div.ajaxloader').hide();
 
             });
 
-            function loadData(last_id) {
+            function loadData() {
                 if ($fine)
                     return;
                 var $entries = $('.flex-container'),
@@ -38,9 +38,11 @@ and open the template in the editor.
                     $query=($_POST['query']);
                 else 
                     $query="";
+                
+                
                 $.get('/vista/getitems.php', {ultimo: $varia, query:$query}, function (data) {
-                    if (data != 0){
-                        if ($varia == 10)
+                    if (data !== 0){
+                        if ($varia === 10)
                             $varia += 10;
                         else
                             $varia += 20;
@@ -56,10 +58,10 @@ and open the template in the editor.
             ;
 
 
-//Isotope filter - no changes to this code so I didn't include it
+
 
             $(window).scroll(function () {
-                if ($(window).scrollTop() >= $(document).height() - $(window).height() - 10) {
+                if ($(window).scrollTop() >= $(document).height() - $(window).height() -100) {
                     $('div.ajaxloader').show('slow');
                     loadData($varia);
                 }
@@ -78,7 +80,7 @@ and open the template in the editor.
             include_once 'modello/ElementiHome.php';
             session_start();
             $db = new ManageDatabase("mysite");
-            goHeader();
+            goHeader($db);
             goSidebar($db);
             ?>
 
@@ -98,8 +100,10 @@ and open the template in the editor.
                 if (isset($_POST['query'])) {
                     echo $el->getElementi(-1, $_POST['query']);
                 } else {
+                    
                     echo $el->getElementi(-1, "");
                 }
+                $db->close();
                 ?>
 
 

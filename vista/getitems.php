@@ -12,6 +12,7 @@
  $db = new ManageDatabase("mysite");
  $el = new ElementiHome($db);
  echo $el->getElementi($_GET['ultimo'],$_GET['query']);
+ $db->close();
  
  ?>
    

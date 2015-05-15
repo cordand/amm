@@ -20,12 +20,10 @@ class ElementiHome{
        $ret="";
         $result=  $this->database->getIndexItems($indice,$query);
         if(!$result)
-            return 0;
-        $num = mysql_num_rows($result);
-               
-                for ($i = 0; $i < $num; $i++) {
+            return "";
+
+               while($data = $result->fetch_row()){
                     
-                    $data = mysql_fetch_row($result);
                     $ret.='<div class="flex-item">';
                    
                     $ret.='<a href="index.php?comando=view&id='.$data[0].'">';

@@ -10,13 +10,13 @@ include_once 'manageDatabase.php';
 
 
 
-function isLoggedIn() {
+function isLoggedIn($db) {
     if (isset($_SESSION['username']) && isset($_SESSION['surname'])) {
 
         return true;
     } else {
         if (isset($_COOKIE['n']) && isset($_COOKIE['t'])) {
-            if (restoreLogin($_COOKIE['n'], $_COOKIE['t'])) {
+            if (restoreLogin($db,$_COOKIE['n'], $_COOKIE['t'])) {
                //loggato
                 return true;
             } else {
@@ -31,10 +31,10 @@ function isLoggedIn() {
 
 
 session_start();
-dbConnect("mysite");
 
 
-if(isLoggedIn()){
+
+if(isLoggedIn($db)){
     $data=userDetails($_SESSION['email']);
     if($data!=null){
         ?>

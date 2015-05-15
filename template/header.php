@@ -27,7 +27,7 @@ function printHeader($nome, $cognome, $tipo) {
         if ($tipo) {
             echo '<li><a href="index.php?comando=aggiungiItem">Aggiungi</a></li>';
         } else {
-            echo '<li><a href="index.php?comando=carrello">Carrello</a></li>';
+            //echo '<li><a href="index.php?comando=carrello">Carrello</a></li>';
         }
         echo '<li><a href="index.php?comando=logout">Logout</a></li>';
     } else {
@@ -70,7 +70,7 @@ function printHeader($nome, $cognome, $tipo) {
         if ($tipo) {
             echo '<li><a href="index.php?comando=aggiungiItem">Aggiungi</a></li>';
         } else {
-            echo '<li><a href="index.php?comando=carrello">Carrello</a></li>';
+            //echo '<li><a href="index.php?comando=carrello">Carrello</a></li>';
         }
         echo '<li><a href="index.php?comando=logout">Logout</a></li>';
     } else {

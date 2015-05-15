@@ -21,7 +21,9 @@ and open the template in the editor.
             include 'template/header.php';
             include 'modello/restoreLogin.php';
             session_start();
-            goHeaderLogin();
+            $db = new ManageDatabase("mysite");
+            goHeaderLogin($db);
+            $db->close();
             ?>
             <div class="loginForm">
                 <form id="login" method="post" action="index.php?comando=doLogin">

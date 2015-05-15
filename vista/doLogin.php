@@ -22,39 +22,35 @@ and open the template in the editor.
             $email = htmlspecialchars($_POST["email"]);
             $password = htmlspecialchars($_POST["password"]);
             $result = $db->logIn($email, $password);
-            
+//            var_dump($result);
+//            die();
             if (!$result) {
-                redirect_post("index.php?comando=login", $email);
+                $db->close();
+                redirect("index.php?comando=login", $email);
             } else {
-                $data = mysql_num_rows($result);
-                if ($data == 1) {
+                $data = ($result);
+                
+                if (count($result) == 4) {
 
                     session_start();
-                    $data = mysql_fetch_row($result);
-
-
                     $_SESSION['username'] = $data[0];
+                    $_SESSION['id'] = $data[2];
                     $_SESSION['surname'] = $data[1];
                     $_SESSION['tipo'] = $data[3];
                     $_SESSION['email'] = $email;
                     $_SESSION['carrello'] = new CarrelloClass();
                     if (isset($_POST['remember']) && $_POST['remember']) {
-                        $token = md5(DATE_ATOM);
-                        $sql = ("UPDATE users SET ultimo_accesso = NOW(), remember = '" . $token . "' WHERE email = '" . $email . "'");
-
-
-                        setcookie("n", $data[2], time() + 2592000);
-                        setcookie("t", $token, time() + 2592000);
+                        $db->updateToken($data[2],$email);
                     } else {
-                        $sql = ("UPDATE users SET ultimo_accesso = NOW(), remember = '' WHERE email = '" . $email . "'");
-
+                        $db->updateUltimoAccesso($email);
                         setcookie("n");
                         setcookie("t");
                     }
-                    mysql_query($sql);
 
+                    $db->close();        
                     header("Location: index.php");
                 } else {
+                    $db->close();
                     redirect("index.php?comando=login", $email);
                 }
             }

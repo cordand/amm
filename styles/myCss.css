@@ -168,7 +168,7 @@ nav ul ul li a:hover {
     color:black;
 }
 .navbar.loggedin li {
-    width: 25%;
+    width: 33.33%;
     float: left;
     background-color: #eee;
     padding-top: 15px;
@@ -199,12 +199,23 @@ navbar li:hover{
     float:right;
     width:200px;
     height:auto;
-    
     position:relative;
     //width:30%;
     //background:red;
     padding:20px;
     padding-top: 0px;
+}
+button {
+    font-size: 1.2em;
+    border: 0;
+    padding: 0;
+    display: inline;
+    background: none;
+    text-decoration: underline;
+    color: blue;
+}
+button:hover {
+    cursor: pointer;
 }
 
 
@@ -441,6 +452,7 @@ body{
         margin-right: 0px;
         padding-top: 30px;
     }
+   
    
 
 
