@@ -12,6 +12,7 @@
  * @author amm
  */
 include 'modello/ManageDatabase.php';
+
 class Controllo {
     //put your code here
     
@@ -56,6 +57,15 @@ class Controllo {
       }
       else if($comando == "cerca"){
           include("vista/index.php");
+      }
+      else if($comando == "contatta"){
+          include("vista/contatta.php");
+      }
+      else if($comando == "leggi"){
+          include("vista/leggi.php");
+      }
+      else if($comando == "rimuovi"){
+          include("vista/remove.php");
       }
     }
     
