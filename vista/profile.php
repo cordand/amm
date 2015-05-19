@@ -58,7 +58,11 @@ and open the template in the editor.
             <div id="tabella">
                  
                 <?php
-                $data=$db->userDetails($_SESSION['email']);
+                if(isset($_SESSION['email'])){
+                $data=$db->userDetails($_SESSION['email']);}
+                else{
+                    $data=false;
+                }
                 
     if($data){
             ?>

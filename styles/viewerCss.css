@@ -16,9 +16,25 @@ and open the template in the editor.
 
 }
 #contenuto{
-    width: calc(100% - 200px);
+    width: calc(100% - 250px);
     min-height: 400px;
-    padding-left:10px;
+    //padding-left:10px;
+    border:1px solid #e3e3e3;
+    margin-top: 10px;
+    border-radius: 15px; 
+}
+
+#contenuto h1{
+    background: #089de3;
+     //padding: 10px 5px 10px 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+     border-radius: 15px 15px 0px 0px; 
+     margin-top: 0px;
+     color:white;
+     //border-left: 5px;
+     text-align:center;
+     width: 100%;
 }
 #descrizione{
     width: 100%;
@@ -54,11 +70,13 @@ width: 30px;
         margin-left: 0px;
     }
     #contenuto{
+        width: 100%;
         min-width: 300px;
         margin:0px;
         padding:0px;
         margin-left:1px;
-        margin-right: 0px;
+        margin-right: 1px;
+        margin-top: 40px;
         //padding-left:10px;
     }
     #descrizione img{

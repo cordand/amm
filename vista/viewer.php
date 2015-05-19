@@ -92,12 +92,12 @@ and open the template in the editor.
 <!--                                        <input name="quantita" id="quantita" value="<?php echo htmlspecialchars(1) ?>">-->
                                         <?php
                                         if ($_SESSION['tipo'] == 0) {?>
-                                            <input class="button" type="submit" value="Contatta Inserzionista">
+                                            <input class="button" type="submit" value="Contatta">
                                         <?php
                                         }else if ($_SESSION['tipo'] == 1) {
                                             if($inserzionista===$_SESSION['id']){
                                                 ?>
-                                                 <input class="button" type="submit" value="Rimuovi inserzione">
+                                                 <input class="button" type="submit" value="Rimuovi">
                                                 <?php
                                             }
                                         }

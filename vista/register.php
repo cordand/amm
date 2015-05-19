@@ -51,12 +51,15 @@ and open the template in the editor.
             include 'modello/restoreLogin.php';
             
             session_start();
-            goHeaderLogin();
+            $db = new ManageDatabase("mysite");
+            goHeader($db);
+            $db->close();
             ?>
 
             <div class="registerForm">
 
                 <form id="register" method="post" action="index.php?comando=doRegister" onsubmit="return validateForm()">
+                    <h3>Registrazione</h3>
                     <?php
                       $value=new UserReg("","","","","",0,0);
                       

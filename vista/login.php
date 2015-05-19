@@ -9,7 +9,7 @@ and open the template in the editor.
         <meta charset="UTF-8">
         <link href="styles/myCss.css" rel="stylesheet">
         <link href="styles/loginCss.css" rel="stylesheet">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0.0" />  
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0.0" />    
         <title>Login</title>
 
         
@@ -18,15 +18,34 @@ and open the template in the editor.
     <body>
         <div id="all">
             <?php
-            include 'template/header.php';
+            
             include 'modello/restoreLogin.php';
             session_start();
             $db = new ManageDatabase("mysite");
-            goHeaderLogin($db);
+            goHeader($db);
+            //goSidebar($db);
             $db->close();
+            if (!empty($_POST['email'])){
+                if (!$_POST['success']){
+                    ?>
+                       <div class="loginForm errore" > 
+                        <?php
+                }else{
+                    ?>
+                       <div class="loginForm" > 
+                        <?php
+                }
+            }else{
+                ?>
+                       <div class="loginForm" > 
+                        <?php
+            }
             ?>
-            <div class="loginForm">
+            
+            
+                
                 <form id="login" method="post" action="index.php?comando=doLogin">
+                    <h3>Login</h3>
                     <?php
                     if (!empty($_POST['email'])) {
                         
@@ -57,6 +76,7 @@ and open the template in the editor.
 
             <div class="registerForm">
                 <form id="register" action="index.php?comando=register" method="post">
+                    <h3>Registrazione</h3>
                     <p>Non ancora registrato? Registrati ora!</p>
                     <input type="submit" class="submit" value="Registrati">
                 </form>

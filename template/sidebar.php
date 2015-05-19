@@ -6,8 +6,10 @@
  */
 
 function printSidebar($db,$loggato, $tipo, $email) {
+    
     if (!$loggato) {
         ?>
+        
         <nav id="sidebar">
             <h3><a href="index.php?comando=profilo">Posta</a></h3>
             <ul>
@@ -33,20 +35,17 @@ function printSidebar($db,$loggato, $tipo, $email) {
                 session_start();
             ?>
             <nav id="sidebar">
-                <h3><a href="index.php?comando=profilo">Messaggi</a></h3>
+                <h3><a href="index.php?comando=profilo">Posta</a></h3>
                 <ul class="lista">
                     <?php 
                         
                         $num=$db->countMessagesById($_SESSION['id']);
                     ?>
-                    <li id="contatore">Elementi:  <?php echo $num; ?></li><br>
+                    <li id="contatore">Messaggi:  <?php echo $num; ?></li><br>
                     
                     <?php 
                     
-                    foreach ($elementi as $elemento) {
-                                    echo '<li class="element" id="element" hidden>' . $elemento->getNome() . '</li><br>';
-                                    echo '<li class="element" id="element" hidden>Quant: ' . $elemento->getQuantita() . '</li><br><br>';
-                                }
+                    
                     
                     ?>
                     
