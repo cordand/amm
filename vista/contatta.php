@@ -8,7 +8,7 @@ and open the template in the editor.
     <head>
         <meta charset="UTF-8">
          <link href="styles/myCss.css" rel="stylesheet">
-         <link href="styles/addItemCss.css" rel="stylesheet">
+         <link href="styles/contattaCss.css" rel="stylesheet">
           <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0.0" />
         <title>Contatta</title>
         <script>
@@ -60,11 +60,16 @@ and open the template in the editor.
               
            }else
            {
+               
+              $dest= $db->getIdDetails($db->getItemInserzionista($_POST['id']));
+              
            ?>
              <div class="itemForm">
             <h1>Invio messaggio</h1>
+            <h2>Destinatario: </h2>
+            <p><strong><?php echo $dest; ?></strong></p>
             <form id="newMessage" action="index.php?comando=contatta" method="post" onsubmit="return checkForm()">
-            <label for="descrizione">Messaggio:<textarea name="messaggio" id="messaggio" rows="10" cols="50"></textarea> </label><br><br>
+            <label for="descrizione"><h2>Messaggio:</h2><textarea name="messaggio" id="messaggio" rows="10" cols="50"></textarea> </label><br><br>
             <input type="hidden" name="id" value="<?php echo htmlspecialchars($_POST['id']) ?>">
             <?php if(isset($_POST['risposta'])&&$_POST['risposta']){
                 if(isset($_POST['destinatario'])){
@@ -77,7 +82,7 @@ and open the template in the editor.
             ?>
             
             <input type="hidden" name="send" value="true">
-            <button class="submit" type="submit" id="invia" name="invia">Invia</button>
+            <input class="submit" type="submit" id="invia" name="invia" value="Invia">
                     
                     
                     

@@ -1,0 +1,59 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 20-mag-2015, 11.41.32
+    Author     : amm
+*/
+.itemForm{
+    margin-right: auto; 
+    margin-left: auto;
+    margin-top:15px;
+    width:500px;
+    border:1px solid #e3e3e3;
+    padding-top: 0px;
+    padding-bottom: 10px;
+    border-radius: 15px; 
+    
+    text-align: center;
+    
+}
+
+.itemForm h1{
+    background: #089de3;
+     padding: 0px 0px 0px 0px;
+     height: 43px;
+     border-radius: 15px 15px 0px 0px; 
+     margin-top: 0px;
+     color:#333;
+     border-left: 5px;
+     text-align:center;
+     width: 100%;
+}
+textarea { resize: vertical; }
+h2{
+    margin-bottom: 10px;
+}
+p{
+    margin-top: 0px;
+}
+@media screen and (max-width: 1000px) {
+    .itemForm{
+        width:calc(100% - 250px);
+        margin-right:0px;
+        margin-left:0px;
+    }
+    textarea,label,input[type=text] { width:90%; }
+}
+@media screen and (max-width: 775px) {
+    .itemForm{
+        margin-top: 70px;
+        width: 98%;
+        margin-right: 0px;
+        margin-left: 0px;
+    }
+    
+textarea,label,input[type=text] { width:90%; }
+}

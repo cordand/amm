@@ -194,7 +194,7 @@ private function getProdName($id){
     $stmt->close();
     return $nome;
 }
-private function getIdDetails($id){
+ function getIdDetails($id){
     $stmt = $this->mysqli->stmt_init(); 
     $sql= "SELECT nome,cognome FROM users WHERE id = ?";
     $stmt->prepare($sql);
@@ -206,6 +206,7 @@ private function getIdDetails($id){
     $stmt->bind_result($nome,$cognome);
     $stmt->fetch();
     $stmt->close();
+    
     return $nome." ".$cognome;
 }
 
@@ -550,13 +551,14 @@ function getItemInserzionista($id){
 
 function restoreLoginDb($id,$token){
     $stmt = $this->mysqli->stmt_init();
-    $sql = "SELECT nome,cognome,email,tipo,id FROM users WHERE id = ? AND remember= ?";
+    $sql = "SELECT nome,cognome,email,tipo,id,remember FROM users WHERE id = ? AND remember LIKE ?";
     $stmt->prepare($sql);
-    $stmt->bind_param("is", $id,$token);
+    $param = "%{$token}%";
+    $stmt->bind_param("is", $id,$param);
     if(!$stmt->execute()){
         return false;
     }
-    $stmt->bind_result($nome,$cognome,$email,$tipo,$id);
+    $stmt->bind_result($nome,$cognome,$email,$tipo,$id,$token);
     //echo "WEEEE";
     $a  = array();
     while ($stmt->fetch()) {
@@ -565,21 +567,28 @@ function restoreLoginDb($id,$token){
         $a[]=$email;
         $a[]=$tipo;
         $a[]=$id;
+        $a[]=$token;
     }
-    if(count($a)==4){
+    if(count($a)==6){
         $stmt->close();
         return $a;
     }
     $stmt->close();
     return false;
 }
-
-function updateToken($id,$email){
+ 
+function updateToken($id,$email,$tokenOld,$remember){
+            
             $token = md5(date(DATE_ATOM));
+            if(strlen($tokenOld)>0)
+                $rem= str_replace($tokenOld, $token, $remember);
+            else{
+                $rem=$remember.";".$token;
+            }
             $stmt = $this->mysqli->stmt_init();
             $sql = ("UPDATE users SET ultimo_accesso = NOW(), remember = ? WHERE email = ?");
             $stmt->prepare($sql);
-            $stmt->bind_param("ss", $token,$email);
+            $stmt->bind_param("ss", $rem,$email);
             
             
             setcookie("n", $id, time() + 2592000);

@@ -25,19 +25,13 @@ class ElementiHome{
                while($data = $result->fetch_row()){
                     
                     $ret.='<div class="flex-item">';
-                   
+                    $ret.='<h3 class="nomeArticolo" ><a href="index.php?comando=view&id='.$data[0].'">';
+                    $ret.=$data[1];
+                    $ret.='</a></h3>';
                     $ret.='<a href="index.php?comando=view&id='.$data[0].'">';
                     $ret.='<img class="flex-image" src="'.$data[3].'" onerror="this.src=\'images/error.png\'">';
                     $ret.='</a>';
-                    $ret.='<a href="index.php?comando=view&id='.$data[0].'">';
-                    $ret.='<span>';
-                    $ret.='<div class="box">';
-                    $ret.='<div class="text">';
-                    $ret.=$data[1];
-                    $ret.=' </div>';
-                    $ret.='</div>';
-                    $ret.='</span>';
-                    $ret.='</a>';
+                    
                     $ret.='<p class="prezzo">';
                     $ret.=$data[4].'&euro;';
                     $ret.='</p>';

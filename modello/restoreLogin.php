@@ -84,7 +84,7 @@ function restoreLogin($db,$id, $token) {
             $_SESSION['tipo'] = $data[3];
             $_SESSION['id'] = $data[4];
             $_SESSION['carrello'] = new CarrelloClass();
-            $db->updateToken($data[4],$data[2]);
+            $db->updateToken($data[4],$data[2],$token,$data[5]);
 
             return 1;
         

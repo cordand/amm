@@ -32,7 +32,7 @@ and open the template in the editor.
                         <?php
                 }else{
                     ?>
-                       <div class="loginForm" > 
+                       <div class="loginForm errore" > 
                         <?php
                 }
             }else{
@@ -56,7 +56,7 @@ and open the template in the editor.
                                 document.getElementById(\'login\').style.height="200px";
                             </script>';
                         } else {
-                            echo '<p"> Iscrizione avvenuta! Ora puoi effettuare il login</p>';
+                            echo '<p id="errore"> Iscrizione avvenuta! Ora puoi effettuare il login</p>';
                             echo '<label>Email <input type="text" name="email" id="email" value="' . htmlspecialchars($_POST["email"]) . '" required></label><br><br>';
                             echo ' <script>
                                 document.getElementById(\'login\').style.height="200px";

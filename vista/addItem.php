@@ -8,6 +8,7 @@ and open the template in the editor.
     <head>
         <meta charset="UTF-8">
         <link href="styles/myCss.css" rel="stylesheet">
+        <link href="styles/contattaCss.css" rel="stylesheet">
         <link href="styles/addItemCss.css" rel="stylesheet">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0.0" />  
         
@@ -56,29 +57,40 @@ and open the template in the editor.
                     if($_GET['add']){
                         if (!empty($_POST['nome']) && !empty($_POST['descrizione'])&& !empty($_POST['prezzo'])) {
                             $nome=  htmlspecialchars($_POST['nome']);
-                            if(strlen($nome)<6){
-                                echo "ERRORE NOME";
-                                die();
-                            }
                             $descrizione=  htmlspecialchars($_POST['descrizione']);
-                            if(strlen($descrizione)<6){
-                                echo "ERRORE descrizione";
+                            $prezzo=  htmlspecialchars($_POST['prezzo']);
+                             $disponibili = htmlspecialchars($_POST['disponibili']);
+                            if(!empty($_POST['immagine']))
+                                $immagine = htmlspecialchars($_POST['immagine']);
+                            else {
+                                $immagine ="";
+                            }
+                            if(strlen($nome)<6){
+                                printbody("Nome non valido",$nome,$descrizione,$immagine,$prezzo,$disponibili);
                                 die();
                             }
-                            $prezzo=  htmlspecialchars($_POST['prezzo']);
-                            if(strlen($prezzo)==0){
-                                echo "ERRORE prezzo";
+                          
+                            if(strlen($descrizione)<6){
+                                 printbody("Descrizione non valida",$nome,$descrizione,$immagine,$prezzo,$disponibili);
+                                die();
+                            }
+                            
+                            if(strlen($prezzo)==0|| !is_numeric($prezzo)||$prezzo<=0){
+                                printbody("Prezzo non valido",$nome,$descrizione,$immagine,$prezzo,$disponibili);
                                 die();
                             }
                             if (!empty($_POST['immagine'])) {
+                                if (filter_var($_POST['immagine'], FILTER_VALIDATE_URL) === FALSE) {
+                                    printbody("Immagine non valida",$nome,$descrizione,$immagine,$prezzo,$disponibili);
+                                    die();
+                                    }
                                 $immagine = htmlspecialchars($_POST['immagine']);
                             }else{
                                 $immagine="";
                             }
-                            if (!empty($_POST['disponibili'])) {
-                                $disponibili = htmlspecialchars($_POST['disponibili']);
-                            }else{
-                                $disponibili=5;
+                            if (strlen($disponibili)==0||!is_numeric($disponibili)||$disponibili<=0) {
+                               printbody("Disponibilità non valida",$nome,$descrizione,$immagine,$prezzo,$disponibili);
+                               die();
                             }
 
 
@@ -108,11 +120,11 @@ and open the template in the editor.
                         
                         
                     }else{
-                        printBody();
+                        printBody("","","","",0,0);
                     }  
                     }else{
                 
-                        printBody();
+                        printBody("","","","",0,0);
             }
             }
             
@@ -122,22 +134,23 @@ and open the template in the editor.
                    <?php
             }
             
-            function printBody(){
+            function printBody($errore,$nome,$descrizione,$immagine,$prezzo,$disponibili){
                 ?>
                 <div class="itemForm">
-            <h1>Aggiunta nuovo elemento</h1>
+            <h1>Nuovo elemento</h1>
             <form id="newItem" action="index.php?comando=aggiungiItem&add=true" method="post" onsubmit="return checkForm()">
-                    <label for="nome">Nome:<input id="nome" name="nome" type="text"></label><br><br>
-                    <label for="categoria">Categoria:<select name="categoria" id=""categoria>
+                <p class="errore"> <?php echo $errore; ?>   </p>
+                <label for="nome">Nome:<br><input id="nome" name="nome" type="text" value="<?php echo $nome?>"></label><br><br>
+<!--                    <label for="categoria">Categoria:<select name="categoria" id=""categoria>
                         <option value="0">Primo</option>
                         <option value="1">Secondo</option>
 
-                        </select></label><br><br> 
-                    <label for="immagine">URL Immagine:<input name="immagine" id="immagine" type="text"></label><br><br>
-                    <label for="descrizione">Descrizione:<textarea name="descrizione" id="descrizione" rows="10" cols="50"></textarea> </label><br><br>
-                    <label for="disponibili">Disonibili:<input id="disponibili" name="disponibili" value="5" type="text"></label><br><br> 
-                    <label for="prezzo">Prezzo (€):<input id="prezzo" name="prezzo" type="text"></label><br><br> 
-                    <button class="submit" type="submit" id="invia" name="invia">Inserisci</button>
+                        </select></label><br><br> -->
+                    <label for="immagine">URL Immagine:<input name="immagine" id="immagine" type="text" value="<?php echo $immagine?>"></label><br><br>
+                    <label for="descrizione">Descrizione:<textarea name="descrizione" id="descrizione" rows="10" cols="50" ><?php echo $descrizione?></textarea> </label><br><br>
+                    <label for="disponibili">Disponibili:<input id="disponibili" name="disponibili" value="5" type="text" value="<?php echo $disponibili?>"></label><br><br> 
+                    <label for="prezzo">Prezzo (€):<input id="prezzo" name="prezzo" type="text" value="<?php echo $prezzo?>"></label><br><br> 
+                    <input class="submit" type="submit" id="invia" name="invia" value="Inserisci">
                     
                     
                     

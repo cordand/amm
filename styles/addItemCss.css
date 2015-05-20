@@ -7,43 +7,52 @@ and open the template in the editor.
     Created on : 31-mar-2015, 20.22.46
     Author     : amm
 */
-.itemForm{
-    margin-right: auto; 
-    margin-left: auto;
-    margin-top: 20px;
-}
 
-.itemForm form{
-    min-height: 100px; 
-    padding-top: 30px;
-    padding-bottom: 50px;
-
-}
-.itemForm form .submit {
-    height: 23px;
-    vertical-align: bottom;
-    background: #ddb820; 
-    color: #fff;
-    border: 1px solid #FFF;
-    border-radius: 5px;
-}
-.itemForm form label {
-    display: inline-block;
-
-    clear: left;
-    width: 250px;
-    text-align: center;
-}
-
-.itemForm form input,.itemForm form textarea,.itemForm form select
-
-{
+#newItem input[type=text],textarea{
+    
     display: inline-block;
     float: left;
     clear: left;
     text-align: left;
-    width: 250px;
+    width: 350px;
     border: 2px solid #eee;
     padding: 0px 0 3px 0;
     margin-bottom: -1px;
+
+}
+#newItem label{
+    display: inline-block;
+
+    clear: left;
+    width: 350px;
+    text-align: center;
+}
+
+textarea{
+    resize: vertical;
+}
+.errore{
+    color:red;
+}
+@media screen and (max-width: 1000px) {
+    .itemForm{
+        width:500px;
+        margin-right: auto; 
+        margin-left: auto;
+    }
+    
+}
+
+
+@media screen and (max-width: 775px) {
+    #newItem input[type=text],textarea{
+        width:98%;
+    }
+    #newItem label{
+        width:98%;
+    }
+    .itemForm{
+        width:98%;
+    }
+    
 }

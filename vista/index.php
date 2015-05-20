@@ -10,8 +10,8 @@ and open the template in the editor.
 
         <link href="styles/myCss.css" rel="stylesheet">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0.0" />  
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-        <script type='text/javascript'> var $_POST = <?php echo !empty($_POST)?json_encode($_POST):'null';?>; </script>
+        <script src="scripts/jquery.min.js"></script>
+        <script type='text/javascript'> var $_REQUEST = <?php echo !empty($_REQUEST)?json_encode($_REQUEST):'null';?>; </script>
      <script type='text/javascript'>
        
      </script>
@@ -34,8 +34,8 @@ and open the template in the editor.
                     return;
                 var $entries = $('.flex-container'),
                         $loader = $('.ajaxloader', $entries).show();
-                if($_POST!=null&&($_POST['query']!=null))
-                    $query=($_POST['query']);
+                if($_REQUEST!=null&&($_REQUEST['query']!=null))
+                    $query=($_REQUEST['query']);
                 else 
                     $query="";
                 
@@ -97,8 +97,8 @@ and open the template in the editor.
             <ul class="flex-container">
                 <?php
                 $el = new ElementiHome($db);
-                if (isset($_POST['query'])) {
-                    echo $el->getElementi(-1, $_POST['query']);
+                if (isset($_REQUEST['query'])) {
+                    echo $el->getElementi(-1, $_REQUEST['query']);
                 } else {
                     
                     echo $el->getElementi(-1, "");

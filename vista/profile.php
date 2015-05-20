@@ -12,7 +12,7 @@ and open the template in the editor.
         <title>Profilo </title>
         
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0.0" /> 
-       <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+       <script src="scripts/jquery.min.js"></script>
         <script>$varia =0;
         </script>
         <script>
@@ -54,9 +54,9 @@ and open the template in the editor.
             goSidebar($db);
             
             ?>
-            <h1>Informazioni utente</h1>
+            
             <div id="tabella">
-                 
+                 <h1>Informazioni utente</h1>
                 <?php
                 if(isset($_SESSION['email'])){
                 $data=$db->userDetails($_SESSION['email']);}
@@ -86,8 +86,9 @@ and open the template in the editor.
         ?>
             </table>
             </div>
-            <h1>Messaggi</h1>
+            
          <div id="tabellaMessaggi">
+             <h1>Messaggi</h1>
                <table>
                 <tr>
                 <th>Stato</th>
@@ -115,7 +116,15 @@ and open the template in the editor.
                           echo "<td>";
                           echo $temp->getLetto()==1 ? '<img src="images/read_message.png" width="32" height="32">' : '<img src="images/message.png" width="32" height="32">'   . "</td>";
                           echo "<td class=\"prodotto\">";
-                          echo strlen($temp->getNomeP())>12?substr($temp->getNomeP(),0,12)."...":$temp->getNomeP() . "</td>";
+                          if(strlen($temp->getNomeP())==0){
+                              $nomeP="Non trovato";
+                          }else if(strlen($temp->getNomeP())<13){
+                              $nomeP=getNomeP;
+                          }else{
+                              $nomeP=substr($temp->getNomeP(),0,12)."...";
+                              
+                          }
+                          echo $nomeP; "</td>";
                           echo "<td>";
                           echo strlen($temp->getNomeD())>12?substr($temp->getNomeD(),0,12)."...":$temp->getNomeD() . "</td>";
                           echo "<td>";

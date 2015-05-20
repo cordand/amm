@@ -21,10 +21,8 @@ function printSidebar($db,$loggato, $tipo, $email) {
         if ($tipo) {
             ?>
             <nav id="sidebar">
-                <h3><form action="index.php?comando=cerca" method="post">
-                    <input type="hidden" name="query" value="::<?php echo $_SESSION['id']?>" />
-                    <button>Vetrina</button>
-                </form></h3>
+                
+                <h3><a href="index.php?comando=cerca&query=::<?php echo $_SESSION['id']?>">Vetrina</a></h3>
                 <ul>
                     <li id="contatore">Elementi:  <?php echo $db->getNumeroInserzioni($_SESSION['id']); ?></li>
                 </ul>   

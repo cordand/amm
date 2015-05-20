@@ -30,15 +30,17 @@ and open the template in the editor.
            $msg=$db->getMessaggioById($_GET['id'],$_SESSION['id']);
            if(!$msg){
                echo "Messaggio non trovato";
+               die();
            }else{
            ?>
             <div class="messaggio">
+                <h1>Messaggio</h1>
                 <table>
                     <tr>
                         <th>Prodotto</th>
                     </tr>
                     <tr>
-                        <td><?php echo $msg->getNomeP()?></td>
+                        <td><?php echo strlen($msg->getNomeP())>0?$msg->getNomeP():"Non trovato"?></td>
                     </tr>
                 </table>
                 <table>

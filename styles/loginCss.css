@@ -127,5 +127,6 @@ body{
 @media screen and (max-width: 775px) {
     .loginForm{
         margin-top: 70px;
+        
     }
 }

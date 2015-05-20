@@ -19,6 +19,15 @@ and open the template in the editor.
     
 }*/
 
+#tabella,#tabellaMessaggi{
+    width: calc(100% - 250px);
+    margin-top: 16px;
+    border:1px solid #e3e3e3;
+   
+    border-radius: 15px; 
+    
+}
+
 table {
    
   border-spacing: 0px;
@@ -27,21 +36,38 @@ table {
   -webkit-border-radius: 10px;
   border-radius: 10px;
   padding: 0px;
-  width: calc(100% - 250px);
-
+  text-align: left;
+  width: 99%;
   
   margin-right: 10px;
   margin-left:10px;
   margin-top:20px;
+  padding-bottom: 10px;
 }
+
+#tabella h1,#tabellaMessaggi h1{
+     background: #089de3;
+     padding: 0px 0px 0px 0px;
+     height: 43px;
+     border-radius: 15px 15px 0px 0px; 
+     margin-top: 0px;
+     color:#333;
+     border-left: 5px;
+     text-align:center;
+     width: 100%;
+     
+}
+
 #tabellaMessaggi tr.clickable-row{
     
     cursor: pointer;
+   
 
 }
 #tabellaMessaggi tr.clickable-row:hover{
     
     background: #cbcbcb;
+    
 
 }
 h1{
@@ -73,5 +99,11 @@ h1{
   padding-right: 0px;
   text-align: center;
 }
+#tabella,#tabellaMessaggi{
+    width: 100%;
+
+    
+}
+
     
 }
