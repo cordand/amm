@@ -7,6 +7,7 @@ and open the template in the editor.
 <html>
     <head>
         <meta charset="UTF-8">
+        
         <link href="styles/myCss.css" rel="stylesheet">
         <link href="styles/leggiCss.css" rel="stylesheet">
         <title>Leggi Messaggio</title>
@@ -67,7 +68,7 @@ and open the template in the editor.
                         <td><?php echo $msg->getData()?></td>
                     </tr>
                 </table>
-                <table>
+                <table  class="testo">
                     <tr>
                         <th>Testo</th>
                     </tr>
@@ -88,13 +89,20 @@ and open the template in the editor.
                 <input type="hidden" name="id" value="<?php echo $msg->getIdProdotto() ?>">
                 <input type="hidden" name="risposta" value="true">
                 <input type="hidden" name="destinatario" value="<?php echo $msg->getIdMittente() ?>">
-                <input type="submit" value="Rispondi">
+                <input type="submit" class="rispondi" value="Rispondi">
             </form>
             <?php
             
             
             }
             ?>
+        </div>
+            <div class="spazio">
+                
+            </div>
+             <?php 
+            printFooter();
+        ?>
         </div>
             
     </body>

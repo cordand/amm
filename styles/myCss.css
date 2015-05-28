@@ -223,7 +223,10 @@ input[type=submit]:hover {
        border: 0;  /* Small centering fix for Firefox */
 }
 
-
+.spazio{
+    height: 40px;
+    
+}
 
 
 
@@ -326,9 +329,7 @@ padding-bottom: 15px;
 }
 
 
-body{
-    margin-top:0px;
-}
+
 /*
    FINE HEADER
 */
@@ -387,7 +388,7 @@ button:hover {
 body{
     //background-image: url('../images/tile.jpg');
     background-color: #d9d9d9;
-    
+    margin-top:0px;
     background-repeat: repeat;
 }
 
@@ -402,7 +403,7 @@ body{
     overflow: hidden;
     margin: 0 auto;
     
-    padding-bottom:40px;
+    //padding-bottom:40px;
     //text-align: center;
     //border-radius: 15px 15px 15px 15px;
 }
@@ -448,7 +449,7 @@ body{
    flex-wrap: wrap;
    -webkit-flex-flow: row wrap;
    flex-flow: row wrap;
-
+   padding-bottom: 40px;
 }
 
 .flex-item {
@@ -500,8 +501,24 @@ body{
      text-align:center;  
 }
 
+.clearer{
+    clear:both;
+    height: 50px;
+    background-color: #d9d9d9;
+}
 
+.footer{
+    padding-top: 25px;
+    padding-bottom: 25px;
+    text-align: center;
+    //margin-right: 20px;
+    color: #7d7d7d;
+    
+}
 
+.footerImg{
+    text-align: center;
+}
 
 /*
     FINE LAYOUT GRIGLIA

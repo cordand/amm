@@ -3,8 +3,8 @@
 // db.php
 
 $dbhost = "localhost";
-$dbuser = "root";
-$dbpass = "davide";
+$dbuser = "cordaAndrea";
+$dbpass = "falco4603";
 
 class ManageDatabase{
     var $mysqli;
@@ -17,7 +17,9 @@ class ManageDatabase{
     }
 
     function dbConnect($db = "") {
+        
     global $dbhost, $dbuser, $dbpass;
+    $db="amm15_cordaAndrea";
     $this->mysqli = new mysqli();
     $this->mysqli->connect($dbhost, $dbuser,$dbpass, $db);
     if($this->mysqli->connect_errno != 0){

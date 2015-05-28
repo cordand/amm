@@ -11,15 +11,15 @@ and open the template in the editor.
         <link href="styles/myCss.css" rel="stylesheet">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0.0" />  
         <script src="scripts/jquery.min.js"></script>
-        <script type='text/javascript'> var $_REQUEST = <?php echo !empty($_REQUEST)?json_encode($_REQUEST):'null';?>; </script>
-     <script type='text/javascript'>
-       
-     </script>
+        <script type='text/javascript'> var $_REQUEST = <?php echo!empty($_REQUEST) ? json_encode($_REQUEST) : 'null'; ?>;</script>
+        <script type='text/javascript'>
+
+        </script>
         <script>
             $varia = 10;
             $fine = false;
-            
-            
+
+
         </script>
         <script>
             $(document).ready(function () {
@@ -34,25 +34,25 @@ and open the template in the editor.
                     return;
                 var $entries = $('.flex-container'),
                         $loader = $('.ajaxloader', $entries).show();
-                if($_REQUEST!=null&&($_REQUEST['query']!=null))
-                    $query=($_REQUEST['query']);
-                else 
-                    $query="";
-                
-                
-                $.get('/vista/getitems.php', {ultimo: $varia, query:$query}, function (data) {
-                    if (data !== 0){
+                if ($_REQUEST != null && ($_REQUEST['query'] != null))
+                    $query = ($_REQUEST['query']);
+                else
+                    $query = "";
+
+
+                $.get('/vista/getitems.php', {ultimo: $varia, query: $query}, function (data) {
+                    if (data !== 0) {
                         if ($varia === 10)
                             $varia += 10;
                         else
                             $varia += 20;
                         $entries.append(data).append($loader.hide());
                     }
-                    else{
+                    else {
                         $fine = true;
                     }
-                    
-                    
+
+
                 });
             }
             ;
@@ -61,7 +61,7 @@ and open the template in the editor.
 
 
             $(window).scroll(function () {
-                if ($(window).scrollTop() >= $(document).height() - $(window).height() -100) {
+                if ($(window).scrollTop() >= $(document).height() - $(window).height() - 100) {
                     $('div.ajaxloader').show('slow');
                     loadData($varia);
                 }
@@ -100,7 +100,7 @@ and open the template in the editor.
                 if (isset($_REQUEST['query'])) {
                     echo $el->getElementi(-1, $_REQUEST['query']);
                 } else {
-                    
+
                     echo $el->getElementi(-1, "");
                 }
                 $db->close();
@@ -110,12 +110,14 @@ and open the template in the editor.
 
             </ul>
             <?php
+            printFooter();
             ?>
 
         </div>            
         <div class="ajaxloader">
 
         </div>
+
 
 
 

@@ -137,7 +137,9 @@ and open the template in the editor.
 
             </div>
 
-
+          <?php 
+            printFooter();
+        ?>       
         </div>
 
 

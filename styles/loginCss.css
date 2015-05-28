@@ -39,6 +39,7 @@ body{
     min-height: 100px; 
     
     padding-bottom: 50px;
+    
 
 }
 
@@ -122,6 +123,11 @@ body{
     clear: left;
 
     text-align: center;
+}
+
+.registerForm{
+    
+    margin-bottom: 40px;
 }
 
 @media screen and (max-width: 775px) {

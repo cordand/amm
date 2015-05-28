@@ -23,6 +23,12 @@ and open the template in the editor.
     border:1px solid #e3e3e3;
     margin-top: 15px;
     border-radius:  0px 0px 15px 15px; 
+    
+    
+}
+.spazio{
+    padding-top: 40px;
+    
 }
 
 #contenuto h1{

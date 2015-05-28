@@ -22,7 +22,7 @@ function printSidebar($db,$loggato, $tipo, $email) {
             ?>
             <nav id="sidebar">
                 
-                <h3><a href="index.php?comando=cerca&query=::<?php echo $_SESSION['id']?>">Vetrina</a></h3>
+                <h3><a href="index.php?comando=cerca&amp;query=::<?php echo $_SESSION['id']?>">Vetrina</a></h3>
                 <ul>
                     <li id="contatore">Elementi:  <?php echo $db->getNumeroInserzioni($_SESSION['id']); ?></li>
                 </ul>   

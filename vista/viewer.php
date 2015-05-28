@@ -130,10 +130,13 @@ and open the template in the editor.
                 }
             ?>
 
+                    <div class="spazio">
+                        </div>
 
 
-
-
+         <?php 
+            printFooter();
+        ?>                
         </div>
         <?php
         function printNonTrovato(){

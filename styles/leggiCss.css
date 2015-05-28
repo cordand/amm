@@ -32,11 +32,10 @@ div.messaggio h2{
      text-align:center;
     
 }
-input[type="submit"]{
-    margin-top:10px;
-    
-    
+.testo{
+    margin-bottom: 15px;
 }
+
 table {
    
   border-spacing: 0px;

@@ -162,11 +162,15 @@ and open the template in the editor.
                 
             }
             
-            
+              
+            printFooter();
+          
             ?>
                 
            
         </div>
+                          
+        
 
     </body>
 
