@@ -1,5 +1,6 @@
 <?php
 
+
 // db.php
 
 $dbhost = "localhost";
@@ -8,6 +9,7 @@ $dbhost = "localhost";
 
 $dbuser = "cordaAndrea";
 $dbpass = "falco4603";
+
 class ManageDatabase{
     var $mysqli;
     var $db,$msg;

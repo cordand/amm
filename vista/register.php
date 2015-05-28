@@ -130,6 +130,7 @@ and open the template in the editor.
 
                     <input type="submit" class="submit" value="Registrati">
 
+                    
 
 
                 </form>

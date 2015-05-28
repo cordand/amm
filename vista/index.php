@@ -94,6 +94,7 @@ and open the template in the editor.
 
 
 
+            
             <ul class="flex-container">
                 <?php
                 $el = new ElementiHome($db);

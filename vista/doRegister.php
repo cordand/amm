@@ -1,4 +1,5 @@
 <?php
+
 include_once 'modello/ManageDatabase.php';
 include_once 'modello/ErrorCode.php';
 include_once 'modello/UserReg.php';

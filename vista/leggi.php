@@ -82,6 +82,7 @@ and open the template in the editor.
                     $db->setLetto($msg->getIdMessaggio(),$_SESSION['id']);
                 }
            }
+           
                 
             if($msg->getIdMittente()!=$_SESSION['id']){
                 ?>

@@ -7,6 +7,7 @@
  * and open the template in the editor.
  */
 
+
  include  $_SERVER['DOCUMENT_ROOT'].'/modello/restoreLogin.php';
  include $_SERVER['DOCUMENT_ROOT'].'/modello/ElementiHome.php';
  $db = new ManageDatabase("mysite");

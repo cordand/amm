@@ -71,6 +71,7 @@ and open the template in the editor.
                             <input type="submit" class="submit" value="Login">
                         </form>
 
+                            
                     </div>
 
                     <div class="registerForm">
