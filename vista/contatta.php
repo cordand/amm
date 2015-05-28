@@ -65,11 +65,11 @@ and open the template in the editor.
               
            ?>
              <div class="itemForm">
-            <h1>Invio messaggio</h1>
-            <h2>Destinatario: </h2>
+            <h2>Invio messaggio</h2>
+            <h3>Destinatario: </h3>
             <p><strong><?php echo $dest; ?></strong></p>
             <form id="newMessage" action="index.php?comando=contatta" method="post" onsubmit="return checkForm()">
-            <label for="descrizione"><h2>Messaggio:</h2><textarea name="messaggio" id="messaggio" rows="10" cols="50"></textarea> </label><br><br>
+            <label for="descrizione"><h3>Messaggio:</h3><textarea name="messaggio" id="messaggio" rows="10" cols="50"></textarea> </label><br><br>
             <input type="hidden" name="id" value="<?php echo htmlspecialchars($_POST['id']) ?>">
             <?php if(isset($_POST['risposta'])&&$_POST['risposta']){
                 if(isset($_POST['destinatario'])){

@@ -15,7 +15,7 @@ and open the template in the editor.
     width:300px;
     border:1px solid #e3e3e3;
     padding-top: 0px;
-    border-radius: 15px; 
+    border-radius: 0px 0px 15px 15px; 
     margin-top: 30px;
 }
 body{
@@ -43,9 +43,9 @@ body{
 }
 
 .loginForm form h3,.registerForm form h3{
-     background: #089de3;
+     background: #de6868;
      padding: 10px 5px 10px 5px;
-     border-radius: 15px 15px 0px 0px; 
+     border-radius: 0px; 
      margin-top: 0px;
      color:white;
      border-left: 5px;

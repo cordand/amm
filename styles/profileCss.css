@@ -21,9 +21,9 @@ and open the template in the editor.
 
 #tabella,#tabellaMessaggi{
     width: calc(100% - 250px);
-    margin-top: 16px;
+    margin-top: 14px;
     border:1px solid #e3e3e3;
-   
+    margin-left: 10px;
     border-radius: 15px; 
     
 }
@@ -45,13 +45,13 @@ table {
   padding-bottom: 10px;
 }
 
-#tabella h1,#tabellaMessaggi h1{
-     background: #089de3;
+#tabella h2,#tabellaMessaggi h2{
+     background: #de6868;
      padding: 0px 0px 0px 0px;
      height: 43px;
-     border-radius: 15px 15px 0px 0px; 
+     border-radius:  0px; 
      margin-top: 0px;
-     color:#333;
+     color:white;
      border-left: 5px;
      text-align:center;
      width: 100%;

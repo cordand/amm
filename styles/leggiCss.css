@@ -11,25 +11,30 @@ and open the template in the editor.
 
 div.messaggio{
  border:1px solid #e3e3e3;
-  
+  margin-left: 10px;
   -moz-border-radius: 10px;
   -webkit-border-radius: 10px;
   border-radius: 15px;
   padding: 0px;
   text-align: center;
   padding-bottom:10px;
-  margin-top: 16px;
+  margin-top: 15px;
   width: calc(100% - 250px);
 }
-div.messaggio h1{
-    background: #089de3;
-     height: 42px;
-padding-top: 1px;
-     border-radius: 15px 15px 0px 0px; 
+div.messaggio h2{
+    background: #de6868;
+     height: 35px;
+     padding-top: 7px;
+
      margin-top: 0px;
-     color:#333;
+     color:white;
      border-left: 5px;
      text-align:center;
+    
+}
+input[type="submit"]{
+    margin-top:10px;
+    
     
 }
 table {
@@ -38,7 +43,7 @@ table {
   background: ghostwhite;
   -moz-border-radius: 10px;
   -webkit-border-radius: 10px;
-  border-radius: 10px;
+  border-radius: 0px 0px 10px 10px;
   padding: 0px;
   width: calc(98%);
 

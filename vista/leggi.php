@@ -34,7 +34,7 @@ and open the template in the editor.
            }else{
            ?>
             <div class="messaggio">
-                <h1>Messaggio</h1>
+                <h2>Messaggio</h2>
                 <table>
                     <tr>
                         <th>Prodotto</th>
@@ -81,10 +81,7 @@ and open the template in the editor.
                     $db->setLetto($msg->getIdMessaggio(),$_SESSION['id']);
                 }
            }
-                ?>
-            
-        </div>
-            <?php
+                
             if($msg->getIdMittente()!=$_SESSION['id']){
                 ?>
             <form action="index.php?comando=contatta" method="post">
@@ -98,5 +95,7 @@ and open the template in the editor.
             
             }
             ?>
+        </div>
+            
     </body>
 </html>

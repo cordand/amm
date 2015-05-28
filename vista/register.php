@@ -110,19 +110,19 @@ and open the template in the editor.
                         echo '<label>Password<input type="password" name="password" id="password" required></label><br><br>';
                         echo '<label>Conferma Password <input type="password" name="confPassword" id="confPassword" required></label><br><br>';
                         if($value->getSesso()==0){
-                            echo '<label id="sesso">Maschio  <input type="radio" name="sesso" id="sesso" value="uomo" checked="true"></label><br>';
-                            echo '<label id="sesso">Femmina <input type="radio" name="sesso" id="sesso" value="donna" ></label><br><br>';
+                            echo '<label >Maschio  <input type="radio" name="sesso0" id="sesso0" value="uomo" checked></label><br>';
+                            echo '<label >Femmina <input type="radio" name="sesso1" id="sesso1" value="donna" ></label><br><br>';
                         }
                         else{
-                            echo '<label id="sesso">Maschio  <input type="radio" name="sesso" id="sesso" value="uomo" ></label><br>';
-                            echo '<label id="sesso">Femmina <input type="radio" name="sesso" id="sesso" value="donna" checked="true"></label><br><br>';
+                            echo '<label ">Maschio  <input type="radio" name="sesso0" id="sesso0" value="uomo" ></label><br>';
+                            echo '<label >Femmina <input type="radio" name="sesso1" id="sesso1" value="donna" checked></label><br><br>';
                         }
                         if($value->getTipo()==0){
-                            echo '<label id="tipo">Standard  <input type="radio" name="tipo" id="tipo" value="0" checked="true"></label><br>';
-                            echo '<label id="tipo">Commerciante <input type="radio" name="tipo" id="tipo" value="1" ></label><br><br>';
+                            echo '<label>Standard  <input type="radio" name="tipo0" id="tipo0" value="0" checked></label><br>';
+                            echo '<label>Commerciante <input type="radio" name="tipo1" id="tipo1" value="1" ></label><br><br>';
                         }else{
-                            echo '<label id="tipo">Standard  <input type="radio" name="tipo" id="tipo" value="0" ></label><br>';
-                            echo '<label id="tipo">Commerciante <input type="radio" name="tipo" id="tipo" value="1" checked="true"></label><br><br>';
+                            echo '<label>Standard  <input type="radio" name="tipo0" id="tipo0" value="0" ></label><br>';
+                            echo '<label>Commerciante <input type="radio" name="tipo1" id="tipo1" value="1" checked></label><br><br>';
                           
                         }
                     

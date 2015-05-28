@@ -19,17 +19,18 @@ and open the template in the editor.
     width: calc(100% - 250px);
     min-height: 400px;
     //padding-left:10px;
+    margin-left: 10px; 
     border:1px solid #e3e3e3;
     margin-top: 15px;
-    border-radius: 15px; 
+    border-radius:  0px 0px 15px 15px; 
 }
 
 #contenuto h1{
-    background: #089de3;
+    background: #de6868;
      //padding: 10px 5px 10px 5px;
     padding-top: 5px;
     padding-bottom: 5px;
-     border-radius: 15px 15px 0px 0px; 
+    
      margin-top: 0px;
      color:white;
      //border-left: 5px;

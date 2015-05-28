@@ -56,7 +56,7 @@ and open the template in the editor.
             ?>
             
             <div id="tabella">
-                 <h1>Informazioni utente</h1>
+                 <h2>Informazioni utente</h2>
                 <?php
                 if(isset($_SESSION['email'])){
                 $data=$db->userDetails($_SESSION['email']);}
@@ -88,7 +88,7 @@ and open the template in the editor.
             </div>
             
          <div id="tabellaMessaggi">
-             <h1>Messaggi</h1>
+             <h2>Messaggi</h2>
                <table>
                 <tr>
                 <th>Stato</th>
@@ -112,9 +112,9 @@ and open the template in the editor.
                         echo '<td colspan="6" class="center"><b>Non sono ancora presenti messaggi.</b></td>';
                     }
                     foreach ($messaggi as $temp){
-                          echo "<tr class='clickable-row' data-href='index.php?comando=leggi&id=".$temp->getIdMessaggio()."'>";
+                          echo "<tr class='clickable-row' data-href='index.php?comando=leggi&amp;id=".$temp->getIdMessaggio()."'>";
                           echo "<td>";
-                          echo $temp->getLetto()==1 ? '<img src="images/read_message.png" width="32" height="32">' : '<img src="images/message.png" width="32" height="32">'   . "</td>";
+                          echo $temp->getLetto()==1 ? '<img src="images/read_message.png" width="32" height="32" alt="simbolo" >' : '<img src="images/message.png" width="32" height="32" alt="simbolo" >'   . "</td>";
                           echo "<td class=\"prodotto\">";
                           if(strlen($temp->getNomeP())==0){
                               $nomeP="Non trovato";
@@ -169,11 +169,11 @@ and open the template in the editor.
 //                    }
                     
                     if($pagina!=0){
-                        echo "<a href=index.php?comando=profilo&pagina=".($pagina-1).">Indietro</a>";
+                        echo "<a href=index.php?comando=profilo&amp;pagina=".($pagina-1).">Indietro</a>";
                     }
                     echo " Pagina: ".($pagina+1)."/$totPagine ";
                     if($pagina!=($totPagine-1)){
-                        echo "<a href=index.php?comando=profilo&pagina=".($pagina+1).">Avanti</a>";
+                        echo "<a href=index.php?comando=profilo&amp;pagina=".($pagina+1).">Avanti</a>";
                     }
                     
                     
@@ -203,6 +203,6 @@ and open the template in the editor.
             
             
             
-        </div>
+        
     </body>
 </html>

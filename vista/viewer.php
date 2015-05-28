@@ -62,7 +62,7 @@ and open the template in the editor.
                     <div id="contenuto">
                         <h1 id="titolo"><?php echo $nome ?></h1>
                         <div id="descrizione">
-                            <img src="<?php echo $immagine ?>" onerror="this.src='images/error.png'">
+                            <img src="<?php echo $immagine ?>" onerror="this.src='images/error.png'" alt="Immagine">
                             <p><?php echo $descrizione ?>
                             </p>
                             <p>

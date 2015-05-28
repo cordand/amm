@@ -9,25 +9,26 @@ and open the template in the editor.
 */
 /* unvisited link */
 a:link {
-    color: #333;
+    color: white;
     text-decoration: none;
 }
 
 /* visited link */
 a:visited {
-    color: #333;
+    color: white;
     text-decoration: none;
 }
 
 /* mouse over link */
 a:hover {
-    color: #333;
-    text-decoration: none;
+    color: white;
+    
+    font-weight: bold;
 }
 
 /* selected link */
 a:active {
-    color: #333;
+    color: white;
     text-decoration: none;
 }
 
@@ -154,8 +155,8 @@ nav ul ul li a:hover {
 }
 #searchbox
 {
-    background-color: #eaf8fc;
-    background-image: -webkit-linear-gradient(top, #ff9c3c 0%, #ef7701 100%);
+    background-color: #de6868;
+    //background-image: -webkit-linear-gradient(top, #ff9c3c 0%, #ef7701 100%);
     border-radius: 35px;    
     border-width: 1px;
     border-style: solid;
@@ -238,22 +239,25 @@ input[type=submit]:hover {
 
 }
 .navbar.loggedin li:hover{
-    background: -webkit-linear-gradient(top, #ef7701 0%, #ff9c3c 100%);
+    /*    background: -webkit-linear-gradient(top, #ef7701 0%, #ff9c3c 100%);
     background: linear-gradient(top, #ef7701 0%, #ff9c3c 100%);
     background: -moz-linear-gradient(top, #ef7701 0%, #ff9c3c 100%);
-    background: -o-linear-gradient(top, #ef7701 0%, #ff9c3c 100%);
+    background: -o-linear-gradient(top, #ef7701 0%, #ff9c3c 100%);*/
+    background-color: #df5d5d;
 }
 .navbar li:hover{
-    background: -webkit-linear-gradient(top, #ef7701 0%, #ff9c3c 100%);
+    /*    background: -webkit-linear-gradient(top, #ef7701 0%, #ff9c3c 100%);
     background: linear-gradient(top, #ef7701 0%, #ff9c3c 100%);
     background: -moz-linear-gradient(top, #ef7701 0%, #ff9c3c 100%);
-    background: -o-linear-gradient(top, #ef7701 0%, #ff9c3c 100%);
+    background: -o-linear-gradient(top, #ef7701 0%, #ff9c3c 100%);*/
+    background-color: #df5d5d;
 }
 .navbar.loggedin.commerciante li:hover{
-    background: -webkit-linear-gradient(top, #ef7701 0%, #ff9c3c 100%);
+/*    background: -webkit-linear-gradient(top, #ef7701 0%, #ff9c3c 100%);
     background: linear-gradient(top, #ef7701 0%, #ff9c3c 100%);
     background: -moz-linear-gradient(top, #ef7701 0%, #ff9c3c 100%);
-    background: -o-linear-gradient(top, #ef7701 0%, #ff9c3c 100%);
+    background: -o-linear-gradient(top, #ef7701 0%, #ff9c3c 100%);*/
+    background-color: #df5d5d;
 }
 .clickable{
     text-align: center;
@@ -265,38 +269,41 @@ input[type=submit]:hover {
     
     width: 50%;
     float: left;
-    background: -webkit-linear-gradient(top, #ff9c3c 0%, #ef7701 100%);
+/*    background: -webkit-linear-gradient(top, #ff9c3c 0%, #ef7701 100%);
     background: linear-gradient(top, #ff9c3c 0%, #ef7701 100%);
     background: -moz-linear-gradient(top, #ff9c3c 0%, #ef7701 100%);
-    background: -o-linear-gradient(top, #ff9c3c 0%, #ef7701 100%);
+    background: -o-linear-gradient(top, #ff9c3c 0%, #ef7701 100%);*/
+    background-color: #de6868;
     padding-top: 0px;
     padding-bottom: 0px;
     font-size: 1.5em;
-    color:#333;
+    color:white;
 }
 .navbar.loggedin.commerciante li {
     width: 25%;
     float: left;
-    background: -webkit-linear-gradient(top, #ff9c3c 0%, #ef7701 100%);
+/*    background: -webkit-linear-gradient(top, #ff9c3c 0%, #ef7701 100%);
     background: linear-gradient(top, #ff9c3c 0%, #ef7701 100%);
     background: -moz-linear-gradient(top, #ff9c3c 0%, #ef7701 100%);
-    background: -o-linear-gradient(top, #ff9c3c 0%, #ef7701 100%);
+    background: -o-linear-gradient(top, #ff9c3c 0%, #ef7701 100%);*/
+    background-color: #de6868;
     padding-top: 0px;
     padding-bottom: 0px;
     font-size: 1.5em;
-    color:#333;
+    color:white;
 }
 .navbar.loggedin li {
     width: 33.33%;
     float: left;
-    background: -webkit-linear-gradient(top, #ff9c3c 0%, #ef7701 100%);
+/*    background: -webkit-linear-gradient(top, #ff9c3c 0%, #ef7701 100%);
     background: linear-gradient(top, #ff9c3c 0%, #ef7701 100%);
     background: -moz-linear-gradient(top, #ff9c3c 0%, #ef7701 100%);
-    background: -o-linear-gradient(top, #ff9c3c 0%, #ef7701 100%);
+    background: -o-linear-gradient(top, #ff9c3c 0%, #ef7701 100%);*/
+background-color: #de6868;
     padding-top: 0px;
     padding-bottom: 0px;
     font-size: 1.5em;
-    color:#333;
+    color:white;
 }
 
 
@@ -308,13 +315,14 @@ padding-bottom: 15px;
     text-align: center;
 }
 .ultimo{
-    border-radius: 15px 15px 15px 0px;
+    //border-radius: 15px 15px 15px 0px;
 }
 .primo{
-    border-radius: 15px 15px 0px 15px;
+    //border-radius: 15px 15px 0px 15px;
 }
 .centrale{
-    border-radius: 15px 15px 0px 0px;
+    //border-radius: 15px 15px 0px 0px;
+    
 }
 
 
@@ -340,12 +348,12 @@ body{
     
     border:1px solid #e3e3e3;
    
-    border-radius: 15px; 
+    border-radius: 0px 0px 15px 15px; 
 }
 #sidebar h3{
-     background: #089de3;
+     background: #de6868;
      padding: 10px 5px 10px 5px;
-     border-radius: 15px 15px 0px 0px; 
+     border-radius: 0px; 
      margin-top: 0px;
      color:white;
      border-left: 5px;
@@ -378,7 +386,8 @@ button:hover {
 
 body{
     //background-image: url('../images/tile.jpg');
-    background-color: white;
+    background-color: #d9d9d9;
+    
     background-repeat: repeat;
 }
 
@@ -389,6 +398,7 @@ body{
     background-color: white;
     min-width: 280px;
     width: 98%;
+    
     overflow: hidden;
     margin: 0 auto;
     
@@ -454,7 +464,7 @@ body{
     font-size: 1.3em;
     text-align: center;
     border:1px solid #e3e3e3;
-    border-radius: 15px;
+    border-radius: 0px 0px 15px 15px ;
 }
 
 .flex-item .flex-image{
@@ -463,7 +473,7 @@ body{
 }
 
 .flex-item a{
-    color: black;
+    color: white;
     font-weight: normal;
     text-decoration: none;
 }
@@ -481,9 +491,9 @@ body{
     color: #333;
 }
 .flex-item h3{
-     background: #089de3;
+     background: #de6868;
      padding: 10px 5px 10px 5px;
-     border-radius: 15px 15px 0px 0px; 
+    
      margin: 0px;
      color:white;
      border-left: 5px;
@@ -553,6 +563,7 @@ body{
 
     }
     body{
+        
         width: 100%;
         margin-left: 0px;
         margin-right: 0px;

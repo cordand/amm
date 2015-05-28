@@ -39,7 +39,7 @@ function printSidebar($db,$loggato, $tipo, $email) {
                         
                         $num=$db->countMessagesById($_SESSION['id']);
                     ?>
-                    <li id="contatore">Messaggi:  <?php echo $num; ?></li><br>
+                    <li id="contatore">Messaggi:  <?php echo $num; ?></li>
                     
                     <?php 
                     

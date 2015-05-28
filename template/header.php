@@ -39,13 +39,13 @@ function printHeader($nome, $cognome, $tipo) {
                             
                     </ul>
    </nav>
-            </form>
+            
              
          </div>
             <header id="header">
         ';
     echo '<div class="immagineHeader">
-            <a href="index.php?comando=paginainiziale"><img title="Home" src="images/header.png"/></a>
+            <a href="index.php?comando=paginainiziale"><img title="Home" src="images/header.png" alt="Logo"/></a>
             
             <form id="searchbox" accept-charset="UTF-8" action="index.php?comando=cerca" class="search" method="post" role="search">
             
