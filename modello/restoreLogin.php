@@ -9,6 +9,7 @@ include_once $_SERVER['DOCUMENT_ROOT'].'/template/footer.php';
 include_once 'ErrorCode.php';
 include_once 'UserReg.php';
 
+echo getcwd();
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
