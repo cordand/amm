@@ -3,9 +3,9 @@
 
 include_once 'ManageDatabase.php';
 include_once 'CarrelloClass.php';
-include_once $_SERVER['DOCUMENT_ROOT'].'/template/header.php';
-include_once $_SERVER['DOCUMENT_ROOT'].'/template/sidebar.php';
-include_once $_SERVER['DOCUMENT_ROOT'].'/template/footer.php';
+include_once $_SERVER['DOCUMENT_ROOT'].'/amm2015/cordaAndrea/template/header.php';
+include_once $_SERVER['DOCUMENT_ROOT'].'/amm2015/cordaAndrea/template/sidebar.php';
+include_once $_SERVER['DOCUMENT_ROOT'].'/amm2015/cordaAndrea/template/footer.php';
 include_once 'ErrorCode.php';
 include_once 'UserReg.php';
 
