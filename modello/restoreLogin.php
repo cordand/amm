@@ -15,7 +15,7 @@ include_once 'UserReg.php';
  * and open the template in the editor.
  */
 
-
+echo getcwd();
 
 
 function goSidebar($db) {
