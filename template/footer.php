@@ -17,7 +17,7 @@ function printFooter(){
         
     </p>
        
-    <img class="footerImg" src="/images/forward.png" height="60" width="102" alt="CssHtml logo">
+    <img class="footerImg" src=<?php echo $_SERVER['DOCUMENT_ROOT'];?>"/images/forward.png" height="60" width="102" alt="CssHtml logo">
 </div>
 
         
