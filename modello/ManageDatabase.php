@@ -4,11 +4,11 @@
 // db.php
 
 $dbhost = "localhost";
-$dbuser = "root";
-$dbpass = "davide";
+//$dbuser = "root";
+//$dbpass = "davide";
 
-//$dbuser = "cordaAndrea";
-//$dbpass = "falco4603";
+$dbuser = "cordaAndrea";
+$dbpass = "falco4603";
 
 class ManageDatabase{
     var $mysqli;
@@ -24,7 +24,7 @@ class ManageDatabase{
         
     global $dbhost, $dbuser, $dbpass;
     //server pubblico
-    //$db="amm15_cordaAndrea";
+    $db="amm15_cordaAndrea";
     //server locale
     
     $this->mysqli = new mysqli();
