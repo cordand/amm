@@ -438,18 +438,22 @@ body{
     -webkit-flex-flow: row wrap;
     justify-content: space-around;*/
 
-    
+    display: -ms-flexbox;
     display: -webkit-flex;
     display: flex;
    -webkit-align-items: center;
+    
    align-items: center;
    -webkit-justify-content: space-around;
    justify-content: space-around;
    -webkit-flex-direction: row;
+   -ms-flex-direction: row;
    flex-direction: row;
    -webkit-flex-wrap: wrap;
+   -ms-flex-wrap: wrap;
    flex-wrap: wrap;
    -webkit-flex-flow: row wrap;
+   -ms-flex-flow: row wrap;
    flex-flow: row wrap;
    padding-bottom: 40px;
 }
