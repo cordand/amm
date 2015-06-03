@@ -4,15 +4,14 @@ To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
+
 <html>
     <head>
         <meta charset="UTF-8">
         <link href="styles/myCss.css" rel="stylesheet">
         <link href="styles/carrelloCss.css" rel="stylesheet">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0.0" />  
-        <script>
-            
-        </script>
+        
         <title>Carrello</title>
     </head>
     <body>
@@ -20,15 +19,20 @@ and open the template in the editor.
             <?php
             include 'template/header.php';
             include 'template/sidebar.php';
-            include 'scripts/restoreLogin.php';
+            include 'modello/restoreLogin.php';
             
             session_start();
-            dbConnect("mysite");
+            $db=new ManageDatabase("mysite");
             
             if(isset($_GET['add'])){
                 if($_GET['add']){
                     if(isset($_POST['id'])){ //aggiungi al carrello questo id
-                        $_SESSION['carrello']->aggiungiElemento($_POST['nome'],$_POST['id'],$_POST['prezzo'],$_POST['quantita']); 
+                        if(is_numeric($_POST['quantita'])){
+                           $_SESSION['carrello']->aggiungiElemento($_POST['nome'],$_POST['id'],$_POST['prezzo'],$_POST['quantita']);  
+                        }else{
+                            header("Location: index.php?comando=view&id=".$_POST['id']);
+                        }
+                        
                     }
                     
                 }
@@ -37,8 +41,9 @@ and open the template in the editor.
                 $_SESSION['carrello']->rimuoviElemento($_GET['rm']);
                 
             }
-            goHeader();
-            goSidebar();
+            goHeader($db);
+            goSidebar($db);
+            $db->close();
             ?>
 
             <table id="carrello">
@@ -59,7 +64,7 @@ and open the template in the editor.
                             echo '<td>'.$temp->getQuantita().'</td>';
                             ?>
                                 <td>
-                                    <form action="carrello.php?rm=<?php echo $temp->getId() ?>" method="post">
+                                    <form action="index.php?comando=carrello&rm=<?php echo $temp->getId() ?>" method="post">
                                         <input type="submit" value="Rimuovi">
                                     </form>
                                 </td>    

@@ -1,5 +1,6 @@
 <?php
 
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -21,17 +22,17 @@ function printHeader($nome, $cognome, $tipo) {
 
                             <li><a href="#"></a>
                                     <ul>
-                                            <li><a href="index.php">Home</a></li>';
+                                            <li class="primo"><a href="index.php?comando=paginainiziale">Home</a></li>';
     if (strlen($nome) > 0 && strlen($cognome) > 0) {
-        echo '<li><a href="profile.php">' . $nome . ' ' . $cognome . '</a></li>';
+        echo '<li class="centrale"><a href="index.php?comando=profilo">' . $nome . ' ' . $cognome . '</a></li>';
         if ($tipo) {
-            echo '<li><a href="addItem.php">Aggiungi</a></li>';
+            echo '<li class="centrale"><a href="index.php?comando=aggiungiItem">Aggiungi</a></li>';
         } else {
-            echo '<li><a href="carrello.php">Carrello</a></li>';
+            //echo '<li><a href="index.php?comando=carrello">Carrello</a></li>';
         }
-        echo '<li><a href="logout.php">Logout</a></li>';
+        echo '<li class="ultimo"><a href="index.php?comando=logout">Logout</a></li>';
     } else {
-        echo '<li><a href="login.php">Login</a></li>';
+        echo '<li class="ultimo"><a href="index.php?comando=login">Login</a></li>';
     }
     echo '                                    
                                     </ul>
@@ -39,12 +40,19 @@ function printHeader($nome, $cognome, $tipo) {
                             
                     </ul>
    </nav>
-            </form>
+            
              
          </div>
             <header id="header">
-        <div class="immagineHeader">
-            <a href="index.php"><img title="Home" src="images/header.png"/></a>
+        ';
+    echo '<div class="immagineHeader">
+            <a href="index.php?comando=paginainiziale"><img title="Home" src="images/header.png" alt="Logo"/></a>
+            
+            <form id="searchbox" accept-charset="UTF-8" action="index.php?comando=cerca" class="search" method="post" role="search">
+            
+
+            <input id="query" name="query" placeholder="Cerca" type="text">
+            <input id="submit" name="button" type="submit" value="Cerca"></form>
         </div>';
     if (strlen($nome) > 0 && strlen($cognome) > 0) {
         if ($tipo) {
@@ -56,19 +64,18 @@ function printHeader($nome, $cognome, $tipo) {
         echo '<ul class="navbar">';
     }
     echo '
-        <li><a href="index.php">Home</a></li>
-        <li><a href="news.asp">News</a></li>
-        <li><a href="contact.asp">Contact</a></li>';
+        <li class="primo"><a href="index.php?comando=paginainiziale">Home</a></li>
+        ';
     if (strlen($nome) > 0 && strlen($cognome) > 0) {
-        echo '<li><a href="profile.php">' . $nome . ' ' . $cognome . '</a></li>';
+        echo '<li class="centrale"><a href="index.php?comando=profilo">' . $nome . ' ' . $cognome . '</a></li>';
         if ($tipo) {
-            echo '<li><a href="addItem.php">Aggiungi</a></li>';
+            echo '<li class="centrale"><a href="index.php?comando=aggiungiItem">Aggiungi</a></li>';
         } else {
-            echo '<li><a href="carrello.php">Carrello</a></li>';
+            //echo '<li><a href="index.php?comando=carrello">Carrello</a></li>';
         }
-        echo '<li><a href="logout.php">Logout</a></li>';
+        echo '<li class="ultimo"><a href="index.php?comando=logout">Logout</a></li>';
     } else {
-        echo '<li><a href="login.php">Login</a></li>';
+        echo '<li class="ultimo"><a href="index.php?comando=login">Login</a></li>';
     }
     echo'
       </ul>

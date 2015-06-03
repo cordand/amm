@@ -3,6 +3,7 @@ To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
 */
+
 /* 
     Created on : 26-mar-2015, 11.46.17
     Author     : amm
@@ -16,9 +17,32 @@ and open the template in the editor.
 
 }
 #contenuto{
-    width: calc(100% - 200px);
+    width: calc(100% - 250px);
     min-height: 400px;
-    padding-left:10px;
+    //padding-left:10px;
+    margin-left: 10px; 
+    border:1px solid #e3e3e3;
+    margin-top: 15px;
+    border-radius:  0px 0px 15px 15px; 
+    
+    
+}
+.spazio{
+    padding-top: 40px;
+    
+}
+
+#contenuto h1{
+    background: #de6868;
+     //padding: 10px 5px 10px 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    
+     margin-top: 0px;
+     color:white;
+     //border-left: 5px;
+     text-align:center;
+     width: 100%;
 }
 #descrizione{
     width: 100%;
@@ -39,6 +63,14 @@ and open the template in the editor.
     width:100%;
 
 }
+#contenuto form #quantita {
+width: 30px;
+}
+.button{
+    background: #57d9f4;
+    border-radius: 15px;
+    font-size: 1.7em;
+}
 @media screen and (max-width: 775px) {
 
     #descrizione p{
@@ -46,11 +78,13 @@ and open the template in the editor.
         margin-left: 0px;
     }
     #contenuto{
+        width: 100%;
         min-width: 300px;
         margin:0px;
         padding:0px;
         margin-left:1px;
-        margin-right: 0px;
+        margin-right: 1px;
+        margin-top: 40px;
         //padding-left:10px;
     }
     #descrizione img{

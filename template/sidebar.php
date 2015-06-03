@@ -1,17 +1,20 @@
 <?php
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
 
-function printSidebar($loggato, $tipo, $email) {
+function printSidebar($db,$loggato, $tipo, $email) {
+    
     if (!$loggato) {
         ?>
+        
         <nav id="sidebar">
-            <h3><a href="carrello.php">Carrello</a></h3>
+            <h3><a href="index.php?comando=profilo">Posta</a></h3>
             <ul>
-                <li id="contatore">Elementi: <?php echo 0; ?></li>
+                <li id="contatore">Messaggi: <?php echo 0; ?></li>
             </ul>   
         </nav>
         <?php
@@ -19,9 +22,10 @@ function printSidebar($loggato, $tipo, $email) {
         if ($tipo) {
             ?>
             <nav id="sidebar">
-                <h3><a href="vetrina.php">Vetrina</a></h3>
+                
+                <h3><a href="index.php?comando=cerca&amp;query=::<?php echo $_SESSION['id']?>">Vetrina</a></h3>
                 <ul>
-                    <li id="contatore">Elementi:  <?php echo getNumeroInserzioni($email); ?></li>
+                    <li id="contatore">Elementi:  <?php echo $db->getNumeroInserzioni($_SESSION['id']); ?></li>
                 </ul>   
             </nav>
             <?php
@@ -30,9 +34,20 @@ function printSidebar($loggato, $tipo, $email) {
                 session_start();
             ?>
             <nav id="sidebar">
-                <h3><a href="carrello.php">Carrello</a></h3>
-                <ul>
-                    <li id="contatore">Elementi:  <?php echo count($_SESSION['carrello']->getElementi()); ?></li>
+                <h3><a href="index.php?comando=profilo">Posta</a></h3>
+                <ul class="lista">
+                    <?php 
+                        
+                        $num=$db->countMessagesById($_SESSION['id']);
+                    ?>
+                    <li id="contatore">Messaggi:  <?php echo $num; ?></li>
+                    
+                    <?php 
+                    
+                    
+                    
+                    ?>
+                    
                 </ul>   
             </nav>
             <?php

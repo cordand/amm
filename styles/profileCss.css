@@ -1,0 +1,114 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+
+/* 
+    Created on : 14-apr-2015, 10.56.10
+    Author     : amm
+*/
+
+
+
+/*#tabellaMessaggi{
+    padding-top: 30px;
+    width:300px;
+    text-align: center;
+    margin-right: auto;
+    margin-left: auto;
+    
+}*/
+
+#tabella,#tabellaMessaggi{
+    width: calc(100% - 250px);
+    margin-top: 14px;
+    border:1px solid #e3e3e3;
+    margin-left: 10px;
+    border-radius: 15px; 
+    
+}
+
+table {
+   
+  border-spacing: 0px;
+  background: ghostwhite;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  padding: 0px;
+  text-align: left;
+  width: 99%;
+  
+  margin-right: 10px;
+  margin-left:10px;
+  margin-top:20px;
+  padding-bottom: 10px;
+}
+
+#tabella h2,#tabellaMessaggi h2{
+     background: #de6868;
+     padding: 0px 0px 0px 0px;
+     height: 43px;
+     border-radius:  0px; 
+     margin-top: 0px;
+     color:white;
+     border-left: 5px;
+     text-align:center;
+     width: 100%;
+     
+}
+
+#tabellaMessaggi tr.clickable-row{
+    
+    cursor: pointer;
+   
+
+}
+#tabellaMessaggi tr.clickable-row:hover{
+    
+    background: #cbcbcb;
+    
+
+}
+
+#tabellaMessaggi{
+    margin-bottom:40px;
+}
+h1{
+ width:300px;
+ 
+ margin-right:auto;
+  margin-left:auto;
+  padding-right: 200px;
+  text-align: center;
+}
+
+@media screen and (max-width: 775px) {
+    #tabella{
+        margin-top:40px;
+    }
+    table {
+        width:96%;
+        margin-right:auto;
+        margin-left:auto;
+    }
+    .prodotto,.data{
+        display: none;
+    }
+    h1{
+ width:300px;
+ 
+ margin-right:auto;
+  margin-left:auto;
+  padding-right: 0px;
+  text-align: center;
+}
+#tabella,#tabellaMessaggi{
+    width: 100%;
+
+    
+}
+
+    
+}

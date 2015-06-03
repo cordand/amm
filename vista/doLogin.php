@@ -4,6 +4,7 @@ To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
+
 <html>
     <head>
         <meta charset="UTF-8">
@@ -14,48 +15,44 @@ and open the template in the editor.
     <body>
 
         <?php
-        include 'scripts/manageDatabase.php';
-        include 'scripts/CarrelloClass.php';
+
+        include 'modello/CarrelloClass.php';
         if (!empty($_POST['email']) && !empty($_POST['password'])) {
-            $conn = dbConnect('mysite');
+             $db = new ManageDatabase("mysite");
             
             $email = htmlspecialchars($_POST["email"]);
             $password = htmlspecialchars($_POST["password"]);
-            $result = logIn($email, $password);
-            
+            $result = $db->logIn($email, $password);
+//            var_dump($result);
+//            die();
             if (!$result) {
-                redirect_post("login.php", $email);
+                $db->close();
+                redirect("index.php?comando=login", $email);
             } else {
-                $data = mysql_num_rows($result);
-                if ($data == 1) {
+                $data = ($result);
+                
+                if (count($result) == 4) {
 
                     session_start();
-                    $data = mysql_fetch_row($result);
-
-
                     $_SESSION['username'] = $data[0];
+                    $_SESSION['id'] = $data[2];
                     $_SESSION['surname'] = $data[1];
                     $_SESSION['tipo'] = $data[3];
                     $_SESSION['email'] = $email;
                     $_SESSION['carrello'] = new CarrelloClass();
                     if (isset($_POST['remember']) && $_POST['remember']) {
-                        $token = md5(DATE_ATOM);
-                        $sql = ("UPDATE users SET ultimo_accesso = NOW(), remember = '" . $token . "' WHERE email = '" . $email . "'");
-
-
-                        setcookie("n", $data[2], time() + 2592000);
-                        setcookie("t", $token, time() + 2592000);
+                        $db->updateToken($data[2],$email);
                     } else {
-                        $sql = ("UPDATE users SET ultimo_accesso = NOW(), remember = '' WHERE email = '" . $email . "'");
-
+                        $db->updateUltimoAccesso($email);
                         setcookie("n");
                         setcookie("t");
                     }
-                    mysql_query($sql);
 
+                    $db->close();        
                     header("Location: index.php");
                 } else {
-                    redirect("login.php", $email);
+                    $db->close();
+                    redirect("index.php?comando=login", $email);
                 }
             }
 
@@ -63,9 +60,9 @@ and open the template in the editor.
         } else {
             if (!empty($_POST['email'])) {
                 $email = htmlspecialchars($_POST["email"]);
-                redirect("login.php", $email);
+                redirect("index.php?comando=login", $email);
             } else {
-                redirect("login.php", $email);
+                redirect("index.php?comando=login", $email);
             }
             die();
         }

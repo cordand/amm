@@ -1,5 +1,6 @@
 <?php
 
+
 /* 
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -13,11 +14,13 @@ class CarrelloClass{
        
     }
     function aggiungiElemento($nome,$id,$prezzo,$quantita){
-        $temp = new ItemClass($id,$nome,$prezzo,$quantita);
+        if(isset($temp))
+            unset ($temp);
+        $temp = new ItemClass($id,$nome,$prezzo,$quantita);  
         $trovato=false;
-        foreach($this->elementi as &$temp){
-            if($temp->getId()==$id){
-                $temp->aggiungiUno();
+        foreach($this->elementi as &$temp1){
+            if($temp1->getId()==$id){
+                $temp1->aggiungi($quantita);
                 $trovato=true;
                 break;
             }

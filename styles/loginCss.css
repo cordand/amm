@@ -3,46 +3,58 @@ To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
 */
+
 /* 
     Created on : 25-mar-2015, 15.13.38
     Author     : amm
 */
 
-.loginForm{
+.loginForm,.registerForm{
     margin-right: auto; 
     margin-left: auto;
     margin-top: 20px;
+    width:300px;
+    border:1px solid #e3e3e3;
+    padding-top: 0px;
+    border-radius: 0px 0px 15px 15px; 
+    margin-top: 30px;
 }
 body{
     text-align: center;
 }
-header{
-    text-align: left;
+#searchbox{
+    display: none
 }
 
+
 .loginForm form{
-    height: 300px; 
-    padding-top: 30px;
+    //height: 300px; 
+    
     padding-bottom: 50px;
 
+}
+.loginForm.errore{
+   height: 330px;  
 }
 .registerForm form{
     min-height: 100px; 
-    padding-top: 30px;
+    
     padding-bottom: 50px;
+    
 
 }
 
-
-
-.loginForm form .submit, .registerForm form .submit {
-    height: 23px;
-    vertical-align: bottom;
-    background: #ddb820; 
-    color: #fff;
-    border: 1px solid #FFF;
-    border-radius: 5px;
+.loginForm form h3,.registerForm form h3{
+     background: #de6868;
+     padding: 10px 5px 10px 5px;
+     border-radius: 0px; 
+     margin-top: 0px;
+     color:white;
+     border-left: 5px;
+     text-align:center;
 }
+
+
 
 .loginForm form label,.registerForm form label {
     display: inline-block;
@@ -61,7 +73,7 @@ header{
 
 .loginForm form #email, .loginForm form #password, .loginForm form #remember,
 .registerForm form #email, .registerForm form #password, .registerForm form #confEmail, .registerForm form #confPassword,
-.registerForm form #name, .registerForm form #surname
+.registerForm form #name, .registerForm form #surname,.registerForm form #via,.registerForm form #citta
 
 {
     display: inline-block;
@@ -99,6 +111,7 @@ header{
     display: inline-block;
     clear: left;
     width: 150px;
+    
 
     text-align: center;
 }
@@ -114,8 +127,14 @@ header{
     text-align: center;
 }
 
-@media screen and (max-width: 758px) {
+.registerForm{
+    
+    margin-bottom: 40px;
+}
+
+@media screen and (max-width: 775px) {
     .loginForm{
-        padding-top: 70px;
+        margin-top: 70px;
+        
     }
 }
