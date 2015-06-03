@@ -21,11 +21,16 @@ and open the template in the editor.
 }*/
 
 #tabella,#tabellaMessaggi{
+    width: 85%;
     width: calc(100% - 250px);
+    width: -o-calc(100% - 250px);
+    width: -webkit-calc(100% - 250px);
     margin-top: 14px;
     border:1px solid #e3e3e3;
     margin-left: 10px;
     border-radius: 15px; 
+    
+    
     
 }
 

@@ -24,6 +24,7 @@ and open the template in the editor.
     
 }
 
+
 .itemForm h2{
      background: #de6868;
      padding: 7px 0px 0px 0px;
@@ -35,6 +36,14 @@ and open the template in the editor.
      text-align:center;
      width: 100%;
 }
+
+.itemForm form label strong{
+   
+    //display: -webkit-box;
+    display: -moz-box;
+    display: box;
+}
+
 textarea { resize: vertical; }
 h2{
     margin-bottom: 10px;

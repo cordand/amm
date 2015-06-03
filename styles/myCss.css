@@ -460,6 +460,7 @@ body{
     -webkit-flex-flow: row wrap;
     -ms-flex-flow: row wrap;
     flex-flow: row wrap;
+    
     padding-bottom: 40px;
 }
 
