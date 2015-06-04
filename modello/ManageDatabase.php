@@ -10,18 +10,36 @@ $dbhost = "localhost";
 $dbuser = "cordaAndrea";
 $dbpass = "falco4603";
 
+
+
+/*
+ * Classe che gestisce tutte le operazioni che avvengono col database
+ */
+
 class ManageDatabase{
+    
     var $mysqli;
     var $db,$msg;
+    /**
+     * Crea l'oggetto database
+     * @param type $db
+     */
     
     function __construct($db) {
        $this->$db=$db;
        $this->dbConnect($db);
         
     }
-
+    /**
+     * Esegue la connessione col database
+     * @global string $dbhost
+     * @global string $dbuser
+     * @global string $dbpass
+     * @param type $db
+     * @return boolean
+     */
     function dbConnect($db = "") {
-        
+        error_reporting(0);
     global $dbhost, $dbuser, $dbpass;
     //server pubblico
     $db="amm15_cordaAndrea";
@@ -33,8 +51,9 @@ class ManageDatabase{
     // gestione errore
         $idErrore =  $this->mysqli->connect_errno;
         $this->msg = $this->mysqli->connect_error;
-        error_log("Errore nella connessione al server $idErrore : $msg", 0);
-        //echo "Errore nella connessione $msg";
+        error_log("Errore nella connessione al server $idErrore : $this->msg", 0);
+        echo "Errore nella connessione";
+        
         return false;
     }else {
     // nessun errore
@@ -45,12 +64,33 @@ class ManageDatabase{
 
 }
 
+/**
+ * Chiude la connessione col database
+ */
+function close(){
+    $this->mysqli->close();
+}
+
+
+/**
+ * Controlla se una stringa inizia con una particolare sottostringa
+ * @param type $haystack
+ * @param type $needle
+ * @return type
+ */
+
 private function startsWith($haystack, $needle) {
-    // search backwards starting from haystack length characters from the end
+    
     return $needle === "" || strrpos($haystack, $needle, -strlen($haystack)) !== FALSE;
 }
 
 
+/**
+ * Restituisce gli elementi sulla base dell'anzianità e eventualmente di una stringa di ricerca
+ * @param type $indice Indice della pagina
+ * @param type $query Stringa di ricerca
+ * @return int
+ */
 
 function getIndexItems($indice,$query){
     $query=urldecode($query);
@@ -62,22 +102,22 @@ function getIndexItems($indice,$query){
         $query= htmlspecialchars($query);
     if ($indice == -1) {
         if(strlen($query) > 0) {
-                $sql = "SELECT id,nome,descrizione,immagine,prezzo FROM items WHERE nome LIKE '%$query%' OR descrizione LIKE '%$query%' order by id desc limit 10";
+                $sql = "SELECT id,nome,descrizione,immagine,prezzo FROM items WHERE (nome LIKE '%$query%' OR descrizione LIKE '%$query%') AND disponibili > 0 order by id desc limit 10";
             } else {
-                $sql = "SELECT id,nome,descrizione,immagine,prezzo FROM items order by id desc limit 10";
+                $sql = "SELECT id,nome,descrizione,immagine,prezzo FROM items WHERE disponibili > 0 order by id desc limit 10";
             }
         } else if ($indice ==10) {
             if (strlen($query) > 0) {
-                $sql = "SELECT id,nome,descrizione,immagine,prezzo FROM items WHERE nome LIKE '%$query%' OR descrizione LIKE '%$query%' order by id desc " . $indice . ",10";
+                $sql = "SELECT id,nome,descrizione,immagine,prezzo FROM items WHERE (nome LIKE '%$query%' OR descrizione LIKE '%$query%') AND disponibili > 0 order by id desc " . $indice . ",10";
             } else {
-                $sql = "SELECT id,nome,descrizione,immagine,prezzo FROM items order by id desc limit " . $indice . ",10";
+                $sql = "SELECT id,nome,descrizione,immagine,prezzo FROM items WHERE disponibili > 0 order by id desc limit " . $indice . ",10";
             }
         }
         else{
             if (strlen($query) > 0) {
-                $sql = "SELECT id,nome,descrizione,immagine,prezzo FROM items WHERE nome LIKE '%$query%' OR descrizione LIKE '%$query%' order by id desc limit " . $indice . ",20";
+                $sql = "SELECT id,nome,descrizione,immagine,prezzo FROM items WHERE (nome LIKE '%$query%' OR descrizione LIKE '%$query%') AND disponibili > 0 order by id desc limit " . $indice . ",20";
             } else {
-                $sql = "SELECT id,nome,descrizione,immagine,prezzo FROM items order by id desc limit " . $indice . ",20";
+                $sql = "SELECT id,nome,descrizione,immagine,prezzo FROM items WHERE disponibili > 0 order by id desc limit " . $indice . ",20";
             }
         }
      //echo $sql;
@@ -121,10 +161,18 @@ function getIndexItems($indice,$query){
 }
 
  
-
-function close(){
-    $this->mysqli->close();
-}
+/**
+ * Aggiunge un nuovo elemento 
+ * @param type $nome Nome dell'elemento
+ * @param type $descrizione Descrizione
+ * @param type $prezzo  Prezzo
+ * @param type $immagine    Immagine da visualizzare
+ * @param type $inserzionista   Inserzionista
+ * @param type $id  Id di chi effettua l'inserzione
+ * @param type $emailinserzionista  Email dell'inserzionista
+ * @param type $disponibili Disponibilità del prodotto
+ * @return boolean
+ */
 
 function addItem($nome,$descrizione,$prezzo,$immagine,$inserzionista,$id,$emailinserzionista,$disponibili){
     $stmt = $this->mysqli->stmt_init();
@@ -155,7 +203,14 @@ function addItem($nome,$descrizione,$prezzo,$immagine,$inserzionista,$id,$emaili
     }
     
 }
-
+/**
+ * Manda un messaggio al destinatario designato
+ * @param type $id_m Id del mittente
+ * @param type $id_d    Id del Destinatario
+ * @param type $id_p    Id del prodotto di riferimento
+ * @param type $testo   Testo del messaggio
+ * @return boolean
+ */
 function sendMessage($id_m, $id_d,$id_p,$testo){
     $stmt = $this->mysqli->stmt_init();
     $this->mysqli->autocommit(FALSE);
@@ -188,21 +243,35 @@ function sendMessage($id_m, $id_d,$id_p,$testo){
     
     
 }
-
+/**
+ * Ritorna il nome di un prodotto e la sua disponibilita dato l'id
+ * @param type $id Id del prodotto
+ * @return array
+ */
 private function getProdName($id){
     $stmt = $this->mysqli->stmt_init(); 
-    $sql= "SELECT nome FROM items WHERE id = ?";
+    $sql= "SELECT nome,disponibili FROM items WHERE id = ?";
     $stmt->prepare($sql);
     $stmt->bind_param("i", $id);
     if(!$stmt->execute()){
         $stmt->close();
         return false;
     }
-    $stmt->bind_result($nome);
+    $stmt->bind_result($nome,$disponibili);
     $stmt->fetch();
     $stmt->close();
-    return $nome;
+    $a = array();
+    $a[]=$nome;
+    $a[]=$disponibili;
+    return $a;
 }
+/**
+ * Restituisce nome e cognome di un utente dato l'id
+ * @param type $id Id dell'utente
+ * @return boolean
+ */
+
+
  function getIdDetails($id){
     $stmt = $this->mysqli->stmt_init(); 
     $sql= "SELECT nome,cognome FROM users WHERE id = ?";
@@ -218,10 +287,15 @@ private function getProdName($id){
     
     return $nome." ".$cognome;
 }
-
+/**
+ * Rimuove un elemento settando la disponibilità a 0
+ * @param type $itemId id dell'oggetto da rimuovere
+ * @param type $sid id del proprietario
+ * @return type
+ */
 function removeItem($itemId,$sid){
     $stmt = $this->mysqli->stmt_init();
-    $sql="DELETE FROM items WHERE id = ? AND inserzionista_id=?";
+    $sql="UPDATE items SET disponibili=0 WHERE id = ? AND inserzionista_id=?";
     $stmt->prepare($sql);
     $stmt->bind_param("ii", $itemId,$sid);
     if($stmt->execute()){
@@ -236,6 +310,11 @@ function removeItem($itemId,$sid){
     
     
 }
+/**
+ * Conta i messaggi relativi a un certo utente
+ * @param type $id Id dell'utente
+ * @return int
+ */
 
 function countMessagesById($id){
     $stmt = $this->mysqli->stmt_init();
@@ -260,55 +339,73 @@ function countMessagesById($id){
     
 }
 
-function getMessagesById($id,$indice){
+
+/**
+ * Restituisce 20 messaggi per volta di un utente 
+ * @param type $id id dell'utente
+ * @param int $indice   indice della pagine
+ * @param type $nomeUtente  nome utente di chi esegue la chiamata di funzione
+ * @return \MessaggioClass|boolean Un array di messaggi
+ */
+function getMessagesById($id,$indice,$nomeUtente){
 //    $stmt = $this->mysqli->stmt_init(); 
     $indice*=20;
-    $sql= mysql_real_escape_string("SELECT id_prodotto,id_destinatario,id_mittente,letto,testo,data,id FROM messaggi WHERE (id_mittente=$id OR id_destinatario=$id) AND cancellato=0  order by id desc limit $indice,20");
-//    $stmt->prepare($sql);
-//    $stmt->bind_param("ii", $id,$indice);
-//    if(!$stmt->execute()){
-//        $stmt->close();
-//        return false;
-//    }
-//    $stmt->bind_result($id_prodotto,$id_destinatario,$letto,$testo);
+    $sql= mysql_real_escape_string("SELECT messaggi.id_prodotto,"
+            . "messaggi.id_destinatario,"
+            . "messaggi.id_mittente,"
+            . "messaggi.letto,"
+            . "messaggi.testo,"
+            . "messaggi.data,"
+            . "messaggi.id,"
+            . "users.nome,"
+            . "users.cognome,"
+            . "items.nome,"
+            . "items.disponibili FROM messaggi JOIN users ON (messaggi.id_mittente!= $id AND users.id=messaggi.id_mittente ) OR  (messaggi.id_destinatario!= $id AND users.id=messaggi.id_destinatario) JOIN items ON items.id=messaggi.id_prodotto WHERE (id_mittente=$id OR id_destinatario=$id) AND cancellato=0  order by id desc limit $indice,20");
+
+    
     
     $result =  $this->mysqli->query($sql);
     if(!$result){
+        
         return false;
     }
     
-    $arrDest=array();
-    $arrProd=array();
-    $arrMit=array();
+
     $a  = array();
     
     while (($row = $result->fetch_array())) {
-       // echo "COUNT ".var_dump($row);
-        if(!isset($arrProd[$row[0]])){
-            $arrProd[$row[0]]=$this->getProdName($row[0]);
-        }
-        if(!isset($arrDest[$row[1]])){
-            $arrDest[$row[1]]=$this->getIdDetails($row[1]);
-        }
-        if(!isset($arrMit[$row[2]])){
-            $arrMit[$row[2]]=$this->getIdDetails($row[2]);
-        }
-        
+  
         $temp = new MessaggioClass();
-        $temp->setNomeP($arrProd[$row[0]]);
-        $temp->setNomeD($arrDest[$row[1]]);
-        $temp->setNomeM($arrMit[$row[2]]);
+
         $temp->setTesto($row[4]);
         $temp->setLetto($row[3]);
         $temp->setData($row[5]);
         $temp->setIdMessaggio($row[6]);
+        if($row[1]==$id){
+            $temp->setNomeD($nomeUtente);
+        }else{
+             $temp->setNomeD($row[7]." ".$row[8]);
+        }
+        if($row[2]==$id){
+            $temp->setNomeM($nomeUtente);
+        }else{
+             $temp->setNomeM($row[7]." ".$row[8]);
+        }
+        $temp->setNomeP($row[9]);
+        $temp->setDisponibili($row[10]);
+        //$temp->setNomeM(if());
         $a[]=$temp;
     }
     //$stmt->close();
     return $a;
     
 }
-
+/**
+ * Restituisce i dettagli relativi a un messaggio
+ * @param type $id  Id del messaggio
+ * @param type $sid Id dell'utente
+ * @return boolean|\MessaggioClass
+ */
 function getMessaggioById($id,$sid){
     $stmt = $this->mysqli->stmt_init();
     $sql= ("SELECT id_prodotto,id_destinatario,id_mittente,letto,testo,data,id FROM messaggi WHERE id=? AND (id_mittente=? OR id_destinatario=?) AND cancellato=0");
@@ -324,7 +421,9 @@ function getMessaggioById($id,$sid){
         $stmt->close();
         $temp= new MessaggioClass();
         $temp->setIdDestinatario($id_destinatario);
-        $temp->setNomeP($this->getProdName($id_prodotto));
+        $prod = $this->getProdName($id_prodotto);
+        $temp->setNomeP($prod[0]);
+        $temp->setDisponibili($prod[1]);
         $temp->setNomeD($this->getIdDetails($id_destinatario));
         $temp->setNomeM($this->getIdDetails($id_mittente));
         $temp->setTesto($testo);
@@ -341,6 +440,13 @@ function getMessaggioById($id,$sid){
     
     
 }
+
+/**
+ * Cambia lo stato del messaggio da non letto a letto
+ * @param type $id  Id del messaggio
+ * @param type $sid Id del lettore
+ * @return boolean
+ */
 function setLetto($id,$sid){
     $stmt = $this->mysqli->stmt_init();
     
@@ -354,6 +460,14 @@ function setLetto($id,$sid){
     $stmt->close();
     return true;
 }
+/**
+ * Restituisce l'id di un elemento dati dei parametri
+ * @param type $nome    Nome del prodotto
+ * @param type $descrizione Descrizione
+ * @param type $prezzo  Prezzo
+ * @param type $mail    Email dell'inserzionista
+ * @return type
+ */
 function getId($nome,$descrizione,$prezzo,$mail){
     $stmt = $this->mysqli->stmt_init();
     $sql= "SELECT id FROM items WHERE nome=? AND
@@ -382,6 +496,12 @@ function getId($nome,$descrizione,$prezzo,$mail){
     return -1;
 }
 
+/**
+ * Esegue il login
+ * @param type $email
+ * @param type $password
+ * @return boolean
+ */
 function logIn($email,$password)
 {
     $stmt = $this->mysqli->stmt_init();
@@ -403,7 +523,11 @@ function logIn($email,$password)
     $stmt->close();
     return $a;
 }
-
+/**
+ * REstituisce i dettagli di un utente data la sua email
+ * @param type $email
+ * @return boolean
+ */
 function userDetails($email)
 {
     $stmt = $this->mysqli->stmt_init();
@@ -429,7 +553,11 @@ function userDetails($email)
     $stmt->close();
     return null;
 }
-
+/**
+ * Controlla la disponibilità di una certa email
+ * @param type $email
+ * @return int
+ */
 function getEmailAvailability($email){
     $stmt = $this->mysqli->stmt_init();
     $sql = "SELECT COUNT(*) FROM users WHERE email = ?";
@@ -460,6 +588,12 @@ function getEmailAvailability($email){
     
 }
 
+/**
+ * Crea un nuovo account
+ * @param type $value Oggetto di tipo UserReg che contiene i dettagli dell'utente
+ * @param type $password    Password scelta
+ * @return boolean
+ */
 function createAccount($value,$password){
     $stmt = $this->mysqli->stmt_init();
     $sql = "INSERT INTO users SET
@@ -482,10 +616,14 @@ function createAccount($value,$password){
 
 }
 
-
+/**
+ * Ritorna il numero di inserzioni attive per un utente
+ * @param type $id
+ * @return int
+ */
 function getNumeroInserzioni($id){
     $stmt = $this->mysqli->stmt_init();
-    $sql = "SELECT COUNT(*) FROM items WHERE inserzionista_id = ?";
+    $sql = "SELECT COUNT(*) FROM items WHERE inserzionista_id = ? AND disponibili>0";
     $stmt->prepare($sql);
     $stmt->bind_param("i", $id);
     
@@ -500,7 +638,11 @@ function getNumeroInserzioni($id){
     }
     
 }
-
+/**
+ * Restituisce i dettagli di un prodotto
+ * @param type $id
+ * @return boolean
+ */
 function getItem($id){
     $stmt = $this->mysqli->stmt_init();
     $sql = "SELECT nome,descrizione,immagine,disponibili,prezzo,inserzionista_id FROM items WHERE id = ?";
@@ -531,7 +673,11 @@ function getItem($id){
         return false;
     }
 }
-
+/**
+ * Restituisce l'id di chi ha effetuato l'inserzione
+ * @param type $id
+ * @return boolean
+ */
 function getItemInserzionista($id){
     $stmt = $this->mysqli->stmt_init();
     $sql = "SELECT inserzionista_id FROM items WHERE id = ?";
@@ -557,7 +703,12 @@ function getItemInserzionista($id){
     }
 }
 
-
+/**
+ * Ripristina il login tramite l'id e il token contenuto nel cookie
+ * @param type $id
+ * @param type $token
+ * @return boolean
+ */
 function restoreLoginDb($id,$token){
     $stmt = $this->mysqli->stmt_init();
     $sql = "SELECT nome,cognome,email,tipo,id,remember FROM users WHERE id = ? AND remember LIKE ?";
@@ -585,7 +736,13 @@ function restoreLoginDb($id,$token){
     $stmt->close();
     return false;
 }
- 
+ /**
+  * Aggiorna il token per il ripristino del login
+  * @param type $id
+  * @param type $email
+  * @param type $tokenOld
+  * @param type $remember
+  */
 function updateToken($id,$email,$tokenOld,$remember){
             
             $token = md5(date(DATE_ATOM));
@@ -605,7 +762,10 @@ function updateToken($id,$email,$tokenOld,$remember){
             $stmt->execute();
             $stmt->close();
 }
-
+/**
+ * Aggiorna la data dell'ultimo accesso
+ * @param type $email
+ */
 function updateUltimoAccesso($email){
      $stmt = $this->mysqli->stmt_init();
      $sql = ("UPDATE users SET ultimo_accesso = NOW(), remember = '' WHERE email = ?");

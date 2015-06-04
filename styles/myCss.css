@@ -481,6 +481,8 @@ body{
 }
 
 .flex-item .flex-image{
+    height: auto;
+    width: 300px;
     max-width: 300px;
     max-height: 200px;
 }

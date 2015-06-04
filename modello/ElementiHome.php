@@ -2,9 +2,12 @@
 
 
 /* 
- * To change this license header, choose License Headers in Project Properties.
+ * 
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
+ * 
+ * Classe che restituisce il contenuto della homepage
+ * 
  */
 
 class ElementiHome{
@@ -15,7 +18,12 @@ class ElementiHome{
         
         
     }
-    
+    /**
+     * Restituisce gli elementi da visualizzare in homepage
+     * @param type $indice l'indice della pagina
+     * @param type $query   query di ricerca
+     * @return string   Codice html da visualizzare
+     */
     function getElementi($indice,$query){
         
        $ret="";

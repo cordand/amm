@@ -1,21 +1,15 @@
 <?php
 
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /**
  * Description of Controllo
  *
- * @author amm
+ * @author Andrea Corda
  */
 include 'modello/ManageDatabase.php';
 
 class Controllo {
-    //put your code here
+    
     
     
 
@@ -27,45 +21,43 @@ class Controllo {
       $comando = isset($_REQUEST["comando"])?$_REQUEST["comando"] : "paginainiziale";
       if ($comando == "paginainiziale")
       {
-         // passo il controllo alla vista "paginainziale.php"
-         include("vista/index.php");
+         
+         include("vista/index.php"); //Carico l'homepage
       }else if($comando == "view"){
-          include("vista/viewer.php");
+          include("vista/viewer.php"); //Carico i dettagli prodotto
       }
       else if($comando == "logout"){
-          include("vista/logout.php");
+          include("vista/logout.php"); //Carico il logout
       }
       else if($comando == "login"){
-          include("vista/login.php");
+          include("vista/login.php"); //Carico pagina login
       }
       else if($comando == "doLogin"){
-          include("vista/doLogin.php");
+          include("vista/doLogin.php"); //Carico script esecuzione login
       }
-      else if($comando == "carrello"){
-          include("vista/carrello.php");
-      }
-      else if($comando == "register"){
+      
+      else if($comando == "register"){  //Carico pagina registrazione
           include("vista/register.php");
       }
-      else if($comando == "doRegister"){
+      else if($comando == "doRegister"){    //Carico script registrazione
           include("vista/doRegister.php");
       }
-      else if($comando == "aggiungiItem"){
+      else if($comando == "aggiungiItem"){  //Carico pagina inserimento elemento
           include("vista/addItem.php");
       }
-      else if($comando == "profilo"){
+      else if($comando == "profilo"){   //Carico pagina profilo
           include("vista/profile.php");
       }
-      else if($comando == "cerca"){
+      else if($comando == "cerca"){ //Carica la pagina iniziale
           include("vista/index.php");
       }
-      else if($comando == "contatta"){
+      else if($comando == "contatta"){  //Carico la pagina per contattare
           include("vista/contatta.php");
       }
-      else if($comando == "leggi"){
+      else if($comando == "leggi"){ //Carico i dettagli messaggio
           include("vista/leggi.php");
       }
-      else if($comando == "rimuovi"){
+      else if($comando == "rimuovi"){   //Carico lo script che rimuove un elemento
           include("vista/remove.php");
       }
     }

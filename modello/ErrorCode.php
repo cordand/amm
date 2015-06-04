@@ -7,6 +7,10 @@
  * and open the template in the editor.
  */
 
+/**
+ * Enumerazione per i diversi errori
+ */
+
 class ErrorCode{
       const EMAILPRESENTE=0;
       const PASSWORDDIVERSE=1;

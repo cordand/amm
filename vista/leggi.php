@@ -84,7 +84,7 @@ and open the template in the editor.
            }
            
                 
-            if($msg->getIdMittente()!=$_SESSION['id']){
+            if($msg->getIdMittente()!=$_SESSION['id']&&$msg->getDisponibili()>0){
                 ?>
             <form action="index.php?comando=contatta" method="post">
                 <input type="hidden" name="id" value="<?php echo $msg->getIdProdotto() ?>">

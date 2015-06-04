@@ -120,11 +120,11 @@ and open the template in the editor.
                         
                         
                     }else{
-                        printBody("","","","",0,0);
+                        printBody("","","","",0,1);
                     }  
                     }else{
                 
-                        printBody("","","","",0,0);
+                        printBody("","","","",0,1);
             }
             }
             
@@ -148,7 +148,7 @@ and open the template in the editor.
                         </select></label><br><br> -->
                     <label for="immagine">URL Immagine:<input name="immagine" id="immagine" type="text" value="<?php echo $immagine?>"></label><br><br>
                     <label for="descrizione">Descrizione:<textarea name="descrizione" id="descrizione" rows="10" cols="50" ><?php echo $descrizione?></textarea> </label><br><br>
-                    <label for="disponibili">Disponibili:<input id="disponibili" name="disponibili" value="5" type="text" value="<?php echo $disponibili?>"></label><br><br> 
+                    <label for="disponibili">Disponibili:<input id="disponibili" name="disponibili"  type="text" value="<?php echo $disponibili?>"></label><br><br> 
                     <label for="prezzo">Prezzo (€):<input id="prezzo" name="prezzo" type="text" value="<?php echo $prezzo?>"></label><br><br> 
                     <input class="submit" type="submit" id="invia" name="invia" value="Inserisci">
                     

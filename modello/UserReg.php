@@ -7,6 +7,9 @@
  * and open the template in the editor.
  */
 
+/**
+ * Oggetto utilizzato per la registrazione di un utente, contiene tutti i dettagli
+ */
 
 class UserReg{
     private $email,$nome,$cognome,$sesso,$tipo,$citta,$via;

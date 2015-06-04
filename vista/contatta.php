@@ -51,7 +51,7 @@ and open the template in the editor.
               $id_mittente=$_SESSION['id'];
               
            if(($id=$db->sendMessage( $id_mittente, $id_inserzionista, htmlspecialchars($_POST['id']), htmlspecialchars($_POST['messaggio'])))){
-               header("Location: index.php?comando=leggi&amp;id=".$id);
+               header("Location: index.php?comando=leggi&id=".$id);
                
            }else{
                echo "Errore, riprovare in seguito";

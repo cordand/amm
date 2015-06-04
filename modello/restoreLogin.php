@@ -2,7 +2,6 @@
 
 
 include_once 'ManageDatabase.php';
-include_once 'CarrelloClass.php';
 include_once $_SERVER['DOCUMENT_ROOT'].'/amm2015/cordaAndrea/template/header.php';
 include_once $_SERVER['DOCUMENT_ROOT'].'/amm2015/cordaAndrea/template/sidebar.php';
 include_once $_SERVER['DOCUMENT_ROOT'].'/amm2015/cordaAndrea/template/footer.php';
@@ -90,7 +89,7 @@ function restoreLogin($db,$id, $token) {
             $_SESSION['email'] = $data[2];
             $_SESSION['tipo'] = $data[3];
             $_SESSION['id'] = $data[4];
-            $_SESSION['carrello'] = new CarrelloClass();
+            
             $db->updateToken($data[4],$data[2],$token,$data[5]);
 
             return 1;

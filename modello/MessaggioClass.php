@@ -7,7 +7,7 @@
  * and open the template in the editor.
  */
 class MessaggioClass{
-    var $idMittente,$idDestinatario,$idMessaggio,$idProdotto,$nomeD,$nomeP,$nomeM,$testo,$letto,$data;
+    var $disponibili,$idMittente,$idDestinatario,$idMessaggio,$idProdotto,$nomeD,$nomeP,$nomeM,$testo,$letto,$data;
     function __construct() {
         
     }
@@ -89,6 +89,15 @@ class MessaggioClass{
     function setIdMittente($idMittente) {
         $this->idMittente = $idMittente;
     }
+    
+    function getDisponibili() {
+        return $this->disponibili;
+    }
+
+    function setDisponibili($disponibili) {
+        $this->disponibili = $disponibili;
+    }
+
 
 
 

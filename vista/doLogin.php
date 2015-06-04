@@ -39,7 +39,7 @@ and open the template in the editor.
                     $_SESSION['surname'] = $data[1];
                     $_SESSION['tipo'] = $data[3];
                     $_SESSION['email'] = $email;
-                    $_SESSION['carrello'] = new CarrelloClass();
+                    
                     if (isset($_POST['remember']) && $_POST['remember']) {
                         $db->updateToken($data[2],$email);
                     } else {

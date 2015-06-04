@@ -9,7 +9,13 @@
 
 include_once 'manageDatabase.php';
 
+session_start();
 
+/**
+ * Controlla che un utente sia loggato
+ * @param type $db
+ * @return boolean
+ */
 
 function isLoggedIn($db) {
     if (isset($_SESSION['username']) && isset($_SESSION['surname'])) {
@@ -31,9 +37,11 @@ function isLoggedIn($db) {
 
 
 
-session_start();
 
 
+/**
+ * Restituisce in una taballa i dettagli dell'utente
+ */
 
 if(isLoggedIn($db)){
     $data=userDetails($_SESSION['email']);

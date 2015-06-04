@@ -106,7 +106,7 @@ and open the template in the editor.
                     }
                     $numMessaggi=$db->countMessagesById($_SESSION['id']);
                     
-                    $messaggi=$db->getMessagesById($_SESSION['id'], $pagina);
+                    $messaggi=$db->getMessagesById($_SESSION['id'], $pagina,$_SESSION['username']." ".$_SESSION['surname']);
                     $db->close();
                     if(count($messaggi)==0){
                         echo '<td colspan="6" class="center"><b>Non sono ancora presenti messaggi.</b></td>';
@@ -116,8 +116,8 @@ and open the template in the editor.
                           echo "<td>";
                           echo $temp->getLetto()==1 ? '<img src="images/read_message.png" width="32" height="32" alt="simbolo" >' : '<img src="images/message.png" width="32" height="32" alt="simbolo" >'   . "</td>";
                           echo "<td class=\"prodotto\">";
-                          if(strlen($temp->getNomeP())==0){
-                              $nomeP="Non trovato";
+                          if(($temp->getDisponibili()==0)){
+                              $nomeP="Elemento rimosso";
                           }else if(strlen($temp->getNomeP())<13){
                               $nomeP=getNomeP;
                           }else{
