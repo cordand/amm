@@ -195,6 +195,7 @@ and open the template in the editor.
     
     ?>
     Non sei loggato
+        </div>
     <?php
 }
                 
