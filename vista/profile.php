@@ -119,7 +119,7 @@ and open the template in the editor.
                           if(($temp->getDisponibili()==0)){
                               $nomeP="Elemento rimosso";
                           }else if(strlen($temp->getNomeP())<13){
-                              $nomeP=getNomeP;
+                              $nomeP=$temp->getNomeP();
                           }else{
                               $nomeP=substr($temp->getNomeP(),0,12)."...";
                               
