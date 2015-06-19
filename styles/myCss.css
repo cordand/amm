@@ -152,6 +152,8 @@ nav ul ul li a:hover {
     float:right;
     margin-right: 10px;
     margin-top: 50px;
+    display: inline-block;
+    
 
 }
 #searchbox
