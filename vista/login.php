@@ -72,7 +72,7 @@ and open the template in the editor.
                         </form>
 
                             
-                    </div>
+                    
 
                     <div class="registerForm">
                         <form id="register" action="index.php?comando=register" method="post">
@@ -87,5 +87,6 @@ and open the template in the editor.
                 printFooter();
                 ?>
             </div>
+                    </div>
     </body>
 </html>
