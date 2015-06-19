@@ -40,8 +40,8 @@ and open the template in the editor.
 .itemForm form label strong{
    
     //display: -webkit-box;
-    display: -moz-box;
-    display: box;
+    display: -moz-block;
+    display: block;
 }
 
 textarea { resize: vertical; }
