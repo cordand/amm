@@ -70,7 +70,7 @@ and open the template in the editor.
                             <label id="ricorda">Ricordami <input type="checkbox" name="remember" id="remember"> </label><br><br>
                             <input type="submit" class="submit" value="Login">
                         </form>
-
+                      </div>          
                             
                     
 
@@ -82,7 +82,7 @@ and open the template in the editor.
                         </form>
 
                     </div>         
-                </div>
+                
                 <?php
                 printFooter();
                 ?>
