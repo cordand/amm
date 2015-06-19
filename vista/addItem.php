@@ -107,7 +107,7 @@ and open the template in the editor.
                                 $id=$db->getId($nome, $descrizione, $prezzo, $_SESSION['email']);
                                 if($id!=-1){
                                     $db->close();
-                                    header( "refresh:3; url=index.php?comando=view&id=".$id ); 
+                                    header( "refresh:1; url=index.php?comando=view&id=".$id ); 
                             }else{
                                  $db->close();
                             }
